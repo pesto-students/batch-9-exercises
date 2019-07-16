@@ -7,4 +7,10 @@ describe('arraySum test', () => {
 
     expect(sum).toEqual(15);
   });
+  test('should return a string', () => {
+    const fixture = [1, '2', 3, 4, 5];
+    const sum = sumArray(...fixture);
+
+    expect(typeof sum).toEqual('string');
+  });
 });
