@@ -8,9 +8,6 @@
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
-  "engines": {
-    "node": ">=10.15"
-  },
   "dependencies": {
     "chalk": "*",
     "dotenv": "*",
