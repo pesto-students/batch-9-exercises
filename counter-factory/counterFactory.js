@@ -1,6 +1,17 @@
 
-function counterFactory(...args) {
-  return args;
+function counterFactory() {
+  var count = 0
+  var counter = {
+   
+     increment: function (){
+      return ++count;
+    },
+
+     decrement : function (){
+      return --count;
+    }
+  }
+  return counter;
 }
 
 export {
