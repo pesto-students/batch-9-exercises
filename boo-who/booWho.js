@@ -6,5 +6,4 @@ function booWho(...args) {
     return false;
 }
 }
-
 export { booWho };
