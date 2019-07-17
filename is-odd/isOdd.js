@@ -1,6 +1,6 @@
 
-function isOdd(...args) {
-  return args;
+function isOdd(n) {
+  return Math.abs(n % 2) == 1
 }
 
 export {
