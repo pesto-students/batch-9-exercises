@@ -1,6 +1,6 @@
 
-function binaryAgent(...args) {
-  return args;
+function binaryAgent(binaryInput) {
+  return parseInt(binaryInput, 2).toString(10);
 }
 
 export {
