@@ -4,7 +4,7 @@ function diffArray(firstArray, secondArray) {
   firstArray.forEach((element) => {
     if (secondArray.indexOf(element) < 0) newArray.push(element);
   });
- 
+
   secondArray.forEach((element) => {
     if (firstArray.indexOf(element) < 0) newArray.push(element);
   });
