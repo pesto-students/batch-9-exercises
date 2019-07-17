@@ -1,5 +1,8 @@
-const everyNth = (string, n) => string.split('').filter((a, i) => i % n === 0).join('');
+
+function everyNthTest(...args) {
+  return args;
+}
 
 export {
-  everyNth,
+  everyNthTest,
 };
