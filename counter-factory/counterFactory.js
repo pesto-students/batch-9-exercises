@@ -1,6 +1,15 @@
+/* eslint-disable */
+function counterFactory() {
+  let i = 0;
+  return {
+    increment() {
+      return ++i;
+    },
 
-function counterFactory(...args) {
-  return args;
+    decrement() {
+      return --i;
+    }
+  }
 }
 
 export {

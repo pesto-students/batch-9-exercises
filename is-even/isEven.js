@@ -1,6 +1,6 @@
-
-function isEven(...args) {
-  return args;
+/* eslint-disable */
+function isEven(n) {
+  return n % 2 === 0;
 }
 
 export {
