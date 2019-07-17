@@ -1,6 +1,6 @@
 
-function cacheFunction(...args) {
-  return args;
+function cacheFunction(cb) {
+  return arg => cb(arg);
 }
 
 export {
