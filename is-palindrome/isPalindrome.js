@@ -1,7 +1,7 @@
 
 function isPalindrome(inputString) {
-  const newString = inputString.match(/[a-zA-Z0-9]+/g).join('').toLowerCase();
-  console.log(newString);
+  const palindromeRegex = new RegExp(/[a-zA-Z0-9]+/, 'g');
+  const newString = inputString.toString().match(palindromeRegex).join('').toLowerCase();
   return newString === newString.split('').reverse().join('');
 }
 

@@ -3,16 +3,16 @@
     "segmentName": "segment-2",
     "exercises": {
         "reverse-string": {
-            "completed": false
+            "completed": true
         },
         "is-palindrome": {
-            "completed": false
+            "completed": true
         },
         "diff-array": {
             "completed": false
         },
         "longest-word-in-string": {
-            "completed": false
+            "completed": true
         },
         "telephone-check": {
             "completed": false
@@ -24,7 +24,7 @@
             "completed": false
         },
         "repeat-string-num-times": {
-            "completed": false
+            "completed": true
         },
         "binary-agent": {
             "completed": true
@@ -33,7 +33,7 @@
             "completed": true
         },
         "sum-all": {
-            "completed": false
+            "completed": true
         },
         "pairwise": {
             "completed": false
@@ -42,13 +42,13 @@
             "completed": false
         },
         "large-of-four": {
-            "completed": false
+            "completed": true
         },
         "steamroll-array": {
             "completed": false
         },
         "rotated-string": {
-            "completed": false
+            "completed": true
         }
     }
 }
