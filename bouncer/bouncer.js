@@ -1,6 +1,6 @@
 
 function bouncer(array) {
-  return array.filter(element => !!element === true);
+  return array.filter(Boolean);
 }
 
 export {
