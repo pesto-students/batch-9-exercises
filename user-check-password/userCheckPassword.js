@@ -1,6 +1,9 @@
 
-function userCheckPassword(...args) {
-  return args;
+function userCheckPassword(inputString) {
+  if (inputString === this.password) {
+    return true;
+  }
+  return false;
 }
 
 export {
