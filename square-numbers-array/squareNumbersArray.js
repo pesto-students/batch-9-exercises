@@ -1,8 +1,15 @@
 
-function squareNumbersArray(...args) {
-  return args;
+function checkIfNumberArray(arr) {
+  return arr.find(isNaN) !== undefined;
 }
 
-export {
-  squareNumbersArray,
-};
+function squareNumbersArray(...arr) {
+  if (checkIfNumberArray(arr)) throw Error('My custom error');
+
+  const result = arr.map(number => number ** 2);
+  return result;
+}
+
+
+
+export { squareNumbersArray };
