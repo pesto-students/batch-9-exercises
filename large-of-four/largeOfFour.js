@@ -14,4 +14,4 @@ function findLargest(array) {
   }
   return largest
 }
-export { largeOfFour };
+export { largeOfFour , findLargest};
