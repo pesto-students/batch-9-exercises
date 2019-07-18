@@ -1,6 +1,7 @@
 
-function objectValues(...args) {
-  return args;
+function objectValues(inputObject) {
+  const entries = Object.entries(inputObject);
+  return entries.map(([, value]) => value);
 }
 
 export {
