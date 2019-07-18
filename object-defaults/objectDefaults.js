@@ -1,8 +1,6 @@
-
-function objectDefaults(...args) {
-  return args;
+function objectDefaults(object, defaultObj) {
+  const overRiddenObject = { ...defaultObj, ...object };
+  return overRiddenObject;
 }
 
-export {
-  objectDefaults,
-};
+export { objectDefaults };
