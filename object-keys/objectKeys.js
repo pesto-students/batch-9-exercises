@@ -1,6 +1,13 @@
 
-function objectKeys(...args) {
-  return args;
+function objectKeys(obj) {
+  let result = []
+
+  for(var key in obj)
+  {
+    result.push(key)
+  }
+  
+  return result;
 }
 
 export {
