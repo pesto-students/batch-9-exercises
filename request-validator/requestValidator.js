@@ -1,8 +1,22 @@
+function requestValidator(request) {
 
-function requestValidator(...args) {
-  return args;
 }
 
-export {
-  requestValidator,
-};
+function validateRequestType(requestType) {
+  const validRequestMethod = ['GET' , 'POST' , 'DELETE']
+}
+function validateRequestMethod(requestMethod) {
+  
+}
+function validateRequestVersion(requestVersion) {
+  
+}
+function validateRequestUri(requestUri) {
+  
+}
+
+function validateRequestMsg(msg){
+
+}
+
+export { requestValidator };
