@@ -1,12 +1,13 @@
 
 function objectKeys(obj) {
   let result = []
-
+  let i = 0
   for(var key in obj)
   {
-    result.push(key)
+    result[i]=key
+    i= i+1;
   }
-  
+
   return result;
 }
 
