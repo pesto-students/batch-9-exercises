@@ -1,6 +1,6 @@
 
-function truthCheck(...args) {
-  return args;
+function truthCheck(collection, predicate) {
+  return collection.every(item => Boolean(item[predicate]));
 }
 
 export {
