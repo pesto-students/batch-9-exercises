@@ -15,13 +15,13 @@
             "completed": false
         },
         "update-inventory": {
-            "completed": false
+            "completed": true
         },
         "smallest-commons": {
             "completed": false
         },
         "truth-check": {
-            "completed": false
+            "completed": true
         },
         "orbital-period": {
             "completed": false
