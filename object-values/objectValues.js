@@ -4,6 +4,7 @@ function objectValues(obj) {
   let i = 0
   for ( let key in obj ) {
     result[i] = obj[key]
+    i++;
   }
   return result;
 }
