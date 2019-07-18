@@ -1,8 +1,8 @@
 
 function mapObject(obj,mapFunction) {
   let result = {} ;
-  for ( var i in obj ){
-    result[i] = mapFunction(obj[i])
+  for ( var key in obj ){
+    result[key] = mapFunction(obj[key])
   }
   return result
 }

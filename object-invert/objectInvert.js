@@ -1,8 +1,8 @@
 
 function objectInvert(obj) {
   let newObject = {}
-  for(let i in obj) {
-    newObject[obj[i]] = i
+  for(let key in obj) {
+    newObject[obj[key]] = key
   }
   return newObject
 }

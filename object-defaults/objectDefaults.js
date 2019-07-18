@@ -1,13 +1,13 @@
 
 function objectDefaults(obj, defaultProperties) {
   let newObject = {}
-  for(let i in obj){
-    newObject[i] = obj[i]
+  for(let key in obj){
+    newObject[key] = obj[key]
   }
 
-  for(let j in defaultProperties) {
-    if(!obj[j])
-    newObject[j] = defaultProperties[j]
+  for(let key in defaultProperties) {
+    if(!obj[key])
+    newObject[key] = defaultProperties[key]
   }
   return newObject;
 }
