@@ -1,5 +1,6 @@
 
 function isPalindrome(sequence) {
+  //comment
   if (typeof sequence === 'string') {
     const regex = /\W|_/g;
     const filteredSequence = sequence.replace(regex, '');
