@@ -1,8 +1,10 @@
+function mapObject(object, mapFunction) {
+  const newObject = {};
+  Object.keys(object).forEach(key => {
+    newObject[key] = mapFunction(object[key]);
+  });
 
-function mapObject(...args) {
-  return args;
+  return newObject;
 }
 
-export {
-  mapObject,
-};
+export { mapObject };
