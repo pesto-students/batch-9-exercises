@@ -1,8 +1,9 @@
-
-function objectInvert(...args) {
-  return args;
+function objectInvert(object) {
+  const invertedObject = {};
+  Object.entries(object).forEach(([key, value]) => {
+    invertedObject[value] = key;
+  });
+  return invertedObject;
 }
 
-export {
-  objectInvert,
-};
+export { objectInvert };
