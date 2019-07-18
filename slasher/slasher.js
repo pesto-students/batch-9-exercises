@@ -1,6 +1,6 @@
 
-function slasher(...args) {
-  return args;
+function slasher(array, length) {
+  return array.filter((value, key) => key >= length);
 }
 
 export {
