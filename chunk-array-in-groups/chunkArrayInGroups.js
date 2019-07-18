@@ -1,7 +1,5 @@
-// const array = ["a", "b", "c", "d"];
-// const splitSize = 2;
 function chunkArrayInGroups(array, splitSize) {
-  let groupOfChunkedArray = [];
+  const groupOfChunkedArray = [];
   for (
     let splitIndex = 0;
     splitIndex <= array.length - 1;
