@@ -1,6 +1,8 @@
+/* eslint-disable no-plusplus */
 
-function dropElements(...args) {
-  return args;
+// eslint-disable-next-line no-unused-vars
+function dropElements(arr, func) {
+  return arr;
 }
 
 export {
