@@ -5,8 +5,10 @@ function abbreviateString(string) {
   const indexOfLastWord = string.lastIndexOf(' ') + 1;
   const firstWord = string.substring(0, indexOfFirstWordEnd);
   const lastWordFirstChar = string.charAt(indexOfLastWord).toUpperCase();
-  const abbrivatedString = `${firstWord} ${lastWordFirstChar}.`;
-  return abbrivatedString;
+  let abbreviatedString = '';
+  if (firstWord) { abbreviatedString = `${firstWord} ${lastWordFirstChar}.`; }
+
+  return abbreviatedString;
 }
 
 export {
