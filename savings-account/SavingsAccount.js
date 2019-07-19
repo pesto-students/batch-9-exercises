@@ -1,8 +1,8 @@
 
-function savingsAccount(...args) {
+function SavingsAccount(...args) {
   return args;
 }
 
 export {
-  savingsAccount,
+  SavingsAccount,
 };
