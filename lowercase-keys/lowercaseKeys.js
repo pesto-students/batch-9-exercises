@@ -1,8 +1,15 @@
+function lowercaseKeys(object) {
+  const lowercasedKeyObject = {};
+  // Object.entries(object).forEach(
+  //   ([key, value]) => (lowercaseKeys[key.toLowerCase()] = value)
+  // );
+  const keysInLowerCase = Object.keys(object).map(key => key.toLowerCase());
+  const originalValues = Object.values(object);
 
-function lowercaseKeys(...args) {
-  return args;
+  keysInLowerCase.forEach((key, index) => {
+    lowercasedKeyObject[key] = originalValues[index];
+  });
+  return lowercasedKeyObject;
 }
 
-export {
-  lowercaseKeys,
-};
+export { lowercaseKeys };
