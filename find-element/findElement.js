@@ -1,9 +1,7 @@
 
-function findElement(...args) {
-  const array = args[0];
-  const test = args[1];
+function findElement(array, testFn) {
   for (const member of array) {
-    if (test(member)) {
+    if (testFn(member)) {
       return member;
     }
   }

@@ -1,7 +1,5 @@
 
-function slasher(...args) {
-  const array = args[0];
-  const position = args[1];
+function slasher(array, position) {
   const slashedArray = array.splice(position);
   return slashedArray;
 }
