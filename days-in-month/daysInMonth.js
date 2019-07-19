@@ -1,8 +1,7 @@
+function daysInMonth(year, monthInNumber) {
+  const lastDateOfTheMonth = new Date(year, monthInNumber, 0);
 
-function daysInMonth(...args) {
-  return args;
+  return lastDateOfTheMonth.getDate();
 }
 
-export {
-  daysInMonth,
-};
+export { daysInMonth };
