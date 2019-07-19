@@ -1,8 +1,13 @@
-
-function mathFns(...args) {
-  return args;
+function sqrt(number) {
+  return Math.sqrt(number);
 }
 
-export {
-  mathFns,
-};
+function power(number, exponent) {
+  return number ** exponent;
+}
+
+function round(number) {
+  return Math.round(number);
+}
+
+export { sqrt, power, round };
