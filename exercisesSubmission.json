@@ -9,7 +9,7 @@
             "completed": false
         },
         "json-parse": {
-            "completed": false
+            "completed": true
         },
         "lowercase-keys": {
             "completed": false
@@ -39,7 +39,7 @@
             "completed": false
         },
         "throw-errors": {
-            "completed": false
+            "completed": true
         }
     }
 }
