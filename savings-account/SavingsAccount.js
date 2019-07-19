@@ -14,7 +14,6 @@ const isCorrectLastName = (lastName) => {
 };
 
 const isCorrectEmail = (email) => {
-  // src: http://www.ex-parrot.com/~pdw/Mail-RFC822-Address.html
   const emailRegex = /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/;
 
   return emailRegex.test(email);
