@@ -1,6 +1,6 @@
 
-function memoize(...args) {
-  return args;
+function memoize(cb) {
+  return cb;
 }
 
 export {
