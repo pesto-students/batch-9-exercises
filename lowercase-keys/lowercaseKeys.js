@@ -1,5 +1,4 @@
 function copyObjPropertyToLowerCaseKey(accumulator, currentKey) {
-
   const keyProperties = Object.getOwnPropertyDescriptors(this[currentKey]);
   Object.defineProperty(accumulator, (currentKey).toLowerCase(), keyProperties);
   return accumulator;
