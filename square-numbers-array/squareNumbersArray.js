@@ -1,8 +1,11 @@
+/* eslint-disable */
+function squareNumbersArray(...arr) {
+  arr.forEach(element => {
+    if (isNaN(element)) {
+      throw Error(`Expected number got ${typeof element}`);
+    }
+  });
 
-function squareNumbersArray(...args) {
-  return args;
+  return arr.map(el => el ** 2);
 }
-
-export {
-  squareNumbersArray,
-};
+export { squareNumbersArray };
