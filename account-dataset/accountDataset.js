@@ -21,15 +21,17 @@ function sumOfBankBalances() {
 }
 
 function sumOfInterests() {
-  const states = ['WI',
-    'IL',
-    'WY',
-    'OH',
-    'GA',
-    'DE',
-  ];
+  dataset.bankBalances.map(set => {
+    switch(set.state) {
+      case 'WI':
+      case 'IL':
+      case 'WY':
+      case 'OH':
+      case 'GA':
+      case 'DE': (set.amount * 18.9) / 100;
+    }
+  })
   return states;
-  // dataset.bankBalances.filter()
 }
 
 export {
