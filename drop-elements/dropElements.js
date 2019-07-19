@@ -1,8 +1,6 @@
 
-function dropElements(...args) {
-  const array = args[0];
-  const condition = args[1];
-  const newArray = array.filter(x => condition(x));
+function dropElements(array, condition) {
+  const newArray = array.filter(condition);
   return newArray;
 }
 
