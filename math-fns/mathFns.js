@@ -1,9 +1,11 @@
 
-function mathFns {
+function mathFns(mathfunc){
 
-  function sqrt(number) {
-    return Math.sqrt(number);
+  //if(mathfunc==='sqrt'){
+    function sqrt(number) {
+      return Math.sqrt(number);
   }
+//}
 
   function power(raise,number) {
     return Math.pow(number, raise);;
