@@ -3,7 +3,7 @@ function threeSum(array, sum) {
   if (!Array.isArray(array)) {
     throw new TypeError(`Expected first argument to be array Received ${typeof array}`);
   }
-  if (Number(sum)) {
+  if (!Number(sum)) {
     throw new TypeError(`Expected Second argument to number Received ${typeof sum}`);
   }
   const minimumLengthOfArray = 3;
