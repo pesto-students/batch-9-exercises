@@ -14,7 +14,7 @@ describe('using JSON.parse', () => {
   });
 });
 
-describe('Simulating associative arrays', () => {
+describe('Simulating associative arrays', () =>
   test('should use as array correctly', () => {
     expect(endDay).toBe('Wednesday');
   });
