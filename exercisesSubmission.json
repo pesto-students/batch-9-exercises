@@ -21,7 +21,7 @@
             "completed": true
         },
         "limit-function-call-count": {
-            "completed": false
+            "completed": true
         },
         "cache-function": {
             "completed": true
@@ -33,7 +33,7 @@
             "completed": true
         },
         "sum-fibs": {
-            "completed": false
+            "completed": true
         },
         "sum-primes": {
             "completed": true
