@@ -1,12 +1,12 @@
 function parseMs(millisec) {
-  let milliseconds = millisec >= 0 ? millisec : -millisec;
+  let milliseconds = millisec > 0 ? millisec : -millisec;
 
   const object = {
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
-    milliseconds: 0
+    milliseconds: 0,
   };
   object.days = Math.floor(milliseconds / (24 * 60 * 60 * 1000));
   const daysms = milliseconds % (24 * 60 * 60 * 1000);
@@ -19,4 +19,5 @@ function parseMs(millisec) {
   return object;
 }
 
+console.log(parseMs(-0))
 export { parseMs };

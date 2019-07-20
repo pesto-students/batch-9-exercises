@@ -87,7 +87,7 @@ describe('parseMs', () => {
         'seconds',
         'milliseconds',
       ].forEach((key) => {
-        expect(negative[key]).toBe(-positive[key]);
+        expect(negative[key]).toEq(-positive[key]);
       });
     });
   });
