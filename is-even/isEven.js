@@ -1,6 +1,8 @@
+const modulus = baseNumber => number => number - ((Math.floor(number / baseNumber)) * baseNumber);
+const modWith2 = modulus(2);
 
 function isEven(args) {
-  if (args % 2 === 0) {
+  if (modWith2(args) === 0) {
     return true;
   }
   return false;
