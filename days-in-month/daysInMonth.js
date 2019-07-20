@@ -7,7 +7,7 @@ function isMonthValid(month) {
 }
 
 function daysInMonth(year, month) {
-  if (!isMonthValid(month) || !isInt(year)) { throw new Error(''); }
+  if (!isMonthValid(month) || !isInt(year)) { throw Error(''); }
   const days = new Date(year, month, 0).getDate();
   return days;
 }

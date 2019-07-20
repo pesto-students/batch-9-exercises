@@ -8,8 +8,9 @@ describe('countDaysInMonth', () => {
   });
 
   test('should throw error when incorrect arguments are there', () => {
-    expect(daysInMonth(2014, 40)).toThrow();
-    expect(daysInMonth(2016, 770)).toThrow();
-    expect(daysInMonth(2018, 2770)).toThrow();
+    expect(() => daysInMonth(2014, 40)).toThrow();
+    expect(() => daysInMonth(2016, 770)).toThrow();
+    expect(() => daysInMonth(2018, 2770)).toThrow();
+    expect(() => daysInMonth('2018', '2')).toThrow();
   });
 });
