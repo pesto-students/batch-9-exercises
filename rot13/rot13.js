@@ -6,8 +6,8 @@ const isAlphabet = charCode => charCode >= CHAR_CODE_A && charCode <= CHAR_CODE_
 const decipherCodesArray = stringArray => charCodes(stringArray)
   .map((charCode) => {
     if (isAlphabet(charCode)) {
-      const decipherAlphabetPostion = ((charCode - CHAR_CODE_A + 13) % 26);
-      return CHAR_CODE_A + decipherAlphabetPostion;
+      const decipherAlphabetPosition = ((charCode - CHAR_CODE_A + 13) % 26);
+      return CHAR_CODE_A + decipherAlphabetPosition;
     }
     return charCode;
   });
