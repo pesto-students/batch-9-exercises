@@ -18,4 +18,19 @@ describe('objectPairs', () => {
     const result = objectPairs(obj);
     expect(result).toEqual([['x', 2], ['y', 5], ['z', 10]]);
   });
+
+  it('should return key, value pairs that properly match the object\'s properties and nested properties', () => {
+    const obj = {
+      x: 2,
+      y: 5,
+      z: 10,
+      test: {
+        a: {
+          b: 1,
+        },
+      },
+    };
+    const result = objectPairs(obj);
+    expect(result).toEqual([['x', 2], ['y', 5], ['z', 10], ['test', [['a', [['b', 1]]]]]]);
+  });
 });
