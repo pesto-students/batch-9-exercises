@@ -1,6 +1,9 @@
 
-function rotatedString(...args) {
-  return args;
+function rotatedString(string, rotateString) {
+  if (string === rotateString) {
+    return false;
+  }
+  return (rotateString + rotateString).includes(string);
 }
 
 export {
