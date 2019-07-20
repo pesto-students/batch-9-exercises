@@ -1,11 +1,11 @@
 import { User } from './user';
 
 describe('User', () => {
+  //updated test to improve the quality of security
   test('should return an object with the passed username and password when called with new', () => {
     const me = new User('Pesto', 'iamabeast');
     expect(me).toEqual({
       username: 'Pesto',
-      password: 'iamabeast',
     });
   });
 
