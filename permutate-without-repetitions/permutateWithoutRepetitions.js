@@ -1,11 +1,5 @@
-function permutateWithoutRepetitions(permutationOptions) {
-  if (permutationOptions.length === 1) {
-    return [permutationOptions];
-  }
-
+function findAllCombinations(smallerPermutations, firstOption) {
   const permutations = [];
-  const smallerPermutations = permutateWithoutRepetitions(permutationOptions.slice(1));
-  const firstOption = permutationOptions[0];
 
   for (let permIndex = 0; permIndex < smallerPermutations.length; permIndex += 1) {
     const smallerPermutation = smallerPermutations[permIndex];
@@ -18,6 +12,16 @@ function permutateWithoutRepetitions(permutationOptions) {
   }
 
   return permutations;
+}
+function permutateWithoutRepetitions(permutationOptions) {
+  if (permutationOptions.length === 1) {
+    return [permutationOptions];
+  }
+
+  const smallerPermutations = permutateWithoutRepetitions(permutationOptions.slice(1));
+  const firstOption = permutationOptions[0];
+
+  return findAllCombinations(smallerPermutations, firstOption);
 }
 
 export {
