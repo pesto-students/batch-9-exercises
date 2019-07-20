@@ -15,4 +15,13 @@ describe('convertToRoman', () => {
     expect(convertToRoman(2014)).toEqual('MMXIV');
     expect(convertToRoman(3999)).toEqual('MMMCMXCIX');
   });
+
+
+  test('should throw error for number bigger than or equal 4000', () => {
+    expect(() => convertToRoman(4940490)).toThrow();
+  });
+
+  test('should throw error for wrong input', () => {
+    expect(() => convertToRoman('wrong input')).toThrow();
+  });
 });
