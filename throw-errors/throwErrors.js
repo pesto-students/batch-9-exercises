@@ -9,3 +9,4 @@ function throwErrors(...args) {
   export {
     throwErrors,
   };
+
