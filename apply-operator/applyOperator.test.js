@@ -3,6 +3,10 @@ import { applyOperator } from './applyOperator';
 describe('applyOperator', () => {
   test('should return 0 when no operands are specified', () => {
     expect(applyOperator('+')).toEqual(0);
+    expect(applyOperator('-')).toEqual(0);
+    expect(applyOperator('/')).toEqual(0);
+    expect(applyOperator('*')).toEqual(0);
+    expect(applyOperator('%')).toEqual(0);
   });
 
   test('should apply the operator when +, -, *, /, % operator is applied', () => {
@@ -22,6 +26,13 @@ describe('applyOperator', () => {
     expect(applyOperator('%', 21)).toEqual(21);
   });
 
+  test('should throw error when operator is not specified', () => {
+    expect(() => applyOperator()).toThrowError();
+  });
+  test('should throw error when operator is not valid', () => {
+    expect(() => applyOperator('x', 1, 2, 3)).toThrowError();
+    expect(() => applyOperator('y')).toThrowError();
+  });
   test('should throw error when operator is not specified', () => {
     expect(() => applyOperator()).toThrowError();
   });
