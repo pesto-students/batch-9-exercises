@@ -1,6 +1,13 @@
+const asciiValue = binaryCode => Number.parseInt(binaryCode, 2);
+const binaryCodeToWord = binaryCode => String.fromCharCode(asciiValue(binaryCode));
 
 function binaryAgent(binaryInput) {
-  return parseInt(binaryInput, 2).toString(10);
+  const binaryCodeArray = binaryInput.split(' ');
+  let sentence = '';
+  binaryCodeArray.forEach((binaryCode) => {
+    sentence += binaryCodeToWord(binaryCode);
+  });
+  return sentence;
 }
 
 export {
