@@ -33,13 +33,13 @@
             "completed": true
         },
         "map-object": {
-            "completed": false
+            "completed": true
         },
         "object-pairs": {
             "completed": true
         },
         "object-invert": {
-            "completed": false
+            "completed": true
         },
         "object-defaults": {
             "completed": false
