@@ -11,11 +11,16 @@ function threeSum(array, sum) {
     throw new Error(`Expected length of array ${minimumLengthOfArray} Received ${array.length}`);
   }
   const arrayLength = array.length;
-  for (let i = 0; i < arrayLength; i += 1) {
-    for (let j = i + 1; j < arrayLength; j += 1) {
-      for (let k = j + 1; j < arrayLength; k += 1) {
-        if (array[i] + array[j] + array[k] === sum) {
-          return [array[i], array[j], array[k]];
+  for (let firstNumberIndex = 0; firstNumberIndex < arrayLength; firstNumberIndex += 1) {
+    const firstNumber = array[firstNumberIndex];
+    // eslint-disable-next-line max-len
+    for (let secondNumberIndex = firstNumberIndex + 1; secondNumberIndex < arrayLength; secondNumberIndex += 1) {
+      const secondNumber = array[secondNumberIndex];
+      // eslint-disable-next-line max-len
+      for (let thirdNumberIndex = secondNumberIndex + 1; thirdNumberIndex < arrayLength; thirdNumberIndex += 1) {
+        const thirdNumber = array[thirdNumberIndex];
+        if (firstNumber + secondNumber + thirdNumber === sum) {
+          return [firstNumber, secondNumber, thirdNumber];
         }
       }
     }
