@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 import { SavingsAccount } from './SavingsAccount';
 
 describe('SavingsAccount', () => {
