@@ -1,6 +1,10 @@
 
-function objectInvert(...args) {
-  return args;
+function objectInvert(obj) {
+  const invertedObject = {};
+  Object.keys(obj).forEach((key) => {
+    invertedObject[obj[key]] = key;
+  });
+  return invertedObject;
 }
 
 export {
