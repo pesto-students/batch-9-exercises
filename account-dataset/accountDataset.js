@@ -32,20 +32,42 @@ function sumOfBankBalances() {
 const calculateInterest = amounts => amounts.map((amount) => {
   const rateOfInterest = 18.9;
   const interest = (amount * rateOfInterest) / 100;
-  return interest;
+  return roundToCent(interest);
 });
+
+const selectedStates = ['WI', 'OH', 'WY', 'IL', 'GA', 'DE'];
+const filteredDataset = () => dataset.bankBalances.filter(({ state }) => (
+  selectedStates.includes(state)));
+
 function sumOfInterests() {
-  return calculateInterest(getAmounts(dataset.bankBalances));
+  return roundToCent(sumAmounts(calculateInterest(getAmounts(filteredDataset()))));
 }
 
-function accountDataset() {
-  return dataset;
+const stateAmounts = dataset.bankBalances
+  .reduce((accumulator, { amount, state }) => ({
+    ...accumulator,
+    [state]: (accumulator[state] || 0) + Number(amount),
+  }), {});
+
+const filterAmountsByMinAmount = () => {
+  const minimumAmount = 1000000;
+  return Object.keys(stateAmounts)
+    .filter(key => stateAmounts[key] > minimumAmount)
+    .map(key => stateAmounts[key]);
+};
+
+function higherStateSums() {
+  return sumAmounts(filterAmountsByMinAmount());
 }
-accountDataset();
+// function accountDataset() {
+//   return dataset;
+// }
+// accountDataset();
+
 export {
-  accountDataset,
   hundredThousandairs,
   datasetWithRoundedDollar,
   sumOfBankBalances,
   sumOfInterests,
+  higherStateSums,
 };
