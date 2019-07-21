@@ -7,7 +7,7 @@ function hundredThousandairs() {
 
 function datasetWithRoundedDollar() {
   // eslint-disable-next-line no-return-assign
-  dataset.bankBalances.map(set => set.rounded = Math.round(set.amount));
+  dataset.bankBalances.forEach(set => set.rounded = Math.round(set.amount));
   return dataset.bankBalances;
 }
 
@@ -20,18 +20,29 @@ function sumOfBankBalances() {
   return result;
 }
 
+
 function sumOfInterests() {
-  dataset.bankBalances.map(set => {
-    switch(set.state) {
-      case 'WI':
-      case 'IL':
-      case 'WY':
-      case 'OH':
-      case 'GA':
-      case 'DE': (set.amount * 18.9) / 100;
-    }
-  })
-  return states;
+  const selectedStates = ['WI', 'OH', 'WY', 'IL', 'GA', 'DE'];
+  const selectedStatesSet = dataset.bankBalances
+    .filter(({ state }) => selectedStates.includes(state));
+  const result = selectedStatesSet.reduce((sum, set) => {
+    const ROI = 18.9;
+    const amount = (set.amount * ROI) / 100;
+    return sum + Number(amount.toFixed(2));
+  }, 0);
+  return Number(result.toFixed(2));
+}
+
+function higherStateSums() {
+  const minimumAmount = 1000000;
+  const stateAmounts = dataset.bankBalances
+    .reduce((acc, { amount, state }) => ({
+      ...acc,
+      [state]: (acc[state] || 0) + Number(amount),
+    }), {});
+  return Object.keys(stateAmounts)
+    .filter(key => stateAmounts[key] > minimumAmount)
+    .reduce((acc, key) => acc + stateAmounts[key], 0);
 }
 
 export {
@@ -39,4 +50,5 @@ export {
   datasetWithRoundedDollar,
   sumOfBankBalances,
   sumOfInterests,
+  higherStateSums,
 };

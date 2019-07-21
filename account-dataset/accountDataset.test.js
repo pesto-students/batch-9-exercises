@@ -50,8 +50,10 @@ describe('accountDataset', () => {
     });
   });
 
-  it('should return the sum of all amounts of every state, where the sum of amounts in the state is greater than 1,000,000', () => {
-    expect(higherStateSums())
-      .toBe(48629878.25);
+  describe('higherStateSums', () => {
+    it('should return the sum of all amounts of every state, where the sum of amounts in the state is greater than 1,000,000', () => {
+      expect(higherStateSums())
+        .toBe(48629878.25);
+    });
   });
 });
