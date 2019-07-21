@@ -1,20 +1,20 @@
-/* eslint-disable no-undef */
-const isFibonacci = (number) => {
-  const fib = [0, 1];
-  for (i = 2; i <= number; i += 1) {
-    fib[i] = fib[i - 2] + fib[i - 1];
+function calculateFib(upperLimit, fibArray) {
+  const [secondLatNum, lastNum] = fibArray.slice(fibArray.length - 2);
+  const nextNum = secondLatNum + lastNum;
+  if (upperLimit >= nextNum) {
+    return calculateFib(upperLimit, [...fibArray, nextNum]);
   }
-  return fib;
-};
+  return fibArray;
+}
 
-function sumFibs(number) {
-  let fibSum = 0;
-  isFibonacci(number).forEach((el) => {
-    if (el % 2 !== 0) {
-      fibSum += el;
-    }
-  });
-  return fibSum;
+const isOdd = num => num % 2 !== 0;
+
+const sum = numbers => numbers.reduce((result, value) => result + value, 0);
+
+function sumFibs(upperLimit) {
+  const fibArray = [0, 1];
+  const oddFibonacciSeries = calculateFib(upperLimit, fibArray).filter(isOdd);
+  return sum(oddFibonacciSeries);
 }
 
 export {
