@@ -1,4 +1,3 @@
-
 function sumEvenArgs(...args) {
   return args;
 }
