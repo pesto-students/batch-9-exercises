@@ -1,8 +1,8 @@
-
-function truthCheck(...args) {
-  return args;
+function truthCheck(collection, predicate) {
+  return collection.reduce(
+    (isTrue, object) => isTrue && Boolean(object[predicate]),
+    true
+  );
 }
 
-export {
-  truthCheck,
-};
+export { truthCheck };
