@@ -1,12 +1,15 @@
 
 function doubleOddNumbers(...args) {
-  function checkOdd(num) {
-    return num%2!=0;
-  }
 
-  return Array.prototype.reduce.call(args.filter(checkOdd), function(a) {
-      return 2*a;
-  }, 0);
+  let result_final = [];
+
+  return result_final = args.filter(function(num) {
+    return num%2!==0;
+  });
+
+  //result_final =  result_final*2;
+
+  //return result_final;
 
 }
 
