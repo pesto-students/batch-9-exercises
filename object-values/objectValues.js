@@ -1,8 +1,5 @@
-
-function objectValues(...args) {
-  return args;
+function objectValues(object) {
+  return Object.values(object);
 }
 
-export {
-  objectValues,
-};
+export { objectValues };

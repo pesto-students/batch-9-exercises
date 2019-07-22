@@ -1,0 +1,53 @@
+[33mcommit b53f9ac271e32f5fe449033d47f5a5b206aa3792[m[33m ([m[1;36mHEAD -> [m[1;32mnihalanisumit-d4s1[m[33m)[m
+Author: Sumit Nihalani <nihalanisumit@gmail.com>
+Date:   Fri Jul 19 01:52:16 2019 +0530
+
+    solve objectInvert
+
+[33mcommit c810ef5f9c42d116235da7be2fab1e5192c1974e[m
+Author: Sumit Nihalani <nihalanisumit@gmail.com>
+Date:   Fri Jul 19 01:04:02 2019 +0530
+
+    solve objectDefaults
+
+[33mcommit 8bca257ca18681d80c45f8df1f5a648ecb455d6c[m
+Author: Sumit Nihalani <nihalanisumit@gmail.com>
+Date:   Fri Jul 19 00:51:51 2019 +0530
+
+    solved mapObject
+
+[33mcommit 50b06878ee94cc96554e16497241799a29077a44[m
+Author: Sumit Nihalani <nihalanisumit@gmail.com>
+Date:   Fri Jul 19 00:45:03 2019 +0530
+
+    solve chunkArrayInGroups
+
+[33mcommit cb42ceb1c3af72d71dba1b33f0f0d15d2743e23c[m
+Author: Sumit Nihalani <nihalanisumit@gmail.com>
+Date:   Fri Jul 19 00:44:47 2019 +0530
+
+    solve chunkArrayInGroups
+
+[33mcommit 407d3be34a02fb6f0157ac485aa445ee37e8e3eb[m
+Author: Sumit Nihalani <nihalanisumit@gmail.com>
+Date:   Fri Jul 19 00:40:32 2019 +0530
+
+    solve findElement
+
+[33mcommit 030a94dd429c4c283d7b90c7f36525e84f558532[m[33m ([m[1;31morigin/nihalanisumit-d4s1[m[33m)[m
+Author: Sumit Nihalani <nihalanisumit@gmail.com>
+Date:   Fri Jul 19 00:33:56 2019 +0530
+
+    solve dropElements
+
+[33mcommit 4bff418b3db93662b5d8b6cc9ce57740f105243e[m[33m ([m[1;31morigin/day-4-segment-1[m[33m, [m[1;32mday-4-segment-1[m[33m)[m
+Author: Arfat Salman <giney.paradise@gmail.com>
+Date:   Wed Jul 17 04:22:34 2019 +0530
+
+    Exercises for day-4-segment-1
+
+[33mcommit a503eaacad7f1469b2e0c99d3663ee16577e0170[m[33m ([m[1;31morigin/rajeet-d3s1[m[33m, [m[1;31morigin/rajeet-d2s1[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Arfat Salman <giney.paradise@gmail.com>
+Date:   Wed Jul 17 04:22:34 2019 +0530
+
+    Initial Commit
