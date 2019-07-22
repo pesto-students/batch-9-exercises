@@ -18,4 +18,9 @@ describe('Person', () => {
     const nishant = new Person('Nishant', 'Salhotra', '5/11/1994');
     expect(nishant.addDobDigits()).toBe(30);
   });
+
+  test('should have a method to return full name', () => {
+    const nishant = new Person('Nishant', 'Salhotra', '5/11/1994');
+    expect(nishant.getFullname()).toBe('Nishant Salhotra');
+  });
 });

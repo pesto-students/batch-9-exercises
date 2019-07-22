@@ -13,6 +13,11 @@ class Person {
     const addedSum = digitArrayInString.reduce((accumulator, numberInString) => accumulator + parseInt(numberInString, 10), 0);
     return addedSum;
   }
+
+  getFullname() {
+    const fullName = `${this.firstName} ${this.lastName}`;
+    return fullName;
+  }
 }
 
 export {
