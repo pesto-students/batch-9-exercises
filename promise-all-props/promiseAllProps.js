@@ -1,6 +1,6 @@
 
 function promiseAllProps(obj = {}) {
-  const promiseArray = Object.keys(obj).map(key => obj[key]);
+  const promiseArray = Object.getOwnPropertyNames(obj).map(key => obj[key]);
   return Promise.all(promiseArray);
 }
 
