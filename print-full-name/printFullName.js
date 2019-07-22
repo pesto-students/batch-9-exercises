@@ -1,6 +1,14 @@
+function get(attr) {
+  return function (object) {
+    return object[attr];
+  };
+}
+
 
 function printFullName(obj) {
-  return `My name is ${obj.first} ${obj.last}`;
+  const first = get('first')(obj);
+  const last = get('second')(obj);
+  return `My name is ${first} ${last}`;
 }
 
 export {
