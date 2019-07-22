@@ -1,15 +1,19 @@
 const doubleNumbers = number => number * 2;
 
-function splat(fn) {
-  return list => Array.prototype.map.call(list, fn);
+const filterOddNumbers = number => number % 2;
+
+function splat(firstFunction) {
+  return secondFunction => (list) => {
+    let result = Array.prototype.filter.call(list, firstFunction);
+    result = Array.prototype.map.call(result, secondFunction);
+    return result;
+  };
 }
 
-// eslint-disable-next-line no-bitwise
-const filterOddNumbers = list => list.filter(num => num & 1);
+const doubleMap = splat(filterOddNumbers)(doubleNumbers);
 
 function doubleOddNumbers(list) {
-  const oddNumbers = filterOddNumbers(list);
-  return splat(doubleNumbers)(oddNumbers);
+  return doubleMap(list);
 }
 
 export {
