@@ -12,7 +12,7 @@
             "completed": false
         },
         "create-student": {
-            "completed": false
+            "completed": true
         },
         "double-odd-numbers": {
             "completed": true
