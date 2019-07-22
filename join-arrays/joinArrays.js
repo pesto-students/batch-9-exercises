@@ -1,6 +1,7 @@
 
 function joinArrays(...args) {
-  return args;
+  const flattenedArray = [].concat(...args);
+  return flattenedArray;
 }
 
 export {
