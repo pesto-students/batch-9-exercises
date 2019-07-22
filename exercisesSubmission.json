@@ -30,7 +30,7 @@
             "completed": false
         },
         "promise-all-props": {
-            "completed": false
+            "completed": true
         },
         "sleep-promise": {
             "completed": false

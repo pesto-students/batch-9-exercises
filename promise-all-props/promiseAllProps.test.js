@@ -8,3 +8,9 @@ test('wait for fulfilled object properties ', () => {
     expect(result).toEqual({ foo: 'foo', bar: 'bar' });
   });
 });
+
+test('works for empty object', () => {
+  promiseAllProps().then((result) => {
+    expect(result).toEqual({});
+  });
+});
