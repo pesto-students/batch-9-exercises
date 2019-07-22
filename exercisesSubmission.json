@@ -9,7 +9,7 @@
             "completed": false
         },
         "const-immutable": {
-            "completed": false
+            "completed": true
         },
         "create-student": {
             "completed": true
