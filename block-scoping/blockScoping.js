@@ -1,8 +1,7 @@
+let number = -1;
 
-function blockScoping(...args) {
-  return args;
+function blockScoping(number) {
+  return number;
 }
 
-export {
-  blockScoping,
-};
+export { blockScoping };
