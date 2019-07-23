@@ -1,15 +1,16 @@
 
 const fibonacciIter = {
-  fibNMinus1: 0,
-  fibN: 1,
   [Symbol.iterator]() {
-    return this;
-  },
-  next() {
-    const fibOfNPlusOne = this.fibN + this.fibNMinus1;
-    this.fibN = fibOfNPlusOne;
-    this.fibNMinus1 = this.fibN;
-    return { value: fibOfNPlusOne, done: false };
+    return {
+      fibNMinus1: 0,
+      fibN: 1,
+      next() {
+        const fibOfNPlusOne = this.fibN + this.fibNMinus1;
+        this.fibNMinus1 = this.fibN;
+        this.fibN = fibOfNPlusOne;
+        return { value: fibOfNPlusOne, done: false };
+      },
+    };
   },
 
 };
