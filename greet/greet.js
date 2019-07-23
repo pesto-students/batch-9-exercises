@@ -4,7 +4,7 @@ function greet(args) {
     if (args === 'Pesto') {
       resolve('Hey Pesto');
     } else {
-      reject(Error('Promise rejected'));
+      reject(Error('Promise rejected. Expected input: Pesto'));
     }
   });
   return promise;
