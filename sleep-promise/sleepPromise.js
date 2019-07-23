@@ -8,7 +8,7 @@ function sleep(ms) {
 
   const promiseFunction = value => sleepPromise.then(() => value);
 
-  // overiging then
+  // overriding then
   promiseFunction.then = (...args) => sleepPromise.then(...args);
 
 
