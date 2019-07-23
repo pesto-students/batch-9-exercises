@@ -1,8 +1,6 @@
-
-function argsString(...args) {
-  return args;
+function argsString(stringWithBrackets, replaceBracketsWith) {
+  return replaceBracketsWith.reduce((finalString, replacement) => {
+    return stringWithBrackets.replace('{}', replacement);
+  }, '');
 }
-
-export {
-  argsString,
-};
+export { argsString };
