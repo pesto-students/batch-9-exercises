@@ -1,7 +1,5 @@
 
-function objectAssign(...args) {
-  return Object.assign(...args);
-}
+const objectAssign = Object.assign;
 
 export {
   objectAssign,
