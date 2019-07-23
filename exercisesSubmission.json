@@ -15,19 +15,19 @@
             "completed": true
         },
         "queue": {
-            "completed": false
+            "completed": true
         },
         "person": {
-            "completed": false
+            "completed": true
         },
         "sequential-promise": {
-            "completed": false
+            "completed": true
         },
         "timeout": {
-            "completed": false
+            "completed": true
         },
         "is-promise": {
-            "completed": false
+            "completed": true
         },
         "promise-all-props": {
             "completed": false
