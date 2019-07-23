@@ -60,7 +60,7 @@ describe('A simple iterable without items inside, implementing the right protoco
       it('where `.length` is still 0', () => {
         const arr = iterable;
         const { length } = arr;
-        expect(length).toBe(undefined);
+        expect(length).toBe();
       });
     });
   });
