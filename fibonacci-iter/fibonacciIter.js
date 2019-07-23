@@ -1,5 +1,5 @@
 
-function fibonacciIter(...args) {
+function fibonacciIter(args) {
   return args;
 }
 
