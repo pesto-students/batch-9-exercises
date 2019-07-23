@@ -1,8 +1,24 @@
+class Cycled {
+  constructor(array) {
+    this.array = array;
+    this.index = 0;
+  }
 
-function cycled(...args) {
-  return args;
+  current() {
+    return this.generator();
+  }
+
+  next() {
+    console.log(this.gen().next());
+    return this.array[this.gen().next().value];
+  }
+
+  * gen() {
+    this.index += 1;
+    yield this.index;
+  }
 }
 
 export {
-  cycled,
+  Cycled,
 };
