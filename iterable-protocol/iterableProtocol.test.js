@@ -1,5 +1,11 @@
 describe('A simple iterable without items inside, implementing the right protocol', () => {
-  function iteratorFunction() {}
+  function iteratorFunction() {
+    return {
+      next: () => {
+        done: true;
+      }
+    };
+  }
 
   describe('the `iteratorFunction` needs to comply to the iterator protocol', () => {
     it('must return an object', () => {
@@ -10,14 +16,16 @@ describe('A simple iterable without items inside, implementing the right protoco
     });
     it('calling `next()` must return an object with `{done: true}`', () => {
       expect(iteratorFunction().next()).toEqual({
-        done: true,
+        done: true
       });
     });
   });
 
   let iterable;
   beforeEach(() => {
-    iterable = 'iterable';
+    iterable = {
+      [Symbol.iterator]: iteratorFunction
+    };
   });
 
   describe('the iterable', () => {
@@ -35,7 +43,7 @@ describe('A simple iterable without items inside, implementing the right protoco
       for (const value of iterable) {
         values += value;
       }
-      expect(values).toBe('');
+      expect(values).toBe(undefined);
     });
 
     it('has no `.length` property', () => {
@@ -51,10 +59,8 @@ describe('A simple iterable without items inside, implementing the right protoco
 
       it('where `.length` is still 0', () => {
         const arr = iterable;
-        const {
-          length,
-        } = arr;
-        expect(length).toBe(0);
+        const { length } = arr;
+        expect(length).toBe(undefined);
       });
     });
   });
