@@ -1,7 +1,7 @@
 import { User } from './user';
 
 describe('User', () => {
-  //updated test to improve the quality of security
+  // updated test to improve the quality of security
   test('should return an object with the passed username and password when called with new', () => {
     const me = new User('Pesto', 'iamabeast');
     expect(me).toEqual({
@@ -13,6 +13,14 @@ describe('User', () => {
     const me = new User('Pesto', 'iamabeast');
     const result1 = me.checkPassword('iamabeast');
     const result2 = me.checkPassword('iamnotabeast');
+    expect(result1).toBe(true);
+    expect(result2).toBe(false);
+  });
+  test('should give hashed password but still give true when check password called', () => {
+    const me = new User('Pesto', 'iamabeast');
+    const result1 = me.checkPassword('iamabeast');
+    const result2 = me.checkPassword('iamnotabeast');
+    expect(me.password).not.toBe('iamabeast');
     expect(result1).toBe(true);
     expect(result2).toBe(false);
   });
