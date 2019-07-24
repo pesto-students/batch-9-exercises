@@ -8,7 +8,7 @@ function blockScoping(n) {
       }
       return callbacks[n]();
 
-    default: throw new Error(`Expected Number of Arguments:0 \n Received number of argumnets:${arguments.length}`);
+    default: throw new Error(`Expected Number of Arguments: 1 \n Received number of argumnets:${arguments.length}`);
   }
 }
 
