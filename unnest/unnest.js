@@ -1,6 +1,6 @@
 
-function unnest(...args) {
-  return args;
+function unnest(arrayList) {
+  return arrayList.flat();
 }
 
 export {
