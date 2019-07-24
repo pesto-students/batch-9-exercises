@@ -12,7 +12,7 @@
             "completed": false
         },
         "negative-index": {
-            "completed": false
+            "completed": true
         },
         "set-default-property": {
             "completed": false
