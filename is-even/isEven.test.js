@@ -10,4 +10,12 @@ describe('isEven', () => {
     expect(isEven(51)).toBe(false);
     expect(isEven(1)).toBe(false);
   });
+
+  it('should throw for wrong inputs', () => {
+    expect(() => isEven()).toThrow();
+    expect(() => isEven('1')).toThrow();
+    expect(() => isEven(false)).toThrow();
+    expect(() => isEven(true)).toThrow();
+    expect(() => isEven([true])).toThrow();
+  });
 });
