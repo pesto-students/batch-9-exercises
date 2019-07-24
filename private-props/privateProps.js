@@ -17,6 +17,7 @@ function privateProps(obj, isPrivate) {
       return key in target;
     },
   };
+  return new Proxy(obj, proxyHandler);
 }
 
 export {
