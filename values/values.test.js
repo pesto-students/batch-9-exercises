@@ -4,7 +4,8 @@ describe('values', () => {
   const obj = {
     a: 100, b: [1, 2, 3], c: { x: 200, y: 300 }, d: 'D', e: null, f: undefined,
   };
-
+  const hiddenObj = {};
+  Object.defineProperty(hiddenObj, 'test', { value: 0 });
   class C {
     constructor() { this.a = 100; this.b = 200; }
   }
@@ -30,5 +31,8 @@ describe('values', () => {
 
   it("does not include the given object's prototype properties", () => {
     expect(values(cobj)).toEqual([100, 200]);
+  });
+  it('works for hidden properties as well', () => {
+    expect(values(hiddenObj)).toEqual([0]);
   });
 });
