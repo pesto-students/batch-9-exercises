@@ -1,6 +1,12 @@
 
 function onChange(obj, onChangeFn) {
   const handler = {
+    get(target, key) {
+      if (typeof target[key] === 'object' && target[key] !== null) {
+        return new Proxy(target[key], handler);
+      }
+      return target[key];
+    },
     set(target, property, value) {
       onChangeFn();
       return Reflect.set(target, property, value);
