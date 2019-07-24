@@ -1,5 +1,5 @@
 
-function knownProp(targer) {
+function knownProp(target) {
   const handler = {
     get(object, property) {
       // eslint-disable-next-line no-prototype-builtins
@@ -10,7 +10,7 @@ function knownProp(targer) {
     },
   };
 
-  const proxy = new Proxy(targer, handler);
+  const proxy = new Proxy(target, handler);
 
   return proxy;
 }
