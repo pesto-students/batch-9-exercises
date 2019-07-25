@@ -1,1 +1,32 @@
-Make some complex figures using canvas.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Canvas</title>
+</head>
+<body>
+	<canvas id="star" width="300" height="250"></canvas>
+	<script>
+		var canvas = document.getElementById('star');
+		var ctx = canvas.getContext('2d');
+
+		ctx.fillStyle = "blue";
+		ctx.beginPath();
+		ctx.moveTo(150, 0);
+		ctx.lineTo(175, 25);
+		ctx.lineTo(225, 25);
+		ctx.lineTo(200, 40);
+		ctx.lineTo(212, 60);
+		ctx.lineTo(175, 50);
+		ctx.lineTo(88, 60);
+		ctx.lineTo(100, 40);
+		ctx.lineTo(75, 25);
+		ctx.lineTo(125, 25);
+		ctx.lineTo(150, 0);
+		ctx.closePath();
+		ctx.fill();
+	</script>
+</body>
+</html>
