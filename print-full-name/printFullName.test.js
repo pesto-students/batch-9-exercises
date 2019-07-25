@@ -7,5 +7,6 @@ describe('printFullName', () => {
       last: 'Stark',
     };
     expect(printFullName(obj)).toBe('My name is Tony Stark');
+    expect(printFullName()).toBe('My name is not there');
   });
 });
