@@ -1,6 +1,6 @@
 
 function createStudent(likeObj = { likesES2015: true, likesJavaScript: true }) {
-  const { likesES2015, likesJavaScript } = likeObj;
+  const { likesES2015 = true, likesJavaScript = true } = likeObj;
   const startingString = 'The student';
   const likesString = 'likes';
   const doesNotLikeString = 'does not like much...';
@@ -9,15 +9,16 @@ function createStudent(likeObj = { likesES2015: true, likesJavaScript: true }) {
   const andString = 'and';
   const spaceString = ' ';
   let resultString;
+  console.error('THE LIKES are  ', likesES2015, likesJavaScript);
   if (likesES2015 && likesJavaScript) {
     const likesBothArr = [startingString, likesString, javaScriptString, andString, ES2015String];
     resultString = likesBothArr.join(spaceString);
   } else if (!likesES2015 && likesJavaScript) {
     const likesJS = [startingString, likesString, javaScriptString];
-    resultString = likesJS.join(spaceString);
+    resultString = `${likesJS.join(spaceString)}!`;
   } else if (likesES2015 && !likesJavaScript) {
     const likesES = [startingString, likesString, ES2015String];
-    resultString = likesES.join(spaceString);
+    resultString = `${likesES.join(spaceString)}!`;
   } else {
     const doesNotLikeArray = [startingString, doesNotLikeString];
     resultString = doesNotLikeArray.join(spaceString);
