@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
-function rot1(char) {
+const rotateEnglishChar = rotateBy => (char) => {
   const charCode = char.charCodeAt(0);
-  const rotateBy = 1;
   const maxLoweCaseCharacterCode = 122;
   const minLoweCaseCharacterCode = 97;
   const maxUpperCaseCharacterCode = 90;
@@ -19,13 +18,13 @@ function rot1(char) {
     shiftedChar = String.fromCharCode(shiftedCharcter);
   }
   return shiftedChar;
-}
+};
+const rotateEnglishCharBy1 = rotateEnglishChar(1);
 function alphabeticShift(string) {
   const charArray = string.split('');
-  const shiftedString = charArray.map(rot1).join('');
+  const shiftedString = charArray.map(rotateEnglishCharBy1).join('');
   return shiftedString;
 }
-
 export {
   alphabeticShift,
 };

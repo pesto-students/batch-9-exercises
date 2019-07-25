@@ -17,4 +17,9 @@ describe('Alphabetic Shift Test Cases', () => {
     expect(alphabeticShift('supercalifragilisticexpialidocious'))
       .toEqual('tvqfsdbmjgsbhjmjtujdfyqjbmjepdjpvt');
   });
+
+  it('return correct for last characters as well like z to a', () => {
+    expect(alphabeticShift('Qtfvepqtfvepizqpqbsbuizspjejtn'))
+      .toEqual('Rugwfqrugwfqjarqrctcvjatqkfkuo');
+  });
 });
