@@ -21,7 +21,7 @@
             "completed": true
         },
         "canvas": {
-            "completed": false
+            "completed": true
         },
         "form-validation": {
             "completed": true
@@ -36,7 +36,7 @@
             "completed": false
         },
         "html-video": {
-            "completed": false
+            "completed": true
         },
         "whatsapp": {
             "completed": false
