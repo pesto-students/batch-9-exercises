@@ -1,7 +1,7 @@
 function makeObjectPropertyImmutable(property, value) {
   Object.defineProperty(this, [property], {
     value,
-    writable: false,
+    enumerable: true,
   });
 }
 function constImmutable() {
@@ -9,7 +9,12 @@ function constImmutable() {
     username: 'pesto',
   };
   makeObjectPropertyImmutable.call(account, 'password', 'initialPassword');
-  account.password = 's3cret';
+  try {
+    account.password = 's3cret';
+  } catch (e) {
+    console.error(e);
+  }
+
   return account.password;
 }
 
