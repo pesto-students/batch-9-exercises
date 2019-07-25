@@ -1,5 +1,6 @@
 
 function htmlTextFormatting(...args) {
+
   return args;
 }
 
