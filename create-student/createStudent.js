@@ -9,7 +9,6 @@ function createStudent(likeObj = { likesES2015: true, likesJavaScript: true }) {
   const andString = 'and';
   const spaceString = ' ';
   let resultString;
-  console.error('THE LIKES are  ', likesES2015, likesJavaScript);
   if (likesES2015 && likesJavaScript) {
     const likesBothArr = [startingString, likesString, javaScriptString, andString, ES2015String];
     resultString = likesBothArr.join(spaceString);
