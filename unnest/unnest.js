@@ -1,5 +1,3 @@
-import { isNumber } from 'util';
-
 function unnest(collection) {
   if (Array.isArray(collection)) {
     return collection.flat(1);
