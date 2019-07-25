@@ -1,6 +1,9 @@
+const fs = require('fs');
+const path = require('path');
 
-function debuggingHtml(...args) {
-  return args;
+const html = fs.readFileSync(path.resolve(__dirname, './debug-example.html'), 'utf8');
+function debuggingHtml() {
+  return html;
 }
 
 export {
