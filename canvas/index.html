@@ -1,1 +1,16 @@
-Make some complex figures using canvas.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas = document.getElementById('canvas');
+        let context = canvas.getContext('2d');
+        context.fillStyle = '#ff0000';
+        context.fillRect(0, 0, 150, 75);
+    </script>
+</body>
+</html>
