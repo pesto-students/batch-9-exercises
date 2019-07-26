@@ -23,7 +23,7 @@ Z -> F (shifted right 6 letters)
 a -> e (shifted right 4 letters)
 b -> h (shifted right 6 letters)
 y -> c (shifted right 4 letters)
-z -> z (shifted right 6 letters)
+z -> f (shifted right 6 letters)
 . -> .
 " " -> " " (space)
 \n -> \n (newline)
