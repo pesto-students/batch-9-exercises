@@ -1,8 +1,21 @@
+function canvas() {
+  // eslint-disable-next-line no-undef
+  const canvasElem = document.getElementsByTagName('canvas')[0];
+  if (canvasElem.getContext) {
+    const context = canvasElem.getContext('2d');
+    context.fillStyle = 'rgb(200, 0, 0)';
+    context.fillRect(10, 10, 50, 50);
 
-function canvas(...args) {
-  return args;
+    context.fillStyle = 'rgb(0, 0, 200, 0.5)';
+    context.fillRect(30, 30, 50, 50);
+
+    context.fillStyle = 'rgba(0,0,255,0.6)';
+    context.beginPath();
+    context.moveTo(125, 100);
+    context.lineTo(175, 50);
+    context.lineTo(225, 150);
+    context.fill();
+  }
 }
 
-export {
-  canvas,
-};
+canvas();
