@@ -1,0 +1,65 @@
+#loader-one {
+	width: 50px;
+	height: 50px;
+	border: 8px solid grey;
+	border-radius: 50%;
+	border-top-color: black;
+	-webkit-animation: rotate linear 2s infinite;
+	        animation: rotate linear 2s infinite;
+}
+
+#loader-two {
+	margin-top: 100px;
+}
+
+#loader-two .bar {
+	margin: 5px;
+	display: inline-block;
+	width: 10px;
+	height: 24px;
+	background-color: greenyellow;
+}
+
+.bar-one {
+	-webkit-animation: magnify 3s linear 0s infinite;
+	        animation: magnify 3s linear 0s infinite;
+}
+
+.bar-two {
+	-webkit-animation: magnify 3s linear .5s infinite;
+	        animation: magnify 3s linear .5s infinite;
+}
+.bar-three {
+	-webkit-animation: magnify 3s linear 1s infinite;
+	        animation: magnify 3s linear 1s infinite;
+}
+.bar-four {
+	-webkit-animation: magnify 3s linear 1.5s infinite;
+	        animation: magnify 3s linear 1.5s infinite;
+}
+.bar-five {
+	-webkit-animation: magnify 3s linear 2s infinite;
+	        animation: magnify 3s linear 2s infinite;
+}
+
+@-webkit-keyframes rotate {
+  from {-webkit-transform: rotate(0deg);transform: rotate(0deg)}
+  to {-webkit-transform: rotate(180deg);transform: rotate(180deg)}
+}
+
+@keyframes rotate {
+  from {-webkit-transform: rotate(0deg);transform: rotate(0deg)}
+  to {-webkit-transform: rotate(180deg);transform: rotate(360deg)}
+}
+
+@-webkit-keyframes magnify {
+  0% {-webkit-transform: scaleY(1);transform: scaleY(1)}
+  50% {-webkit-transform: scaleY(2);transform: scaleY(2)}
+  100% {-webkit-transform: scaleY(2);transform: scaleY(1)}
+}
+
+@keyframes magnify {
+  0% {-webkit-transform: scaleY(1);transform: scaleY(1)}
+  50% {-webkit-transform: scaleY(2);transform: scaleY(2)}
+  100% {-webkit-transform: scaleY(2);transform: scaleY(1)}
+}
