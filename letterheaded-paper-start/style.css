@@ -1,5 +1,6 @@
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 html {
@@ -16,6 +17,18 @@ article {
   height: 297mm;
   margin: 20px auto;
   position: relative;
+}
+
+article header {
+  height: 297mm;
+  background-image: url(./top-image.png);
+  background-repeat: no-repeat;
+}
+
+article footer {
+  height: 297mm;
+  background-image: url(./bottom-image.png);
+  background-repeat: no-repeat;
 }
 
 address {
@@ -36,6 +49,5 @@ h1 {
   padding: 44px 0;
   color: white;
   text-shadow: 1px 1px 1px black;
+  background-image: url(./logo.png);
 }
-
-/* Your CSS below here */
