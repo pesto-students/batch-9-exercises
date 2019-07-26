@@ -1,16 +1,22 @@
-<!-- CHoose your favourite image from the internet.
-Define different clickable areas on the image.
-Clicking on the areas should open different link in a new tab. -->
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Image Map</title>
 </head>
+
 <body>
-  
+  <img src="https://cdn-images-1.medium.com/max/800/0*2FNo1Wxk0kZX0QoH.png" alt="angular and react logos"
+    usemap="#logos" />
+  <map name="logos">
+    <area target="_blank" href="https://angular.io/" shape="poly" coords="89,113,201,72,313,114,297,260,202,312,105,258"
+      title="angular logo" alt="angular logo" />
+    <area target="_blank" alt="react logo" title="react logo" href="https://reactjs.org" shape="poly"
+      coords="373,192,421,150,431,87,495,107,552,85,571,151,618,194,568,237,557,296,496,275,431,295" />
+  </map>
 </body>
+
 </html>
