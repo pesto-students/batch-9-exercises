@@ -9,27 +9,37 @@
       h1 {
         color: black;
 
-        font-size: 110px;
+        font-size: 85px;
         font-family: Impact, Charcoal, sans-serif;
       }
       #design {
         color: black;
 
-        font-size: 110px;
+        font-size: 85px;
         font-family: Impact, Charcoal, sans-serif;
         background: url('./colorful-heart.png');
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
       .centered {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        margin: auto;
+        padding-top: 50px;
+        padding-left: 23px;
+      }
+      .horizontal {
+        display: flex;
+        flex-direction: row;
       }
     </style>
   </head>
   <body>
-    <h1 id="design">WOW</h1>
+    <div class="horizontal">
+      <div
+        style="height: 330px ; width: 380px ; background-image: url('./colorful-heart.png'); background-repeat: no-repeat;"
+      >
+        <h1 class="centered">WOW</h1>
+      </div>
+      <h1 id="design">WOW</h1>
+    </div>
   </body>
 </html>
