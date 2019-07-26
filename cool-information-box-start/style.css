@@ -2,4 +2,14 @@ html {
   font-family: sans-serif;
 }
 
-/* Your CSS below here */
+#cool-btn {
+  background-color: red;
+  color: rgb(228, 24, 24);
+  border: 2px outset red;
+  border-radius: 5px;
+  height: 40px;
+  width: 150px;
+  text-shadow: 1px 1px 1px black;
+  -webkit-box-shadow: 4px 4px 10px black;
+          box-shadow: 4px 4px 10px black;
+}
