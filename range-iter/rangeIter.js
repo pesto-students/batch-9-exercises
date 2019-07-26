@@ -8,8 +8,8 @@ function* rangeIter(lowerBound = Number.MIN_SAFE_INTEGER, upperBound = Number.MA
   }
   let copyOfLowerBound = lowerBound;
   while (true) {
-    const hasASafeNextValue = Number.isSafeInteger(copyOfLowerBound) && copyOfLowerBound <= upperBound;
-    if (hasASafeNextValue) {
+    const isNxtValueSafe = Number.isSafeInteger(copyOfLowerBound) && copyOfLowerBound <= upperBound;
+    if (isNxtValueSafe) {
       yield copyOfLowerBound;
       copyOfLowerBound += 1;
     } else {
@@ -17,7 +17,6 @@ function* rangeIter(lowerBound = Number.MIN_SAFE_INTEGER, upperBound = Number.MA
     }
   }
 }
-rangeIter();
-// export {
-//   rangeIter,
-// };
+export {
+  rangeIter,
+};
