@@ -1,0 +1,58 @@
+html{
+    height: 100%;
+  }
+  
+  body{
+    height: 100%;
+    background: black;
+  }
+  
+  .wrap{
+    margin: 100px auto;
+    width: 130px;
+  }
+
+  /* Create the animation blocks */
+@keyframes rotate {
+  to {
+    transform: rotate(90deg);
+  }
+}
+
+.circle{
+  position: absolute;
+  overflow: hidden;
+  width: 120px;
+  height: 120px;
+  top: 50%;
+  border-radius: 50%;
+  background: white;
+}
+
+.overlapcircle{
+  position: absolute;
+  overflow: hidden;
+  width: 120px;
+  height: 120px;
+  top: 50%;
+  border-radius: 50%;
+  background: grey;
+  opacity: 0.5;
+  animation: rotate 2s 1s infinite linear alternate;
+  animation-name: rotate; 
+  animation-duration: 3s; /* 3 seconds */
+  animation-iteration-count: infinite; 
+  animation-timing-function: linear;
+}
+
+
+.incircle{
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  top: 13%;
+  left: 13%;
+  border-radius: 50%;
+  background: blue;
+  animation: border .4s ease 1 forwards;
+}
