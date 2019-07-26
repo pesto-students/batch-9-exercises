@@ -1,5 +1,18 @@
 html {
   font-family: sans-serif;
+
 }
 
+#border{
+  border: 2px solid red;
+  padding:  0em 1em;
+  border-radius: 16px;
+  font-size: 24px;
+  line-height: 2;
+  width: fit-content;
+  background-color: red;
+  text-emphasis-color: red;
+  color: red;
+  text-shadow: 2px 2px 4px #000000;  
+}
 /* Your CSS below here */
