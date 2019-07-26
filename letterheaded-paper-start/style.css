@@ -39,3 +39,10 @@ h1 {
 }
 
 /* Your CSS below here */
+.company-logo{
+  background-image: url('logo.png')
+}
+footer{
+  bottom: 0;
+  position: absolute;
+}

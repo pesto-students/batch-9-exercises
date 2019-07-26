@@ -3,3 +3,18 @@ html {
 }
 
 /* Your CSS below here */
+.box {
+  background-color: #c5342b;
+  height: 200px;
+  width: 800px;
+  text-align: center;
+  border-radius: 25px;
+  box-shadow: 10px 10px 39px 0px rgba(0,0,0,0.75);
+}
+.centre-p{
+  line-height: 180px;
+  font-size: 80px;
+  vertical-align: middle;
+  color: #c5342b;
+  text-shadow: 1px 2px 3px #000;
+}
