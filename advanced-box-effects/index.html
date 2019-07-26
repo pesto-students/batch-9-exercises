@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Text with image</title>
+    <style>
+      h1 {
+        color: black;
+
+        font-size: 110px;
+        font-family: Impact, Charcoal, sans-serif;
+      }
+      #design {
+        color: black;
+
+        font-size: 110px;
+        font-family: Impact, Charcoal, sans-serif;
+        background: url('./colorful-heart.png');
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="design">WOW</h1>
+  </body>
+</html>
