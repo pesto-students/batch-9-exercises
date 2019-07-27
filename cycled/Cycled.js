@@ -1,25 +1,31 @@
+function* cycled(array) {
+  'use strict';
+  this.array = array;
+  this.currentIndex = 0;
 
-const cycled = {
+  this.next = function(){
+    currentIndex === array.length - 1 ? 0 : currentIndex++ ;
+    yield array[currentIndex]
+  }
 
-  [Symbol.iterator](){
-    this.curr = array[0];
-    this.currentIndex = 0;
+  currentIndex: () => {
+    yield array[currentIndex]
+  }
 
-    next = () => {
-      nextIndex = currentIndex === array.length - 1 ? 0 : currentIndex + 1;
-      this.curr = array[nextIndex];
-      return {
-        value: this.curr,
-        done: false
-      };
-    };
-  };
+  step: (index) => {
+    if(index > array.length - 1){
+      currentIndex = index % (array.length - 1);
+    }
+    if(index < 0){
+      currentIndex = array.length + index
+    }
 
-  
+    yield array[currentIndex]
+  }
 
-  current(){
-    return this.curr
-  };
+  indexOf: (num) => {
+    return array.indexOf(num)
+  }
 }
 
 export { cycled };
