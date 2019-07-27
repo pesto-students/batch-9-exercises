@@ -1,6 +1,6 @@
 
-function bind(...args) {
-  return args;
+function bind(fn, ...args) {
+  return fn.bind(...args);
 }
 
 export {
