@@ -6,13 +6,13 @@
       "completed": false
     },
     "all-promises": {
-      "completed": false
+      "completed": true
     },
     "greet": {
-      "completed": false
+      "completed": true
     },
     "reject-promise": {
-      "completed": false
+      "completed": true
     },
     "queue": {
       "completed": false
@@ -27,10 +27,10 @@
       "completed": false
     },
     "is-promise": {
-      "completed": false
+      "completed": true
     },
     "promise-all-props": {
-      "completed": false
+      "completed": true
     },
     "sleep-promise": {
       "completed": false
