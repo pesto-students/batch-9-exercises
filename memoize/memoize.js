@@ -1,13 +1,14 @@
 
 function memoize(cb) {
-  const cache = {};
+  const cache = new Map();
   return function innerFunc(...args) {
-    if (cache[args]) {
-      return cache[args];
+    const stringifiedArgs = args.toString();
+    if (cache.has(stringifiedArgs)) {
+      return cache.get(stringifiedArgs);
     }
-    const result = cb(args);
-    cache[args] = result;
-    return args;
+    const result = cb(...args);
+    cache.set(stringifiedArgs, result);
+    return result;
   };
 }
 
