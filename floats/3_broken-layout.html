@@ -2,8 +2,16 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Float disaster</title>
+    <title>Fixed layout border-box</title>
     <style>
+      html {
+        box-sizing: border-box;
+      }
+      
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
+      
       body {
         width: 90%;
         max-width: 900px;
@@ -28,6 +36,8 @@
 
       footer {
         clear: both;
+        position: relative; 
+        top: 20px;
       }  
 
       div, footer {
@@ -38,7 +48,7 @@
     </style>
   </head>
   <body>
-    <h1>Float disaster</h1>
+    <h1>Fixed layout border-box</h1>
 
     <div>
       <h2>First column</h2>
