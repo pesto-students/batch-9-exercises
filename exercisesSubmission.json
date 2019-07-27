@@ -3,7 +3,7 @@
     "segmentName": "segment-2",
     "exercises": {
         "search-sorted-matrix": {
-            "completed": false
+            "completed": true
         },
         "unnest": {
             "completed": false
