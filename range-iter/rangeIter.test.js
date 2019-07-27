@@ -24,15 +24,24 @@ describe('rangeIter', () => {
 
   describe('bad arguments', () => {
     it('throws an exception when it is not passed any parameter', () => {
-      expect(() => rangeIter()).toThrowError(TypeError, /undefined is not a number/);
+      expect(() => rangeIter()).toThrowError(
+        TypeError,
+        /undefined is not a number/
+      );
     });
 
     it('throws an exception when it is not passed second parameter', () => {
-      expect(() => rangeIter(2)).toThrowError(TypeError, /undefined is not a number/);
+      expect(() => rangeIter(2)).toThrowError(
+        TypeError,
+        /undefined is not a number/
+      );
     });
 
     it('throws an exception when is not passed number as second parameter', () => {
-      expect(() => rangeIter(2, 'a')).toThrowError(TypeError, /a is not a number/);
+      expect(() => rangeIter(2, 'a')).toThrowError(
+        TypeError,
+        /a is not a number/
+      );
     });
   });
 });
