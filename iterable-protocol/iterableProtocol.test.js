@@ -2,7 +2,7 @@ describe('A simple iterable without items inside, implementing the right protoco
   function iteratorFunction() {
     return {
       next: () => {
-        done: true;
+        return { done: true, value: undefined };
       }
     };
   }
@@ -16,7 +16,8 @@ describe('A simple iterable without items inside, implementing the right protoco
     });
     it('calling `next()` must return an object with `{done: true}`', () => {
       expect(iteratorFunction().next()).toEqual({
-        done: true
+        done: true,
+        value: undefined
       });
     });
   });
@@ -47,13 +48,13 @@ describe('A simple iterable without items inside, implementing the right protoco
     });
 
     it('has no `.length` property', () => {
-      const hasLengthProperty = iterable;
+      const hasLengthProperty = Object.prototype.hasOwnProperty('length');
       expect(hasLengthProperty).toBe(false);
     });
 
     describe('can be converted to an array', () => {
       it('using `Array.from()`', () => {
-        const arr = iterable;
+        const arr = Array.from(iterable);
         expect(Array.isArray(arr)).toBe(true);
       });
 
