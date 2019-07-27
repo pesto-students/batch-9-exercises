@@ -16,6 +16,6 @@ describe('Person', () => {
 
   test('should have a method to add the digits in date of birth', () => {
     const nishant = new Person('Nishant', 'Salhotra', '5/11/1994');
-    expect(nishant.addDobDigits()).toBe(30);
+    expect(nishant.addDobDigits()).toBe(39);
   });
 });
