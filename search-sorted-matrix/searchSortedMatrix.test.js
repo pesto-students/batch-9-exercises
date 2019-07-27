@@ -38,5 +38,10 @@ describe('searchSortedMatrix', () => {
         [65, 69, 70, 75, 76, 80, 81, 82],
         [83, 84, 90, 82, 84, 90, 95, 96]],
     })).toBe(true);
+
+    expect(searchSortedMatrix({
+      search: 80,
+      matrix: [[]],
+    })).toBe(false);
   });
 });
