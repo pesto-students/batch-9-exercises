@@ -1,6 +1,6 @@
 
-function objectDefaults(...args) {
-  return args;
+function objectDefaults(argObject, argDefaultObject) {
+  return { ...argDefaultObject, ...argObject };
 }
 
 export {
