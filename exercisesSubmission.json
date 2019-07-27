@@ -15,13 +15,13 @@
       "completed": false
     },
     "double-odd-numbers": {
-      "completed": false
+      "completed": true
     },
     "instructor": {
       "completed": false
     },
     "join-arrays": {
-      "completed": false
+      "completed": true
     },
     "map-filter-and-reduce": {
       "completed": false
@@ -30,10 +30,10 @@
       "completed": false
     },
     "print-full-name": {
-      "completed": false
+      "completed": true
     },
     "sum-even-args": {
-      "completed": false
+      "completed": true
     },
     "template-literals": {
       "completed": false
