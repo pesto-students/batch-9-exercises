@@ -3,13 +3,13 @@
   "segmentName": "segment-1",
   "exercises": {
     "slasher": {
-      "completed": false
+      "completed": true
     },
     "chunk-array-in-groups": {
-      "completed": false
+      "completed": true
     },
     "find-element": {
-      "completed": false
+      "completed": true
     },
     "drop-elements": {
       "completed": false
@@ -27,7 +27,7 @@
       "completed": false
     },
     "object-keys": {
-      "completed": false
+      "completed": true
     },
     "object-values": {
       "completed": false
@@ -36,13 +36,13 @@
       "completed": false
     },
     "object-pairs": {
-      "completed": false
+      "completed": true
     },
     "object-invert": {
-      "completed": false
+      "completed": true
     },
     "object-defaults": {
-      "completed": false
+      "completed": true
     },
     "user-check-password": {
       "completed": false
