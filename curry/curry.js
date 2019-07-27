@@ -1,8 +1,3 @@
+function curry(num1, num2) {}
 
-function curry(...args) {
-  return args;
-}
-
-export {
-  curry,
-};
+export { curry };
