@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Box Effects</title>
+    <meta charset="utf-8" />
+    <style>
+      .text-for-imagebg {
+        font: bolder 12vw "Helvetica";
+        margin: 0;
+        text-align: center;
+        background: url("colorful-heart.png") center;
+        background-size: cover;
+        margin: auto;
+        width: 75vw;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+      .image-container {
+        position: relative;
+        text-align: center;
+        color: white;
+      }
+      .centered {
+        font: bolder 60px "Helvetica";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -129%);
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image-container">
+      <img src="colorful-heart.png" />
+      <h2 class="centered">WOW</h2>
+    </div>
+    <h2 class="text-for-imagebg">WOW</h2>
+  </body>
+</html>
