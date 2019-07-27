@@ -12,7 +12,7 @@ describe('Cycled', () => {
 
   test('.next()', () => {
     const c = new Cycled(fixture);
-    expect([c.next(), c.next(), c.next(), c.next()]).toEqual([2, 3, 1, 2]);
+    expect([c.next(), c.next(), c.next(), c.next()]).toEqual([3, 1, 2, 3]);
   });
 
   test('.previous()', () => {
