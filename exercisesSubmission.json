@@ -27,7 +27,7 @@
             "completed": true
         },
         "abbreviate-string": {
-            "completed": false
+            "completed": true
         },
         "add-big-integers": {
             "completed": false
