@@ -1,31 +1,25 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-empty-pattern */
 
 function Cycled(array) {
-  let index = 0;
   return {
     [Symbol.iterator]() {
       return this;
     },
     next() {
-      index += 1;
-      if (index < 3) {
-        return array[index];
-        // eslint-disable-next-line no-unreachable
-        index += 1;
+      while (true) {
+        for (const {} of array) {
+          if (this.index >= array.length) {
+            this.index = 0;
+          }
+          return array[this.index++];
+        }
       }
-      index = 0;
-      return array[index];
     },
     current() {
-      return array[index];
+      return array[this.index];
     },
-    previous() {
-      return array[index];
-    },
-    step(_step) {
-      index += _step;
-      return this.current();
-    },
-    index,
+    index: 0,
   };
 }
 
