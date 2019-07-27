@@ -1,6 +1,9 @@
 
 function unnest(arrayList) {
-  return arrayList.flat();
+  const temp = [];
+  const startingElement = [];
+  const result = temp.concat.apply(startingElement, arrayList);
+  return result;
 }
 
 export {
