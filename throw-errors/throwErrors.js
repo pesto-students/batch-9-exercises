@@ -1,8 +1,14 @@
 
-function throwErrors(...args) {
-  return args;
+function throwErrors() {
+  try {
+    throw new ReferenceError('Reference error raised.');
+  } catch (err) {
+    return err.name;
+  }
 }
 
+const errorName = throwErrors();
+
 export {
-  throwErrors,
+  errorName,
 };

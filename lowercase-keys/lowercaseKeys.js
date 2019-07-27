@@ -1,11 +1,9 @@
 
-function lowercaseKeys(convert_object) {
+function lowercaseKeys(argObject) {
 
- return Object.keys(convert_object).forEach(key => {
-    const value = convert_object[key];
-    delete convert_object[key];
-    convert_object[key.toLowerCase()] = value;
-  });
+ Object.keys(argObject).map(key => argObject[(key.toLowerCase())] = argObject[key]);
+
+ return argObject;
 }
 
 export {

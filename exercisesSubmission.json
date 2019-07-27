@@ -3,19 +3,19 @@
   "segmentName": "segment-1",
   "exercises": {
     "boolean": {
-      "completed": false
+      "completed": true
     },
     "days-in-month": {
-      "completed": false
+      "completed": true
     },
     "json-parse": {
       "completed": false
     },
     "lowercase-keys": {
-      "completed": false
+      "completed": true
     },
     "math-fns": {
-      "completed": false
+      "completed": true
     },
     "parse-ms": {
       "completed": false
@@ -27,10 +27,10 @@
       "completed": false
     },
     "abbreviate-string": {
-      "completed": false
+      "completed": true
     },
     "add-big-integers": {
-      "completed": false
+      "completed": true
     },
     "alien-alphabet": {
       "completed": false
@@ -39,7 +39,7 @@
       "completed": false
     },
     "throw-errors": {
-      "completed": false
+      "completed": true
     }
   }
 }
