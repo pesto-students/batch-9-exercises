@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 function noop() {}
 
 if (typeof console === 'undefined') {
@@ -46,6 +47,7 @@ function createCompareFn(spy) {
 // define custom matcher for warnings
 beforeEach(() => {
   asserted = [];
+  // eslint-disable-next-line no-undef
   spyOn(console, 'warn');
   spyOn(console, 'error');
   jasmine.addMatchers({
