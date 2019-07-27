@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 
 
 function throwErrors() {
   try {
-    const a = x;
+    console.log(x);
   } catch (e) {
     return e.name;
   }
@@ -16,4 +17,5 @@ const errorName = throwErrors();
 
 export {
   throwErrors,
+  errorName,
 };
