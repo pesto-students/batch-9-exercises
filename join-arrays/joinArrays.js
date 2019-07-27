@@ -1,6 +1,8 @@
 
-function joinArrays(...args) {
-  return args;
+function joinArrays(...argArrays) {
+  return argArrays.reduce(function (flat, toFlatten) {
+    return flat.concat(toFlatten);
+  },[]);
 }
 
 export {
