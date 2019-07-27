@@ -1,31 +1,69 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>CSS grids example</title>
-    <style>
 
-    </style>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <title>CSS grids example</title>
+  <style>
+    .wrapper {
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
+      margin: 0px auto;
+      padding: 0px;
+      width: 66%;
+    }
 
-  <body>
-    <div class="wrapper">
-      <div class="col">1</div>
-      <div class="col">2</div>
-      <div class="col">3</div>
-      <div class="col">4</div>
-      <div class="col">5</div>
-      <div class="col">6</div>
-      <div class="col">7</div>
-      <div class="col">8</div>
-      <div class="col">9</div>
-      <div class="col">10</div>
-      <div class="col">11</div>
-      <div class="col">12</div>
-      <div class="col">13</div>
-      <div class="col span6">14</div>
-      <div class="col span3">15</div>
-      <div class="col span2">16</div>     
-    </div>
-  </body>
+    .col {
+      background-color: pink;
+      grid-column: span 1;
+      /* width: 60px; */
+      grid-row: 1;
+    }
+
+    .col-1 {
+      /* grid-column: 1; */
+    }
+
+    .row-2 {
+      grid-row: 2;
+      grid-row: span 5;
+    }
+
+    .span6 {
+      grid-column: span 6;
+      white-space: initial;
+    }
+
+    .span3 {
+      grid-column: span 3;
+    }
+
+    .span2 {
+      grid-column: span 2;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="col col-1">1</div>
+    <div class="col ">2</div>
+    <div class="col ">3</div>
+    <div class="col">4</div>
+    <div class="col ">5</div>
+    <div class="col ">6</div>
+    <div class="col ">7</div>
+    <div class="col ">8</div>
+    <div class="col ">9</div>
+    <div class="col ">10</div>
+    <div class="col ">11</div>
+    <div class="col ">12</div>
+    <div class="col row-2">13some content</div>
+    <div class="col span6 row-2">14this is more content</div>
+    <div class="col span3 row-2">15this is less</div>
+    <div class="col span2 row-2">16</div>
+  </div>
+</body>
+
 </html>
