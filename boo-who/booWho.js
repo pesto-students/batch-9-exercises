@@ -1,6 +1,6 @@
 
-function booWho(...args) {
-  return args;
+function booWho(primitive) {
+  return typeof primitive === 'boolean';
 }
 
 export {
