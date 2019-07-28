@@ -1,8 +1,11 @@
+function valuesIn(object) {
+  const values = [];
 
-function valuesIn(...args) {
-  return args;
+  for (let property in object) {
+    values.push(object[property]);
+  }
+
+  return values;
 }
 
-export {
-  valuesIn,
-};
+export { valuesIn };
