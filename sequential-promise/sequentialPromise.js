@@ -1,8 +1,10 @@
+async function sequentialPromise(promises) {
+  let input = '';
+  for (let i = 0; i < promises.length; i++) {
+    input = await promises[i](input);
+  }
 
-function sequentialPromise(...args) {
-  return args;
+  return input;
 }
 
-export {
-  sequentialPromise,
-};
+export { sequentialPromise };
