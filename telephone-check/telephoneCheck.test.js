@@ -10,5 +10,6 @@ describe('telephoneCheck', () => {
     expect(telephoneCheck('0 (757) 622-7382')).toBe(false);
     expect(telephoneCheck('-1 (757) 622-7382')).toBe(false);
     expect(telephoneCheck('(555)5(55?)-5555')).toBe(false);
+    expect(telephoneCheck('(')).toBe(false);
   });
 });

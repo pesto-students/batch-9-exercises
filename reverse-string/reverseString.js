@@ -1,8 +1,12 @@
+function reverseString(string) {
+  let outputString = '';
+  let iterator = string.length - 1;
 
-function reverseString(...args) {
-  return args;
+  while (iterator >= 0) {
+    outputString += string[iterator];
+    iterator -= 1;
+  }
+  return outputString;
 }
 
-export {
-  reverseString,
-};
+export { reverseString };
