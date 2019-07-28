@@ -17,8 +17,8 @@ describe('negativeIndex', () => {
 
   test('set values', () => {
     const fixture = negativeIndex(['foo', 'bar', 'baz']);
-    // fixture[0] = 0;
-    // expect(fixture).toEqual([0, 'bar', 'baz']);
+    fixture[0] = 0;
+    expect(fixture).toEqual([0, 'bar', 'baz']);
     fixture[1] = 1;
     expect(fixture).toEqual([0, 1, 'baz']);
     fixture[-1] = -1;

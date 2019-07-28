@@ -4,24 +4,33 @@ function negativeIndex(array) {
   }
 
   const handler = {
-    get: (target, key) => {
-      if (key < 0) {
-        key = parseInt(key, 10);
-        return target[target.length + key];
+    get(target, property) {
+      if (typeof property !== 'string') {
+        return Reflect.get(target, property);
       }
-      return target[key];
+
+      const index = Number(property);
+      if (Number.isNaN(index)) {
+        return Reflect.get(target, property);
+      }
+
+      return target[index < 0 ? target.length + index : index];
     },
 
-    set: (target, key, value) => {
-      // key = parseInt(key, 10);
-      if (key < 0) {
-        target[target.length + key] = value;
-        return true;
-      } else {
-        target[key] = value;
-        return true;
+    set(target, property, value) {
+      if (typeof name !== 'string') {
+        return Reflect.set(target, property, value, receiver);
       }
-      return false;
+
+      const index = Number(property);
+
+      if (Number.isNaN(index)) {
+        return Reflect.set(target, property, value, receiver);
+      }
+
+      target[index < 0 ? target.length + index : index] = value;
+
+      return true;
     }
   };
 
