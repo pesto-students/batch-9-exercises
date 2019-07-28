@@ -1,6 +1,6 @@
 
 function chunkArrayInGroups(arr, chunkSize) {
-  const initalArr = [[]];
+  const initialArr = [[]];
   let chunkIndex = 0;
   const numberOfChunks = Math.ceil(arr.length / chunkSize);
   const chunkedArr = arr.reduce((accumulator, currentValue) => {
@@ -10,7 +10,7 @@ function chunkArrayInGroups(arr, chunkSize) {
       accumulator[chunkIndex] = [];
     }
     return accumulator;
-  }, initalArr);
+  }, initialArr);
   return chunkedArr;
 }
 

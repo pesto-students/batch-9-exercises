@@ -12,14 +12,14 @@ const _2Pi = 2 * Math.PI;
  * is taken from here: https://en.wikipedia.org/wiki/Orbital_period
  *
  */
-function getOribitalPeriod(element) {
+function getOrbitalPeriod(element) {
   const dividend = ((earthRadius + element.avgAlt) ** 3);
   const partialResult = Math.sqrt(dividend / GM);
   const orbPeriod = Math.round(_2Pi * partialResult);
   return { name: element.name, orbitalPeriod: orbPeriod };
 }
 function orbitalPeriod(elements) {
-  return elements.map(getOribitalPeriod);
+  return elements.map(getOrbitalPeriod);
 }
 
 
