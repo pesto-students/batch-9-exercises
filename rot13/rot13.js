@@ -1,5 +1,5 @@
 
-function decodeCharcter(char) {
+function decodeCharacter(char) {
   const asciiValue = char.charCodeAt(0);
   // eslint-disable-next-line max-len
   const isEnglishAlphabet = (asciiValue >= 97 && asciiValue <= 122) || (asciiValue >= 65 && asciiValue <= 90);
@@ -9,7 +9,7 @@ function decodeCharcter(char) {
 }
 function rot13(encodedString) {
   const encodedCharArr = encodedString.split('');
-  const decodedString = encodedCharArr.map(decodeCharcter).join('');
+  const decodedString = encodedCharArr.map(decodeCharacter).join('');
   return decodedString;
 }
 export {
