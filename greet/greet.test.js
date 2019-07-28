@@ -5,4 +5,6 @@ describe('greet', () => {
     expect(greet() instanceof Promise).toBe(true);
   });
   test('Promise resolve value', () => expect(greet('Pesto')).resolves.toBe('Hey Pesto'));
+
+  test('Promise resolve value', () => expect(greet()).resolves.toBe('Hey there'));
 });
