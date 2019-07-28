@@ -1,8 +1,12 @@
 
-function mathFns(...args) {
-  return args;
-}
+const sqrt = number => Math.sqrt(number);
+
+const power = (base, exponent) => base ** exponent;
+
+const round = number => Math.round(number);
 
 export {
-  mathFns,
+  sqrt,
+  power,
+  round,
 };

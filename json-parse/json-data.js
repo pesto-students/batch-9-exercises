@@ -8,7 +8,7 @@ const clubMember = {
 const Sara = '{ "height":1.9, "age":36, "eyeColor":"brown"}';
 
 // use JSON.parse() to create an object 'objectSara':
-const objectSara = `${Sara} add code here`;
+const objectSara = JSON.parse(Sara);
 
 
 // var myArray = [];
@@ -31,8 +31,9 @@ const conference = {
 // You can access the individual properties of the object as if they were elements
 // in an associative array: `conference['startDay']`
 // Add a line of code to store the name of the conference's end day in variable endDayIs.
-const endDay = conference;
-
+const { endDay } = conference;
+// eslint-disable-next-line no-unused-vars
+const endDayIs = endDay;
 
 const Mike = {};
 Mike.height = 1.9;
@@ -40,7 +41,8 @@ Mike.age = 36;
 Mike.eyecolor = 'brown';
 
 // serialize the object using JSON.stringify():
-const mikeStringified = Sara;
+const mikeStringified = JSON.stringify(Sara);
+clubMember.city = '';
 
 export {
   clubMember,
