@@ -13,7 +13,7 @@ function rangeIter(start, end) {
       return this;
     },
     next() {
-      while (i <= end) {
+      if (i <= end) {
         return { value: i++, done: false };
       }
       return { value: '', done: true };
