@@ -1,8 +1,8 @@
-
-function instructor(...args) {
-  return args;
-}
-
-export {
-  instructor,
+const instructor = {
+  firstName: 'NA',
+  sayHi() {
+    this.firstName = 'Ram';
+  }
 };
+
+export { instructor };
