@@ -1,17 +1,19 @@
+
+function findLargest(array) {
+  let largest = -Infinity;
+  for (let i = 0; i < array.length; i += 1) {
+    if (array[i] > largest) { largest = array[i]; }
+  }
+  return largest;
+}
+
 function largeOfFour(arrayList) {
-  let result = []
-  let listSize = arrayList.length
-  for(let i = 0 ; i < listSize ; i++ ) {
-    result.push(findLargest(arrayList[i]))
+  const result = [];
+  const listSize = arrayList.length;
+  for (let i = 0; i < listSize; i += 1) {
+    result.push(findLargest(arrayList[i]));
   }
   return result;
 }
-function findLargest(array) {
-  let largest = -Infinity;
-  for (let i = 0; i < array.length; i++) {
-    if(array[i] >largest)
-    largest=array[i]
-  }
-  return largest
-}
-export { largeOfFour , findLargest};
+
+export { largeOfFour, findLargest };
