@@ -1,6 +1,7 @@
 
-function uniq(...args) {
-  return args;
+function uniq(array) {
+  const set = new Set(array);
+  return Array.from(set);
 }
 
 export {
