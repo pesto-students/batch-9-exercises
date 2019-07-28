@@ -1,16 +1,18 @@
 
 function counterFactory() {
-  var count = 0
-  var counter = {
-   
-     increment: function (){
-      return ++count;
+  let count = 0;
+  const counter = {
+
+    increment() {
+      count += 1;
+      return count;
     },
 
-     decrement : function (){
-      return --count;
-    }
-  }
+    decrement() {
+      count -= 1;
+      return count;
+    },
+  };
   return counter;
 }
 

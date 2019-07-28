@@ -1,10 +1,10 @@
 function counter() {
   let count = 0;
-  function mainCounter () {
-    count = count+1
-     return count;
+  function mainCounter() {
+    count += 1;
+    return count;
   }
-  return mainCounter
+  return mainCounter;
 }
 
 export {
