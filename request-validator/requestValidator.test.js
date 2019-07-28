@@ -34,6 +34,6 @@ describe('requestValidator', () => {
 
   test('should return the request object as is if it is a valid request body', () => {
     const actual = requestValidator(validRequest);
-    expect(validRequest).toBe(actual);
+    expect(validRequest).toStrictEqual(actual);
   });
 });
