@@ -1,8 +1,3 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-const-assign */
-/* eslint-disable no-plusplus */
-/* eslint-disable consistent-return */
-/* eslint-disable no-console */
 /* eslint-disable no-undef */
 function noop() {}
 
@@ -14,24 +9,26 @@ if (typeof console === 'undefined') {
 }
 
 // avoid info messages during test
-console.info = noop;
+window.console.info = noop;
 
 let asserted;
 
 function createCompareFn(spy) {
   const hasWarned = (msg) => {
-    const count = spy.calls.count();
+    let count = spy.calls.count();
     let args;
-    while (count--) {
-      args = spy.calls.argsFor(count);
-      if (args.some(containsMsg)) {
-        return true;
-      }
-    }
-
+    let result = null;
     function containsMsg(arg) {
       return arg.toString().indexOf(msg) > -1;
     }
+    while (count) {
+      args = spy.calls.argsFor(count);
+      if (args.some(containsMsg)) {
+        result = true;
+      }
+      count -= 1;
+    }
+    return result;
   };
 
   return {
@@ -56,21 +53,22 @@ beforeEach(() => {
   spyOn(console, 'warn');
   spyOn(console, 'error');
   jasmine.addMatchers({
-    toHaveBeenWarned: () => createCompareFn(console.error),
-    toHaveBeenTipped: () => createCompareFn(console.warn),
+    toHaveBeenWarned: () => createCompareFn(window.console.error),
+    toHaveBeenTipped: () => createCompareFn(window.console.warn),
   });
 });
 
 afterEach((done) => {
   const warned = msg => asserted.some(assertedMsg => msg.toString().indexOf(assertedMsg) > -1);
-  let count = console.error.calls.count();
+  let count = window.console.error.calls.count();
   let args;
-  while (count--) {
-    args = console.error.calls.argsFor(count);
+  while (count) {
+    args = window.console.error.calls.argsFor(count);
     if (!warned(args[0])) {
       done.fail(`Unexpected console.error message: ${args[0]}`);
       return;
     }
+    count -= 1;
   }
   done();
 });

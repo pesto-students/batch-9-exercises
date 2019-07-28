@@ -1,6 +1,3 @@
-/* eslint-disable no-buffer-constructor */
-/* eslint-disable no-plusplus */
-/* eslint-disable no-unused-vars */
 const http = require('http');
 const net = require('net');
 const url = require('url');
@@ -13,7 +10,7 @@ let proxy;
 const axios = () => ({});
 
 module.exports = {
-  tearDown(callback) {
+  tearDown: (callback) => {
     server.close();
     server = null;
     if (proxy) {
@@ -28,8 +25,8 @@ module.exports = {
     callback();
   },
 
-  testTimeout(test) {
-    server = http.createServer((_req, res) => {
+  testTimeout: (test) => {
+    server = http.createServer((req, res) => {
       setTimeout(() => {
         res.end();
       }, 1000);
@@ -37,16 +34,14 @@ module.exports = {
       let success = false;
       let failure = false;
       let error;
-
       axios.get('http://localhost:4444/', {
         timeout: 250,
-      }).then((_res) => {
+      }).then(() => {
         success = true;
       }).catch((err) => {
         error = err;
         failure = true;
       });
-
       setTimeout(() => {
         test.equal(success, false, 'request should not succeed');
         test.equal(failure, true, 'request should fail');
@@ -57,14 +52,14 @@ module.exports = {
     });
   },
 
-  testJSON(test) {
+  testJSON: (test) => {
     const data = {
       firstName: 'Fred',
       lastName: 'Flintstone',
       emailAddr: 'fred@example.com',
     };
 
-    server = http.createServer((_req, res) => {
+    server = http.createServer((req, res) => {
       res.setHeader('Content-Type', 'application/json;charset=utf-8');
       res.end(JSON.stringify(data));
     }).listen(4444, () => {
@@ -75,12 +70,11 @@ module.exports = {
     });
   },
 
-  testRedirect(test) {
+  testRedirect: (test) => {
     const str = 'test response';
-
     server = http.createServer((req, res) => {
-      const parsed = url.parse(req.url);
-
+      // eslint-disable-next-line prefer-const
+      let parsed = url.parse(req.url);
       if (parsed.pathname === '/one') {
         res.setHeader('Location', '/two');
         res.statusCode = 302;
@@ -97,17 +91,15 @@ module.exports = {
     });
   },
 
-  testNoRedirect(test) {
-    server = http.createServer((_req, res) => {
+  testNoRedirect: (test) => {
+    server = http.createServer((req, res) => {
       res.setHeader('Location', '/foo');
       res.statusCode = 302;
       res.end();
     }).listen(4444, () => {
       axios.get('http://localhost:4444/', {
         maxRedirects: 0,
-        validateStatus() {
-          return true;
-        },
+        validateStatus: () => true,
       }).then((res) => {
         test.equal(res.status, 302);
         test.equal(res.headers.location, '/foo');
@@ -116,31 +108,32 @@ module.exports = {
     });
   },
 
-  testMaxRedirects(test) {
+  testMaxRedirects: (test) => {
     let i = 1;
-    server = http.createServer((_req, res) => {
+    server = http.createServer((req, res) => {
       res.setHeader('Location', `/${i}`);
       res.statusCode = 302;
       res.end();
-      i++;
+      i += 1;
     }).listen(4444, () => {
       axios.get('http://localhost:4444/', {
         maxRedirects: 3,
-      }).catch((_error) => {
+      }).catch((error) => {
         test.done();
+        return error;
       });
     });
   },
 
-  testTransparentGunzip(test) {
+  testTransparentGunzip: (test) => {
     const data = {
       firstName: 'Fred',
       lastName: 'Flintstone',
       emailAddr: 'fred@example.com',
     };
 
-    zlib.gzip(JSON.stringify(data), (_err, zipped) => {
-      server = http.createServer((_req, res) => {
+    zlib.gzip(JSON.stringify(data), (err, zipped) => {
+      server = http.createServer((req, res) => {
         res.setHeader('Content-Type', 'application/json;charset=utf-8');
         res.setHeader('Content-Encoding', 'gzip');
         res.end(zipped);
@@ -153,22 +146,22 @@ module.exports = {
     });
   },
 
-  testGunzipErrorHandling(test) {
-    server = http.createServer((_req, res) => {
+  testGunzipErrorHandling: (test) => {
+    server = http.createServer((req, res) => {
       res.setHeader('Content-Type', 'application/json;charset=utf-8');
       res.setHeader('Content-Encoding', 'gzip');
       res.end('invalid response');
     }).listen(4444, () => {
-      axios.get('http://localhost:4444/').catch((_error) => {
+      axios.get('http://localhost:4444/').catch((error) => {
         test.done();
+        return error;
       });
     });
   },
 
-  testUTF8(test) {
+  testUTF8: (test) => {
     const str = Array(100000).join('ж');
-
-    server = http.createServer((_req, res) => {
+    server = http.createServer((req, res) => {
       res.setHeader('Content-Type', 'text/html; charset=UTF-8');
       res.end(str);
     }).listen(4444, () => {
@@ -179,48 +172,46 @@ module.exports = {
     });
   },
 
-  testBasicAuth(test) {
+  testBasicAuth: (test) => {
     server = http.createServer((req, res) => {
       res.end(req.headers.authorization);
     }).listen(4444, () => {
       const user = 'foo';
       const headers = { Authorization: 'Bearer 1234' };
-      axios.get(`http://${user}@localhost:4444/`, { headers }).then((res) => {
-        const base64 = new Buffer(`${user}:`, 'utf8').toString('base64');
+      axios.get(`http://${user} @localhost:4444/`, { headers }).then((res) => {
+        const base64 = Buffer.from(`${user}:`, 'utf8').toString('base64');
         test.equal(res.data, `Basic ${base64}`);
         test.done();
       });
     });
   },
 
-  testBasicAuthWithHeader(test) {
+  testBasicAuthWithHeader: (test) => {
     server = http.createServer((req, res) => {
       res.end(req.headers.authorization);
     }).listen(4444, () => {
       const auth = { username: 'foo', password: 'bar' };
       const headers = { Authorization: 'Bearer 1234' };
       axios.get('http://localhost:4444/', { auth, headers }).then((res) => {
-        const base64 = new Buffer('foo:bar', 'utf8').toString('base64');
+        const base64 = Buffer.from('foo:bar', 'utf8').toString('base64');
         test.equal(res.data, `Basic ${base64}`);
         test.done();
       });
     });
   },
 
-  testMaxContentLength(test) {
+  testMaxContentLength: (test) => {
     const str = Array(100000).join('ж');
-
-    server = http.createServer((_req, res) => {
+    server = http.createServer((req, res) => {
       res.setHeader('Content-Type', 'text/html; charset=UTF-8');
       res.end(str);
     }).listen(4444, () => {
       let success = false;
       let failure = false;
       let error;
-
       axios.get('http://localhost:4444/', {
         maxContentLength: 2000,
-      }).then((_res) => {
+      }).then(() => {
         success = true;
       }).catch((err) => {
         error = err;
@@ -236,7 +227,7 @@ module.exports = {
     });
   },
 
-  testSocket(test) {
+  testSocket: (test) => {
     server = net.createServer((socket) => {
       socket.on('data', () => {
         socket.end('HTTP/1.1 200 OK\r\n\r\n');
@@ -258,7 +249,7 @@ module.exports = {
     });
   },
 
-  testStream(test) {
+  testStream: (test) => {
     server = http.createServer((req, res) => {
       req.pipe(res);
     }).listen(4444, () => {
@@ -279,22 +270,23 @@ module.exports = {
     });
   },
 
-  testFailedStream(test) {
+  testFailedStream: (test) => {
     server = http.createServer((req, res) => {
       req.pipe(res);
     }).listen(4444, () => {
       axios.post('http://localhost:4444/',
-        fs.createReadStream('/does/not/exist'),).then((_res) => {
-        test.fail();
-      }).catch((err) => {
-        test.equal(err.message, 'ENOENT: no such file or directory, open \'/does/not/exist\'');
-        test.done();
-      });
+        fs.createReadStream('/does/not/exist'))
+        .then(() => {
+          test.fail();
+        }).catch((err) => {
+          test.equal(err.message, 'ENOENT: no such file or directory, open \'/does/not/exist\'');
+          test.done();
+        });
     });
   },
 
-  testBuffer(test) {
-    const buf = new Buffer(1024); // Unsafe buffer < Buffer.poolSize (8192 bytes)
+  testBuffer: (test) => {
+    const buf = Buffer.from(1024); // Unsafe buffer < Buffer.poolSize (8192 bytes)
     buf.fill('x');
     server = http.createServer((req, res) => {
       test.equal(req.headers['content-length'], buf.length.toString());
@@ -317,8 +309,8 @@ module.exports = {
     });
   },
 
-  testHTTPProxy(test) {
-    server = http.createServer((_req, res) => {
+  testHTTPProxy: (test) => {
+    server = http.createServer((req, res) => {
       res.setHeader('Content-Type', 'text/html; charset=UTF-8');
       res.end('12345');
     }).listen(4444, () => {
@@ -354,11 +346,11 @@ module.exports = {
     });
   },
 
-  testHTTPProxyDisabled(test) {
+  testHTTPProxyDisabled: (test) => {
     // set the env variable
     process.env.http_proxy = 'http://does-not-exists.example.com:4242/';
 
-    server = http.createServer((_req, res) => {
+    server = http.createServer((req, res) => {
       res.setHeader('Content-Type', 'text/html; charset=UTF-8');
       res.end('123456789');
     }).listen(4444, () => {
@@ -371,8 +363,8 @@ module.exports = {
     });
   },
 
-  testHTTPProxyEnv(test) {
-    server = http.createServer((_req, res) => {
+  testHTTPProxyEnv: (test) => {
+    server = http.createServer((req, res) => {
       res.setHeader('Content-Type', 'text/html; charset=UTF-8');
       res.end('4567');
     }).listen(4444, () => {
@@ -397,7 +389,6 @@ module.exports = {
       }).listen(4000, () => {
         // set the env variable
         process.env.http_proxy = 'http://localhost:4000/';
-
         axios.get('http://localhost:4444/').then((res) => {
           test.equal(res.data, '45671234', 'should use proxy set by process.env.http_proxy');
           test.done();
@@ -406,8 +397,8 @@ module.exports = {
     });
   },
 
-  testHTTPProxyAuth(test) {
-    server = http.createServer((_req, res) => {
+  testHTTPProxyAuth: (test) => {
+    server = http.createServer((req, res) => {
       res.end();
     }).listen(4444, () => {
       proxy = http.createServer((request, response) => {
@@ -420,6 +411,7 @@ module.exports = {
         const proxyAuth = request.headers['proxy-authorization'];
 
         http.get(opts, (res) => {
+          // eslint-disable-next-line no-unused-vars
           let body = '';
           res.on('data', (data) => {
             body += data;
@@ -440,7 +432,7 @@ module.exports = {
             },
           },
         }).then((res) => {
-          const base64 = new Buffer('user:pass', 'utf8').toString('base64');
+          const base64 = Buffer.from('user:pass', 'utf8').toString('base64');
           test.equal(res.data, `Basic ${base64}`, 'should authenticate to the proxy');
           test.done();
         });
@@ -448,8 +440,8 @@ module.exports = {
     });
   },
 
-  testHTTPProxyAuthFromEnv(test) {
-    server = http.createServer((_req, res) => {
+  testHTTPProxyAuthFromEnv: (test) => {
+    server = http.createServer((req, res) => {
       res.end();
     }).listen(4444, () => {
       proxy = http.createServer((request, response) => {
@@ -462,6 +454,7 @@ module.exports = {
         const proxyAuth = request.headers['proxy-authorization'];
 
         http.get(opts, (res) => {
+          // eslint-disable-next-line no-unused-vars
           let body = '';
           res.on('data', (data) => {
             body += data;
@@ -475,7 +468,7 @@ module.exports = {
         process.env.http_proxy = 'http://user:pass@localhost:4000/';
 
         axios.get('http://localhost:4444/').then((res) => {
-          const base64 = new Buffer('user:pass', 'utf8').toString('base64');
+          const base64 = Buffer.from('user:pass', 'utf8').toString('base64');
           test.equal(res.data, `Basic ${base64}`, 'should authenticate to the proxy set by process.env.http_proxy');
           test.done();
         });
@@ -483,8 +476,8 @@ module.exports = {
     });
   },
 
-  testHTTPProxyAuthWithHeader(test) {
-    server = http.createServer((_req, res) => {
+  testHTTPProxyAuthWithHeader: (test) => {
+    server = http.createServer((req, res) => {
       res.end();
     }).listen(4444, () => {
       proxy = http.createServer((request, response) => {
@@ -497,6 +490,7 @@ module.exports = {
         const proxyAuth = request.headers['proxy-authorization'];
 
         http.get(opts, (res) => {
+          // eslint-disable-next-line no-unused-vars
           let body = '';
           res.on('data', (data) => {
             body += data;
@@ -520,7 +514,7 @@ module.exports = {
             'Proxy-Authorization': 'Basic abc123',
           },
         }).then((res) => {
-          const base64 = new Buffer('user:pass', 'utf8').toString('base64');
+          const base64 = Buffer.from('user:pass', 'utf8').toString('base64');
           test.equal(res.data, `Basic ${base64}`, 'should authenticate to the proxy');
           test.done();
         });
@@ -528,9 +522,9 @@ module.exports = {
     });
   },
 
-  testCancel(test) {
+  testCancel: (test) => {
     const source = axios.CancelToken.source();
-    server = http.createServer((_req, _res) => {
+    server = http.createServer(() => {
       // call cancel() when the request has been sent, but a response has not been received
       source.cancel('Operation has been canceled.');
     }).listen(4444, () => {
