@@ -74,6 +74,9 @@ describe('truthCheck', () => {
       single: 'yes',
     }], 'single')).toBe(true);
 
+    expect(truthCheck([{}], 'single')).toBe(false);
+    expect(truthCheck([], 'single')).toBe(false);
+    expect(() => truthCheck(null, 'single')).toThrow();
     expect(truthCheck([{
       single: '',
     }, {
