@@ -8,6 +8,7 @@ function permutateWithRepetitions(permutationOptions,
   const permutations = [];
 
   const smallerPermutations = permutateWithRepetitions(permutationOptions, permutationLength - 1);
+
   permutationOptions.forEach((currentOption) => {
     smallerPermutations.forEach((smallerPermutation) => {
       permutations.push([currentOption].concat(smallerPermutation));
