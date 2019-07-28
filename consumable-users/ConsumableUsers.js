@@ -1,8 +1,11 @@
 
-function consumableUsers(...args) {
-  return args;
+class ConsumableUsers {
+  constructor() {
+    this.nextUser = 'user: Alice';
+    this.done = false;
+  }
 }
 
 export {
-  consumableUsers,
+  ConsumableUsers,
 };

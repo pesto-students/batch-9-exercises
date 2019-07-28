@@ -5,16 +5,16 @@ describe('Iterator usages', () => {
   beforeEach(() => {
     const consumableUsers = new ConsumableUsers();
 
-    function iteratorFunction() {
-      return {
-        next: () => ({
-          value: consumableUsers.nextUser,
-          done: consumableUsers.done,
-        }),
-      };
-    }
-
-    usersIterable = {};
+    usersIterable = {
+      [Symbol.iterator]() {
+        return {
+          next: () => ({
+            value: consumableUsers.nextUser,
+            done: consumableUsers.done,
+          }),
+        };
+      },
+    };
   });
 
   describe('create an iterator/iterable', () => {
@@ -38,7 +38,7 @@ describe('Iterator usages', () => {
     describe('using the iterator', () => {
       let iterator;
       beforeEach(() => {
-        iterator = usersIterable[Symbol.iterator];
+        iterator = usersIterable[Symbol.iterator]();
       });
 
       it('should return `Alice` as first user', () => {
