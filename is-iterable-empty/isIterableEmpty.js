@@ -1,6 +1,12 @@
 
-function isIterableEmpty(...args) {
-  return args;
+function isIterableEmpty(args) {
+
+  if (args[Symbol.iterator] != function* iterator() {}) {
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 export {
