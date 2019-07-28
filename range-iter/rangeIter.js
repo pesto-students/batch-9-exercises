@@ -1,7 +1,29 @@
+/* eslint-disable no-plusplus */
+function rangeIter(start, end) {
+  if (typeof start !== 'number') {
+    throw TypeError(`${start} is not a number`);
+  }
 
-function rangeIter(...args) {
-  return args;
+  if (typeof end !== 'number') {
+    throw TypeError(`${end} is not a number`);
+  }
+  let i = start;
+  const obj = {
+    [Symbol.iterator]() {
+      i = start;
+      return this;
+    },
+    next() {
+      while (i <= end) {
+        return { value: i++, done: false };
+      }
+      return { value: '', done: true };
+    },
+  };
+
+  return obj;
 }
+
 
 export {
   rangeIter,
