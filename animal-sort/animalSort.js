@@ -1,12 +1,18 @@
-/* eslint-disable max-len */
-const isBigger = (a, b) => a > b;
-const sort = compareFn => list => list.sort(compareFn);
-const compareAnimalPart = partToCompare => predicate => (animal1, animal2) => predicate(animal1[partToCompare], animal2[partToCompare]);
-const compareNumberOfLegs = compareAnimalPart('numberOfLegs');
-const hasMoreLegs = compareNumberOfLegs(isBigger);
-const sortAnimalsWithMoreLegs = sort(hasMoreLegs);
+
+const isAnimalBigger = (animal1, animal2) => {
+  const hasMoreLegs = animal1.numberOfLegs > animal2.numberOfLegs;
+  const hasEqualLegs = animal1.numberOfLegs === animal2.numberOfLegs;
+  const isAlphabeticallyBigger = animal1.name > animal2.name;
+  if (hasMoreLegs) {
+    return true;
+  }
+  if (hasEqualLegs && isAlphabeticallyBigger) {
+    return true;
+  }
+  return false;
+};
 function animalSort(animals) {
-  return sortAnimalsWithMoreLegs(animals);
+  return animals.sort(isAnimalBigger);
 }
 
 export {
