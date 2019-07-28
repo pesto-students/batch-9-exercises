@@ -1,6 +1,7 @@
+/* eslint-disable valid-typeof */
 
-function boolean(...args) {
-  return args;
+function boolean(inputValue) {
+  return typeof inputValue === 'boolean';
 }
 
 export {

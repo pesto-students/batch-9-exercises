@@ -1,0 +1,33 @@
+body {
+    padding: 2em; 
+  }
+
+  .main {
+    text-align: left;
+    background: deepskyblue;
+  }
+
+
+  .wrapper > * {
+    padding: 10px;
+    flex: 1 100%;
+  }
+
+  .header {
+    background: purple;
+    color : white;
+    size: 20px;
+    padding: 20px;
+    
+  }
+  
+
+
+.wrapper {
+    display: flex;  
+    flex-flow: row wrap;
+    font-weight: bold;
+    text-align: center;
+  }
+
+
