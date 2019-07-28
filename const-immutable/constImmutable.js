@@ -1,6 +1,7 @@
 
-function constImmutable(...args) {
-  return args;
+function constImmutable(account) {
+  Object.freeze(account);
+  return account;
 }
 
 export {
