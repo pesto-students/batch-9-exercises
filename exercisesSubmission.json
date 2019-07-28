@@ -9,13 +9,13 @@
             "completed": true
         },
         "greet": {
-            "completed": false
+            "completed": true
         },
         "reject-promise": {
             "completed": false
         },
         "queue": {
-            "completed": false
+            "completed": true
         },
         "person": {
             "completed": true
