@@ -5,7 +5,9 @@ function sleepPromise(sleepTime) {
       resolve();
     }, sleepTime);
   });
-  return delayedPromise;
+  const mockPromise = arg => delayedPromise.then(() => arg);
+  mockPromise.then = (...args) => delayedPromise.then(...args);
+  return mockPromise;
 }
 
 const sleep = sleepTime => sleepPromise(sleepTime);
