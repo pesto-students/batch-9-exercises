@@ -18,7 +18,7 @@ function negativeIndex(array) {
     },
 
     set(target, property, value) {
-      if (typeof name !== 'string') {
+      if (typeof property !== 'string') {
         return Reflect.set(target, property, value, receiver);
       }
 
