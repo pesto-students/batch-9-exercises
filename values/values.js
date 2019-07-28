@@ -1,7 +1,5 @@
 
-function values(...args) {
-  return args;
-}
+const { values } = Object;
 
 export {
   values,
