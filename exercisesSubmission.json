@@ -6,7 +6,7 @@
             "completed": true
         },
         "proxy-iterable": {
-            "completed": false
+            "completed": true
         },
         "known-prop": {
             "completed": true
@@ -27,7 +27,7 @@
             "completed": false
         },
         "values-in": {
-            "completed": false
+            "completed": true
         },
         "values": {
             "completed": false
