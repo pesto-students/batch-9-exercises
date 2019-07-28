@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 
 /* eslint-disable no-return-assign */
 /* eslint-disable no-param-reassign */
@@ -7,21 +8,25 @@ function negativeIndex(array) {
     throw TypeError('Only arrays are supported');
   }
   const proxy = new Proxy(array, {
-    get(target, index) {
-      if (index === 'length') {
-        return target.length;
+    get(target, name) {
+      if (typeof name !== 'string') {
+        return Reflect.get(target, name);
       }
-      if (index === 'toString') {
-        return Array.toString(target);
+      const number = Number(name);
+      if (Number.isNaN(number)) {
+        return Reflect.get(target, number);
       }
-      index = parseInt(index, 10);
-      if (index < 0) {
-        index += target.length;
-      }
-      return target[index];
+      return target[number < 0 ? target.length + number : number];
     },
-    set(target, index, value) {
-      target[index] = value;
+    set(target, name, value, receiver) {
+      if (typeof name !== 'string') {
+        return Reflect.set(target, name, value, receiver);
+      }
+      const number = Number(name);
+      if (Number.isNaN(number)) {
+        return Reflect.set(target, number, value);
+      }
+      target[number < 0 ? target.length + number : number] = value;
       return true;
     },
   });
