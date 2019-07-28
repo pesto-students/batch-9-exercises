@@ -1,8 +1,14 @@
+function xprod(firstArray, secondArray) {
+  if ([firstArray, secondArray].some(array => array.length === 0)) {
+    return [];
+  }
 
-function xprod(...args) {
-  return args;
+  return firstArray.reduce((modifiedArray, item1) => {
+    secondArray.forEach(item2 => {
+      modifiedArray.push([item1, item2]);
+    });
+    return modifiedArray;
+  }, []);
 }
 
-export {
-  xprod,
-};
+export { xprod };
