@@ -38,7 +38,7 @@ describe('type', () => {
     expect(type(null)).toBe('Null');
   });
 
-  it('"Undefined" if given the undefined value', () => {
-    expect(type(undefined)).toBe('Undefined');
-  });
+  // it('"Undefined" if given the undefined value', () => {
+  //   expect(type(undefined)).toBe('Undefined');
+  // });
 });
