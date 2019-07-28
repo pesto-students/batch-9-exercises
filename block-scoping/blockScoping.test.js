@@ -6,4 +6,8 @@ describe('blockScoping', () => {
     expect(blockScoping(2)).toBe(2);
     expect(blockScoping(10)).toBe(10);
   });
+  test('to throw error when wrong number of argumnets are passed', () => {
+    expect(() => blockScoping()).toThrow();
+    expect(() => blockScoping(1, 2, 4, 5)).toThrow();
+  });
 });

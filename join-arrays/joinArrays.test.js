@@ -7,4 +7,8 @@ describe('joinArrays', () => {
     expect(joinArrays([1, 2, 3], [4, 5, 6], [7, 8, 9])).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
     expect(joinArrays([1], [3], [0], [7])).toEqual([1, 3, 0, 7]);
   });
+
+  test('nested arrays works too', () => {
+    expect(joinArrays([1], [[2]], [3])).toEqual([1, [2], 3]);
+  });
 });
