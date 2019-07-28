@@ -1,6 +1,6 @@
 
-function isIterable(...args) {
-  return args;
+function isIterable(element) {
+  return typeof element[Symbol.iterator] === 'function';
 }
 
 export {
