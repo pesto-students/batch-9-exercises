@@ -1,6 +1,6 @@
 
-function slice(...args) {
-  return args;
+function slice(start, end, list) {
+  return list.slice(start, end);
 }
 
 export {
