@@ -1,6 +1,6 @@
 
-function values(...args) {
-  return args;
+function values(object) {
+  return Object.getOwnPropertyNames(object).map(key => object[key]);
 }
 
 export {
