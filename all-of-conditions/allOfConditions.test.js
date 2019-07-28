@@ -3,11 +3,14 @@ import { allOfConditions } from './allOfConditions';
 describe('allOfConditions', () => {
   it('calls passed function with provided input', () => {
     const input = 'input';
+    const secondInput = 'secondInput';
     const isTruthy = jest.fn();
 
     allOfConditions(isTruthy)(input);
-
     expect(isTruthy).toBeCalledWith(input);
+
+    allOfConditions(isTruthy)(input, secondInput);
+    expect(isTruthy).toBeCalledWith(input, secondInput);
   });
 
   it('calls provided functions one after another', () => {
