@@ -23,5 +23,12 @@ Change the value of a node attribute -->
     </div>
   </div>
 </body>
-
+<script>
+    var heading = document.getElementsByTagName("h1")[0];
+    const headerNode = heading.childNodes[0]
+    const headingValue = headerNode.nodeValue;
+    const headAttributes = heading.getAttributeNode('id');
+    headAttributes.value = 'custom-title';
+    heading.childNodes[0].nodeValue = 'Custom Heading';
+</script>
 </html>
