@@ -11,7 +11,31 @@
 </head>
 
 <body>
+    [<a  onMouseOver="highlight()" onMouseOut="return_normal()">Mouse over to highlight</a>]</p> 
+    <strong>This bold text will be highlighted when mouse hover on them. </strong>
 
 </body>
 
 </html>
+
+<script>
+let boldItems;
+window.onload = getBold_items();
+
+function getBold_items() {
+  boldItems = document.getElementsByTagName('strong');
+}
+
+
+function highlight() {
+  for (let i = 0; i < boldItems.length; i += 1) {
+    boldItems[i].style.color = 'green';
+  }
+}
+
+function return_normal() {
+  for (let i = 0; i < boldItems.length; i += 1) {
+    boldItems[i].style.color = 'black';
+  }
+}
+</script>
