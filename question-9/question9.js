@@ -1,8 +1,9 @@
+// eslint-disable-next-line no-undef
+const paragraph = document.querySelector('p');
+paragraph.addEventListener('mouseenter', () => {
+  paragraph.classList.add('bold');
+});
 
-function question9(...args) {
-  return args;
-}
-
-export {
-  question9,
-};
+paragraph.addEventListener('mouseleave', () => {
+  paragraph.classList.remove('bold');
+});
