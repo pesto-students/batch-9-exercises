@@ -22,6 +22,15 @@ Change the value of a node attribute -->
       <p>More copy goes here</p>
     </div>
   </div>
+  <script>
+    const title = document.getElementById('title').firstChild;
+    console.log(title.nodeValue);
+    title.nodeValue = 'New Title';
+
+    const contentAttributes = document.getElementById('content').attributes;
+    contentAttributes.width = '16px'
+    console.log(contentAttributes);
+  </script>
 </body>
 
 </html>
