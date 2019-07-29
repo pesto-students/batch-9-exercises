@@ -1,8 +1,9 @@
-
+/* eslint-disable */
 function booWho(...args) {
-  return args;
+  if (typeof args[0] === 'boolean') {
+    return true;
+  } else {
+    return false;
 }
-
-export {
-  booWho,
-};
+}
+export { booWho };
