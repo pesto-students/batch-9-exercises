@@ -1,8 +1,32 @@
 
-function question9(...args) {
-  return args;
+
+var boldItems;
+window.onload = getBoldItems();
+ 
+function getBoldItems() 
+{
+  boldItems = document.getElementsByTagName('strong'); 
+}
+
+function highlightThis() 
+{
+   for (var i=0; i<boldItems.length; i++)
+   {                                                    
+    boldItems[i].style.color = "red";
+    }
+    //alert(i);
+}
+
+function returnToNormal()
+{
+  for (var i=0; i<boldItems.length; i++) 
+  {
+       boldItems[i].style.color = "black";
+  }
 }
 
 export {
-  question9,
+  returnToNormal,
+  highlightThis,
+  getBoldItems,
 };
