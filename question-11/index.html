@@ -17,12 +17,16 @@
     </div>
   </div>
 </body>
-<script>
+<script type="text/javascript">
     var heading = document.getElementsByTagName("h1")[0];
     const headerNode = heading.childNodes[0]
     const headingValue = headerNode.nodeValue;
     const headAttributes = heading.getAttributeNode('id');
-    headAttributes.value = 'custom-title';
-    heading.childNodes[0].nodeValue = 'Custom Heading';
+    
+    setTimeout(()=>{
+      heading.childNodes[0].nodeValue = 'Custom Heading';
+      headAttributes.value = 'custom-title';
+    },2000)
+    
 </script>
 </html>
