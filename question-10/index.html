@@ -32,6 +32,21 @@ Use the childNodes property to access a group of child elements -->
       <p>More copy goes here</p>
       </div>
     </div>
+
+
+    <script>
+      const page = document.getElementById('page');
+      console.log(page.firstChild.nextSibling.innerHTML);
+      console.log(page.lastChild.previousSibling.innerHTML);
+      console.log(page.childNodes);
+      
+      const header = document.getElementById('header');
+      console.log(header.nextSibling);
+      console.log(header.parentNode.innerHTML);
+      
+      const content = document.getElementById('content');
+      console.log(content.nextSibling);
+    </script>
 </body>
 
 </html>

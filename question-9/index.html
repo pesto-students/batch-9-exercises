@@ -11,7 +11,17 @@
 </head>
 
 <body>
-
+  <p>This <strong id="highlight">bold</strong> text gets highlighted when hovered over.</p>
 </body>
-
+  <script>
+    const bold = document.getElementById('highlight');
+    console.log(bold);
+    console.log(bold.style);
+    bold.addEventListener('mouseover', function() {
+      bold.style.background = 'yellow';
+    });
+    bold.addEventListener('mouseout', function() {
+      bold.style.background = 'white';
+    });
+  </script>
 </html>
