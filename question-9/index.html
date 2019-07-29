@@ -11,7 +11,40 @@
 </head>
 
 <body>
+  <main>
+    <article>
+      <h2>My Text</h2>
+      <p class="text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non libero vel dui congue malesuada. Pellentesque
+        habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi dapibus venenatis
+        imperdiet. Maecenas molestie posuere pellentesque. Proin feugiat gravida volutpat. Cras et ultrices neque, ac
+        interdum urna. Nullam dolor orci, faucibus eget libero vel, luctus condimentum arcu. Vestibulum porttitor
+        eleifend neque vel porta.
 
+        Vivamus tellus tellus, dapibus at ligula vel, rhoncus vehicula est. Mauris porttitor massa odio, eget aliquet
+        turpis gravida in. Pellentesque in auctor ante. Etiam arcu enim, hendrerit sed eros eget, pretium luctus felis.
+        In hac habitasse platea dictumst. Fusce cursus tincidunt massa ut accumsan. Curabitur ornare, felis eget
+        porttitor efficitur, nunc velit pulvinar enim, sed ultrices urna dui ullamcorper lectus. Quisque nisl velit,
+        pellentesque et ex ut, vestibulum egestas erat. Nulla neque diam, pulvinar ut nibh in, vestibulum gravida massa.
+        Ut sodales ut nisl quis gravida. Nullam tristique lorem sed est elementum maximus. Suspendisse posuere commodo
+        elit ut scelerisque. Fusce molestie vehicula eros, a mattis massa fringilla in. Ut ac consectetur erat. Sed
+        dignissim elit ac consequat faucibus.
+      </p>
+      <a id="bold-paragraph-anchor" href="#">Make the above text bold</a>
+    </article>
+  </main>
+  <script>
+    (function () {
+      const boldAnchor = document.getElementById('bold-paragraph-anchor');
+      const boldParagraph = document.getElementsByClassName('text')[0];
+      boldAnchor.addEventListener('mouseover', function () {
+        boldParagraph.style.fontWeight = 'bold';
+      });
+      boldAnchor.addEventListener('mouseout', function () {
+        boldParagraph.style.fontWeight = 'normal';
+      });
+    })();
+  </script>
 </body>
 
 </html>
