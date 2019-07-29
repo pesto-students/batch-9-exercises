@@ -33,5 +33,20 @@ Use the childNodes property to access a group of child elements -->
       </div>
     </div>
 </body>
+<script type="text/javascript">
+const pageElement = document.getElementById('page');
+const firstSiblingOfPageElement = pageElement.firstChild;
+const lastSiblingOfPageElement = pageElement.lastChild;
+const nextSiblingOfPageElement = pageElement.nextSibling;
+const previousSiblingOfPageElement = pageElement.previousSibling;
+const parentNodeOfPageElement = pageElement.parentNode;
+const childNodesOfPageElement = pageElement.childNodes;
+console.log("The first Sibling page element =>>>",firstSiblingOfPageElement);
+console.log("The last Sibling page element =>>>",lastSiblingOfPageElement);
+console.log("The next Sibling page element =>>>",nextSiblingOfPageElement);
+console.log("The previous Sibling page element =>>>",previousSiblingOfPageElement);
+console.log("The parent node page element =>>>",parentNodeOfPageElement);
+console.log("The child nodes page element =>>>",childNodesOfPageElement);
 
+</script>
 </html>
