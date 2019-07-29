@@ -1,15 +1,12 @@
-
 function limitFunctionCallCount(callback, limit) {
-  return (..args) => {
-    if (limit > 0) {
-      limit -= 1;
+  let limitCopy = limit;
+  return (...args) => {
+    if (limitCopy > 0) {
+      limitCopy -= 1;
       return callback(...args);
     }
-  }
-
-  return null;
+    return null;
+  };
 }
 
-export {
-  limitFunctionCallCount,
-};
+export { limitFunctionCallCount };
