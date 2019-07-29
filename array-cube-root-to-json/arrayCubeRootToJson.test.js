@@ -15,5 +15,6 @@ describe('arrayCubeRootToJson', () => {
     expect(() => { arrayCubeRootToJson(undefined) }).toThrow();
     expect(() => { arrayCubeRootToJson([1, 2, 4, 'abc']) }).toThrow();
     expect(() => { arrayCubeRootToJson([1, 2.12, 4.44, 'abc']) }).toThrow();
+    expect(() => arrayCubeRootToJson()).toThrow();
   });
 });
