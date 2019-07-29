@@ -2,16 +2,44 @@
 
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
+    <script>
+      function highlightBold() {
+        const boldTags = document.getElementsByTagName('strong');
+        console.log('hovered');
+        for (let i = 0; i < boldTags.length; i++) {
+          boldTags[i].style.color = 'orange';
+        }
+      }
 
-<body>
+      // On mouse out highlighted words become black
+      function normalBoldWords() {
+        const boldTags = document.getElementsByTagName('strong');
+        for (let i = 0; i < boldTags.length; i++) {
+          boldTags[i].style.color = 'black';
+        }
+      }
+    </script>
+  </head>
 
-</body>
+  <body>
+    <p>
+      <strong> ipsum dolor sit </strong>amet consectetur adipisicing elit. Eius
+      accusantium repudiandae culpa quae. Corrupti animi ipsum veniam, corporis
+      quis, nostrum quos eos laborum itaque cupiditate unde enim maxime quod a?.
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+      <strong>Repudiandae molestias</strong>, eum, minus qui dignissimos
+      possimus dolorum enim sit, ipsa aliquam optio consequatur pariatur
+      incidunt neque maxime autem nisi <strong>doloremque</strong> voluptate.
+    </p>
 
+    <a href="#" onmouseover="highlightBold()" onmouseout="normalBoldWords()">
+      Hover here to highlight bold words.</a
+    >
+  </body>
 </html>
