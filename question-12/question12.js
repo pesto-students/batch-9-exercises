@@ -1,8 +1,9 @@
+/* eslint-disable no-undef */
 
-function question12(...args) {
-  return args;
+function question12() {
+  const contentDiv = document.querySelector('#content');
+  const childParagraph = document.createTextNode('New added paragraph');
+  contentDiv.appendChild(childParagraph);
 }
 
-export {
-  question12,
-};
+question12();
