@@ -1,71 +1,85 @@
 import React from 'react';
 
-/*
-  In this exercises, you'll will make a reactive grocery list.
-
-  Task 1: Fill the `return` of `GroceryList` render method. It should return
-        a list of `GroceryListItem`. You need to display the groceries names
-        using `this.props` in `GroceryListItem`. We already prepared the variable
-        `groceriesComponents` inside `render` method containing a list of these items for you.
-
-
-  Task 2: Create an input box and a button. User should be able to add more grocery items and click
-          the `Add` button to add it to the list displaying the item.
-
-  Task 3: Create a button to clear the whole list.
-
-  Task 4: Clicking on a grocery item should change its color to red. Clicking again should change
-          it back to black. Red means the item has been purchased.
-
-*/
-
 class GroceryList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       groceries: [{ name: 'Apples' }, { name: 'KitKat' }, { name: 'Red Bull' }],
+      inputValue: ''
     };
+
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onAddButtonClick = this.onAddButtonClick.bind(this);
+    this.clearList = this.clearList.bind(this);
   }
 
+  onInputChange(event) {
+    this.setState({ inputValue: event.target.value });
+  }
+
+  onAddButtonClick() {
+    this.setState({
+      groceries: [...this.state.groceries, { name: this.state.inputValue }],
+      inputValue: ''
+    });
+  }
+
+  clearList() {
+    this.setState({
+      groceries: []
+    });
+  }
   render() {
     const { groceries } = this.state;
-    /*
-      Properties are a way to pass parameters to your React components.
-      We mentioned this in the third exercise. Properties are to React
-      components what attributes are to HTML elements.
 
-      Below you can see how to pass properties to child components.
-      We have defined a `grocery` property for each `GroceryListItem`.
-    */
-    const groceriesComponents = groceries.map(item => ( // eslint-disable-line no-unused-vars
-      <GroceryListItem grocery={item} />
-    ));
-    // Hint: Don't forget about putting items into `ul`
+    const groceriesComponents = groceries.map((
+      item // eslint-disable-line no-unused-vars
+    ) => <GroceryListItem grocery={item} />);
     return (
       <div>
-        Put your code here
+        <ul>{groceriesComponents}</ul>
+        <input
+          name='addInput'
+          onChange={this.onInputChange}
+          value={this.state.inputValue}
+        />
+        <button name='addButton' onClick={() => this.onAddButtonClick()}>
+          {' '}
+          Add Grocery{' '}
+        </button>
+        <div>
+          <button name='clearButton' onClick={this.clearList}>
+            Clear list
+          </button>
+        </div>
       </div>
     );
   }
 }
 
-// Render grocery name from component's properties.
-// If you have a problem, check `this.props` in the console.
 /* eslint-disable react/no-multi-comp, no-useless-constructor */
+
 class GroceryListItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { liColor: 'black' };
+    this.itemClick = this.itemClick.bind(this);
+  }
+  itemClick(event) {
+    this.state.liColor === 'black'
+      ? this.setState({ liColor: 'red' })
+      : this.setState({ liColor: 'black' });
   }
 
   render() {
     return (
-      <li>
-        Put your code here.
+      <li style={{ color: this.state.liColor }} onClick={this.itemClick}>
+        {this.props.grocery.name}
       </li>
     );
   }
 }
 
-// Do prop validation here using the package `prop-types`
+//TODO: Do prop validation here using the package `prop-types`
 
 export default GroceryList;
