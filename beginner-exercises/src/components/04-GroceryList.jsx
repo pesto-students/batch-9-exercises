@@ -4,8 +4,6 @@ import React from 'react';
 /*
   In this exercises, you'll will make a reactive grocery list.
 
-  Task 3: Create a button to clear the whole list.
-
   Task 4: Clicking on a grocery item should change its color to red. Clicking again should change
           it back to black. Red means the item has been purchased.
 
@@ -18,11 +16,17 @@ class GroceryList extends React.Component {
       groceries: [{ name: 'Apples' }, { name: 'KitKat' }, { name: 'Red Bull' }],
     };
     this.addItem = this.addItem.bind(this);
+    this.onClear = this.onClear.bind(this);
+  }
+
+  onClear() {
+    this.setState({ groceries: [] });
   }
 
   addItem(item) {
     this.setState({ groceries: [...this.state.groceries, { name: item }] });
   }
+
 
   render() {
     const { groceries } = this.state;
@@ -36,6 +40,7 @@ class GroceryList extends React.Component {
           {groceriesComponents}
         </ul>
         <GroceryInput addItem={this.addItem} />
+        <ClearButton onClear={this.onClear} />
       </React.Fragment>
     );
   }
@@ -72,6 +77,8 @@ class GroceryInput extends React.Component {
     );
   }
 }
+
+const ClearButton = props => (<button onClick={props.onClear}>Clear</button>);
 
 /* eslint-disable react/no-multi-comp, no-useless-constructor */
 class GroceryListItem extends React.PureComponent {
