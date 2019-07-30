@@ -1,20 +1,16 @@
-<!-- Perform the following tasks:
-
-Retrieve the value of a node using nodeValue.
-Change the value of a node using nodeValue.
-Retrieve the value of a node attribute.
-Change the value of a node attribute -->
-
 <html>
 
-<head>
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>JavaScript and the Document Object Model</title>
 </head>
 
 <body>
   <div id="page">
     <div id="header">
-      <h1 id="title">Page title</h1>
+      <h1 id="title" name="page-title">Page title</h1>
     </div>
     <div id="content">
       <h2>Content title</h2>
@@ -22,6 +18,16 @@ Change the value of a node attribute -->
       <p>More copy goes here</p>
     </div>
   </div>
+  <script>
+    (function () {
+      const title = document.getElementById("title");
+      const titleNode = title.childNodes[0];
+      const titleNodeValue = titleNode.nodeValue;
+      titleNode.nodeValue = "Page Title Changed";
+      let titleNameAttribute = title.attributes[1];
+      title.setAttribute("name", "page-title-changed");
+    })();
+  </script>
 </body>
 
 </html>

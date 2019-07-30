@@ -1,37 +1,42 @@
-<!-- Knowing how to traverse the DOM using JavaScript provides a foundation to altering an HTML
-  page in real time. Using the HTML markup in Listing 1, perform these tasks:
-
-Use the firstChild property to access an element.
-Use the lastChild property to access an element.
-Use the nextSibling property to access an element.
-Use the previousSibling property to access an element.
-Use the parentNode property to access an element.
-Use the childNodes property to access a group of child elements -->
-
 <html>
-
-<head>
-
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>JavaScript and the Document Object Model</title>
 </head>
 
 <body>
 
   <div id="page">
-  
+
     <div id="header">
       <h1 id="title">Page title</h1>
     </div>
-  
+
     <div id="content">
-    
+
       <h2>Content title</h2>
-    
+
       <p>Some copy goes here</p>
-    
+
       <p>More copy goes here</p>
-      </div>
     </div>
+  </div>
+  <script>
+    (function () {
+      const pageElement = document.getElementById("page");
+      const header = pageElement.firstElementChild.innerHTML;
+      const lastChild = pageElement.lastElementChild.innerHTML;
+      const nextSibling = document.getElementById("header").nextElementSibling.innerHTML;
+      const previousSibling = document.getElementById("content").previousElementSibling.innerHTML;
+      const parentNode = document.getElementById("header").parentElement;
+      const childNodes = pageElement.childNodes;
+      const elements = [["header", header], ["lastChild", lastChild],
+      ["nextSibiling", nextSibling], ["previousSibling", previousSibling], ["parentNode", parentNode], ["childNodes", childNodes]];
+      console.table(elements);
+    })();
+  </script>
 </body>
 
 </html>

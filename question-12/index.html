@@ -1,13 +1,9 @@
-<!-- Perform the following tasks:
-
-Use the appendChild method to add a node.
-Use the insertBefore method to add a node.
-Use the removeChild method to remove a node.
-Use the replaceChild method to replace a node. -->
-
 <html>
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>JavaScript and the Document Object Model</title>
 </head>
 
@@ -21,7 +17,56 @@ Use the replaceChild method to replace a node. -->
       <p>Some copy goes here</p>
       <p>More copy goes here</p>
     </div>
+    <div id="buttons-div">
+      <button id="append-child-button">Append Child</button>
+      <button id="insert-before-button">Insert Before</button>
+      <button id="remove-child-button">Remove Child</button>
+      <button id="replace-child-button">Replace Child</button>
+    </div>
   </div>
+  <script>
+    (function () {
+      const appendChildButton = document.getElementById("append-child-button");
+      const insertBeforeButton = document.getElementById("insert-before-button");
+      const removeChildButton = document.getElementById("remove-child-button");
+      const replaceChildButton = document.getElementById("replace-child-button");
+
+      const contentNode = document.getElementById('content');
+      appendChildButton.addEventListener("click", () => {
+        const contentNode = document.getElementById('content');
+        const paragraphNode = document.createElement("P");
+        const textNode = document.createTextNode("Text node appended");
+        paragraphNode.appendChild(textNode);
+        contentNode.appendChild(paragraphNode);
+      });
+
+      insertBeforeButton.addEventListener("click", () => {
+        const paragraphNode = document.createElement("P");
+        const textNode = document.createTextNode("I am inserted before");
+        paragraphNode.appendChild(textNode);
+        contentNode.insertBefore(paragraphNode, contentNode.childNodes[4]);
+      });
+
+      removeChildButton.addEventListener("click", () => {
+        const childNode = document.querySelectorAll("div#content p")[0];
+        if (!childNode) {
+          return false;
+        }
+        contentNode.removeChild(childNode);
+      });
+
+      replaceChildButton.addEventListener("click", () => {
+        const childNode = document.querySelectorAll("div#content p")[0];
+        if (!childNode) {
+          return false;
+        }
+        const paragraphNode = document.createElement("P");
+        const textNode = document.createTextNode("i am replace node");
+        paragraphNode.appendChild(textNode);
+        contentNode.replaceChild(paragraphNode, childNode);
+      });
+    })();
+  </script>
 </body>
 
 </html>
