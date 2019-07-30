@@ -1,13 +1,5 @@
 import React from 'react';
 
-/*
-  
-
-  Task 4: Clicking on a grocery item should change its color to red. Clicking again should change
-          it back to black. Red means the item has been purchased.
-
-*/
-
 class GroceryList extends React.Component {
   constructor(props) {
     super(props);
@@ -65,8 +57,6 @@ class GroceryList extends React.Component {
   }
 }
 
-// Render grocery name from component's properties.
-// If you have a problem, check `this.props` in the console.
 /* eslint-disable react/no-multi-comp, no-useless-constructor */
 
 class GroceryListItem extends React.Component {
@@ -90,6 +80,6 @@ class GroceryListItem extends React.Component {
   }
 }
 
-// Do prop validation here using the package `prop-types`
+//TODO: Do prop validation here using the package `prop-types`
 
 export default GroceryList;
