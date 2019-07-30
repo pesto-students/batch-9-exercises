@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+const helloworld = <h1>Hello World</h1>;
+
 // Task: Render "Hello World" text.
 class HelloWorld extends Component {
   // All components *must* have a `render` method defined.
@@ -10,7 +12,7 @@ class HelloWorld extends Component {
 
   render() {
     return (
-      <h1>Fill this h1 tag with your heading!</h1>
+      helloworld
     );
   }
 }
