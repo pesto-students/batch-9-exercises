@@ -1,4 +1,5 @@
-import LifeCycle from './components/01-LifeCycle';
+/* eslint-disable import/extensions */
+import LifeCycle from './components/01-LifeCycle.jsx';
 import StopWatch from './components/02-StopWatch';
 import FetchGithubData from './components/03-FetchGithubData';
 import RenderProps from './components/04-RenderProps';
