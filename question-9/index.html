@@ -7,11 +7,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Highlight</title>
+  <style>
+  .highlight {
+    background-color: coral;
+  }
+  </style>
 </head>
 
 <body>
-
+    <p class="highlight-bold">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type <b>and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised</b> in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      <b>and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised</b> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever si
+    </p>
 </body>
-
+<script>
+  function createEventOnHoverHighlight (element) {
+    element.onmouseover = (elem ) => {
+      element.classList.add("highlight");
+    }
+    element.onmouseleave = (elem) => {
+      element.classList.remove("highlight");
+    }
+  }
+  let boldTags = document.querySelectorAll('p.highlight-bold b');
+  boldTags.forEach(createEventOnHoverHighlight);
+</script>
 </html>

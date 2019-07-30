@@ -1,9 +1,3 @@
-<!-- Perform the following tasks:
-
-Retrieve the value of a node using nodeValue.
-Change the value of a node using nodeValue.
-Retrieve the value of a node attribute.
-Change the value of a node attribute -->
 
 <html>
 
@@ -23,5 +17,16 @@ Change the value of a node attribute -->
     </div>
   </div>
 </body>
-
+<script type="text/javascript">
+    var heading = document.getElementsByTagName("h1")[0];
+    const headerNode = heading.childNodes[0]
+    const headingValue = headerNode.nodeValue;
+    const headAttributes = heading.getAttributeNode('id');
+    
+    setTimeout(()=>{
+      heading.childNodes[0].nodeValue = 'Custom Heading';
+      headAttributes.value = 'custom-title';
+    },2000)
+    
+</script>
 </html>

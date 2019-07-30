@@ -23,5 +23,19 @@ Use the replaceChild method to replace a node. -->
     </div>
   </div>
 </body>
-
+<script type="text/javascript">
+const newElement = document.createTextNode('This is the dynamically newly created text.');
+const replaceElement = document.createTextNode('This is replaced text.');
+const insertBeforeElement = document.createTextNode('This is insertedBefore text.');
+const contentDiv = document.getElementById('content');
+const firstContentChild = contentDiv.getElementsByTagName('p');
+const nextSibling = contentDiv.nextSibling;
+// const secondSiblingOfContent = contentDiv.nextSibling;
+setTimeout(() => {
+  contentDiv.appendChild(newElement);
+  contentDiv.removeChild(firstContentChild);
+  contentDiv.replaceChild(replaceElement,nextSibling);
+  // contentDiv.insertBefore(newElement, secondSiblingOfContent);
+}, 2000);
+</script>
 </html>
