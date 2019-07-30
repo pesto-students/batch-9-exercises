@@ -1,8 +1,8 @@
+/* eslint-disable import/extensions */
 import HelloWorld from './components/01-HelloWorld';
 import MovieList from './components/02-MovieList';
-// eslint-disable-next-line import/extensions
 import FavoriteMovie from './components/03-FavoriteMovie.jsx';
-import GroceryList from './components/04-GroceryList';
+import GroceryList from './components/04-GroceryList.jsx';
 
 const routes = [{
   path: '/01',
