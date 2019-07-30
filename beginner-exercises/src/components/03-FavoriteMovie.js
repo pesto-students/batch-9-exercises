@@ -17,7 +17,7 @@ class FavoriteMovie extends Component {
     return (
       <div>
         <p>
-          My favorite movie is{this.state.movie}
+          My favorite movie is
           <span style={{ color: 'blue' }}>{' ' + this.state.movie}</span>
         </p>
         <input
