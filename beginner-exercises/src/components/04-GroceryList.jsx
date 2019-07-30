@@ -29,28 +29,19 @@ class GroceryList extends React.Component {
 
   render() {
     const { groceries } = this.state;
-    /*
-      Properties are a way to pass parameters to your React components.
-      We mentioned this in the third exercise. Properties are to React
-      components what attributes are to HTML elements.
-
-      Below you can see how to pass properties to child components.
-      We have defined a `grocery` property for each `GroceryListItem`.
-    */
     const groceriesComponents = groceries.map(item => ( // eslint-disable-line no-unused-vars
       <GroceryListItem grocery={item} />
     ));
-    // Hint: Don't forget about putting items into `ul`
     return (
       <div>
-        Put your code here
+        <ul>
+          {groceriesComponents}
+        </ul>
       </div>
     );
   }
 }
 
-// Render grocery name from component's properties.
-// If you have a problem, check `this.props` in the console.
 /* eslint-disable react/no-multi-comp, no-useless-constructor */
 class GroceryListItem extends React.Component {
   constructor(props) {
@@ -60,7 +51,7 @@ class GroceryListItem extends React.Component {
   render() {
     return (
       <li>
-        Put your code here.
+        {this.props.grocery.name}
       </li>
     );
   }
