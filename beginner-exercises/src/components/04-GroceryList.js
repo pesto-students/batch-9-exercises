@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 
 /*
@@ -24,11 +27,17 @@ class GroceryList extends React.Component {
     super(props);
     this.state = {
       groceries: [{ name: 'Apples' }, { name: 'KitKat' }, { name: 'Red Bull' }],
+      newItem: '',
     };
   }
 
+  handleSubmit() {
+    const { newItem, groceries } = this.state;
+    this.setState({ groceries: [...groceries, { name: newItem }], newItem: '' });
+  }
+
   render() {
-    const { groceries } = this.state;
+    const { newItem, groceries } = this.state;
     /*
       Properties are a way to pass parameters to your React components.
       We mentioned this in the third exercise. Properties are to React
@@ -43,7 +52,17 @@ class GroceryList extends React.Component {
     // Hint: Don't forget about putting items into `ul`
     return (
       <div>
-        Put your code here
+        <ul>
+          <GroceryListItem groceries={groceries} />
+        </ul>
+        <form>
+          <label htmlFor="moreGroceries">
+            Put more items
+            <input type="text" value={newItem} onChange={event => this.setState({ newItem: event.target.value })} name="moreGroceries" />
+          </label>
+          <input type="submit" onClick={() => this.handleSubmit.bind(this)} />
+        </form>
+        <button type="button" onClick={() => this.setState({ groceries: [] })}>Clear list</button>
       </div>
     );
   }
@@ -58,11 +77,9 @@ class GroceryListItem extends React.Component {
   }
 
   render() {
-    return (
-      <li>
-        Put your code here.
-      </li>
-    );
+    const { groceries } = this.props;
+    // eslint-disable-next-line react/prop-types
+    return groceries.map(item => <li key={item.name}>{item.name}</li>);
   }
 }
 

@@ -1,3 +1,5 @@
+/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable react/jsx-filename-extension */
 import React, { Component } from 'react';
 
 // We will create dynamic list of movies. Let's see how to render
@@ -12,8 +14,9 @@ class MovieList extends Component {
   // Refer to App.css for a list a classes or add one yourself
   render() {
     return (
-      <ul className="FILL ME">
+      <ul className="movies-list">
         <li>The Godfather</li>
+        <li>Iron Man</li>
       </ul>
     );
   }

@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 
 // Task: Render "Hello World" text.
@@ -10,7 +12,7 @@ class HelloWorld extends Component {
 
   render() {
     return (
-      <h1>Fill this h1 tag with your heading!</h1>
+      <h1>Hello World!</h1>
     );
   }
 }
