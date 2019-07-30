@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React from 'react';
 
@@ -84,12 +86,20 @@ const ClearButton = props => (<button onClick={props.onClear}>Clear</button>);
 class GroceryListItem extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.state = {
+      purchased: false,
+    };
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick() {
+    this.setState({ purchased: !this.state.purchased });
   }
 
   render() {
+    const { purchased } = this.state;
     return (
-      // eslint-disable-next-line react/jsx-no-comment-textnodes
-      <li>
+      <li onClick={this.onClick} style={{ color: purchased ? 'red' : 'black', cursor: 'pointer' }}>
         {this.props.grocery.name}
       </li>
     );
