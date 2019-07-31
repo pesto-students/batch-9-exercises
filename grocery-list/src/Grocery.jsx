@@ -7,10 +7,15 @@ class Grocery extends React.Component {
     this.state = { items: [], text: '' };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.clearList = this.clearList.bind(this);
   }
 
   handleChange(event) {
     this.setState({ text: event.target.value });
+  }
+
+  clearList() {
+    this.setState({ items: [] }); 
   }
 
   handleSubmit(event) {
@@ -42,6 +47,12 @@ class Grocery extends React.Component {
           />
           <button>
             Add
+          </button>
+          <button 
+            type="button"
+            onClick={this.clearList}
+          >
+            Clear List
           </button>
         </form>
         <GroceryList items={this.state.items} />
