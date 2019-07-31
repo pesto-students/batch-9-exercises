@@ -10,7 +10,7 @@ const InputComponent = ({
 }) => {
   const defaultErrorStyle = { color: 'red' };
   return (<div>
-    <label htmlFor="" >{labelName}</label>
+    <label htmlFor={labelName} >{labelName}</label>
     <input
       onChange={onChangeFunc}
       {...props}

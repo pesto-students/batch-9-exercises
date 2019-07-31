@@ -1,10 +1,25 @@
-import React, { PureComponent } from "react";
-
+import React, { PureComponent } from 'react';
+import InputComponent from '../components/form-components/InputComponent';
+import FormGroup from '../components/form-components/FormGroup'
 class GithubFetchUserRepoForm extends PureComponent {
     
-    state = { username:null , }
-    render() {
+    state = { username:{attributeName:'username',value:null} , }
+    handleChangeFunction = this.handleChangeFunction.bind(this);
 
+    handleChangeFunction({ target:{ name, value } }){
+        const { username } = this.state;
+        if( username.attributeName === name ) {
+            username.value = value;
+            this.setState({username});
+        }
+    }
+    render() {
+        const { username } = this.state;
+        <div>
+            <FormGroup onChangeFunc={handleChangeFunction}>
+                <InputComponent name={username.attributeName} id={username.attributeName}  />
+            </FormGroup>
+        </div>
     }
 }
 
