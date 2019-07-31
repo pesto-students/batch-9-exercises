@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-// import axios from 'axios';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 
 /**
  * Axios is a promise based HTTP client for the browser and node.js.
@@ -21,18 +21,20 @@ import React, { Component } from 'react';
  */
 /* eslint-disable react/no-unused-state */
 const GithubRepos = ({ repos }) => {
+  const reposList = repos
+    .map(repo => <li key={repo.name}>Name: {repo.name}, Url: {repo.html_url}</li>);
   return (
     <ul>
-      {/* Task: The list of repos here */}
+      {reposList}
     </ul>
   );
-}
+};
 
 // Task: Open the console in the browser. There will be a warning
 // about incorrect prop type for user.
 // Define the correct prop type for the prop `repos`
 GithubRepos.propTypes = {
-
+  repos: PropTypes.array.isRequired,
 };
 
 /* eslint-disable react/no-multi-comp */
@@ -43,21 +45,40 @@ class UsernameForm extends Component {
       username: '',
       repos: [],
     };
+    this.getRepos = this.getRepos.bind(this);
+    this.usernameChanged = this.usernameChanged.bind(this);
   }
+
+  getRepos() {
+    const GITHUBAPI = `https://api.github.com/users/${this.state.username}/repos`;
+    axios.get(GITHUBAPI)
+      .then((response) => {
+        const repoNameAndUrl = response
+          .data.map(res => ({ name: res.name, html_url: res.html_url }));
+        this.setState({ repos: repoNameAndUrl });
+      });
+  }
+
+  usernameChanged({ target }) {
+    const { value } = target;
+    this.setState({ username: value });
+  }
+
+
   render() {
     return (
       <div>
         <input
           type="text"
           name="username"
+          onChange={e => this.usernameChanged(e)}
         />
         <button
-          onClick={() => {}}
+          onClick={this.getRepos}
         >
           Get Repos
         </button>
-        {/* Task: Display the results here. Use GithubRepos Component.
-          It should be a list of repos of the user entered */}
+        <GithubRepos repos={this.state.repos} />
       </div>
     );
   }
