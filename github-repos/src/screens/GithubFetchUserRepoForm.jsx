@@ -7,3 +7,5 @@ class GithubFetchUserRepoForm extends PureComponent {
 
     }
 }
+
+export default GithubFetchUserRepoForm;
