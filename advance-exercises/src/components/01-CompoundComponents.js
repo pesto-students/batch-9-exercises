@@ -19,33 +19,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class RadioGroup extends React.Component {
-  static propTypes = {
-    // defaultValue: PropTypes.string,                UN-COMMENT THIS LINE
-    children: PropTypes.shape().isRequired,
-  };
-  render() {
-    return (
-      <div>{this.props.children}</div>
-    );
-  }
+const context = React.createContext({
+  defaultValue: 'fm',
+  handleClick: () => { },
+  style: '',
+});
+const { Provider, Consumer } = context;
+
+
+function RadioIcon({ style, isSelected, children }) {
+  <Consumer>
+    {({ style, children }) => <div style={style}>{children}</div>}
+  </Consumer>
 }
-
-class RadioOption extends React.Component {
-  static propTypes = {
-    // value: PropTypes.string,                       UN-COMMENT THIS LINE
-    children: PropTypes.shape().isRequired,
-  };
-
-  render() {
-    return (
-      <div>
-        <RadioIcon isSelected={false} /> {this.props.children}
-      </div>
-    );
-  }
-}
-
 class RadioIcon extends React.Component {
   static propTypes = {
     isSelected: PropTypes.bool.isRequired,
@@ -65,6 +51,39 @@ class RadioIcon extends React.Component {
           background: this.props.isSelected ? 'rgba(0, 0, 0, 0.05)' : '',
         }}
       />
+    );
+  }
+}
+
+class RadioGroup extends React.Component {
+  static propTypes = {
+    defaultValue: PropTypes.string,
+    // children: PropTypes.shape().isRequired,
+  };
+  render() {
+    return (
+      <div>{this.props.children}</div>
+    );
+  }
+}
+
+class RadioOption extends React.Component {
+  static propTypes = {
+    value: PropTypes.string,
+    // children: PropTypes.shape().isRequired,
+  };
+  state = { isSelected: this.props.isSelected || false };
+
+  handleClick() {
+    console.log('handle click');
+    this.setState(({ isSelected }) => ({ isSelected: !isSelected }));
+  }
+
+  render() {
+    return (
+      <div>
+        <RadioIcon isSelected={this.state.isSelected} onClick={this.handleClick} /> {this.props.children}
+      </div>
     );
   }
 }
