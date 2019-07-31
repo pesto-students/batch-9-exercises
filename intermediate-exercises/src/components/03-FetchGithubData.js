@@ -1,6 +1,9 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/jsx-filename-extension */
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-// import axios from 'axios';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 
 /**
  * Axios is a promise based HTTP client for the browser and node.js.
@@ -20,19 +23,18 @@ import React, { Component } from 'react';
  *  https://api.github.com/users/{username}/repos
  */
 /* eslint-disable react/no-unused-state */
-const GithubRepos = ({ repos }) => {
-  return (
-    <ul>
-      {/* Task: The list of repos here */}
-    </ul>
-  );
-}
+const GithubRepos = ({ repos }) => (
+  <ul>
+    {repos.map(element => (<li key={element}>{element}</li>))}
+  </ul>
+);
+
 
 // Task: Open the console in the browser. There will be a warning
 // about incorrect prop type for user.
 // Define the correct prop type for the prop `repos`
 GithubRepos.propTypes = {
-
+  repos: PropTypes.array,
 };
 
 /* eslint-disable react/no-multi-comp */
@@ -43,21 +45,34 @@ class UsernameForm extends Component {
       username: '',
       repos: [],
     };
+    this.handleClick = this.handleClick.bind(this);
   }
+
+  handleClick() {
+    const { username } = this.state;
+    axios.get(`https://api.github.com/users/${username}/repos`)
+      .then(response => this.setState({ repos: response.data.map(el => el.name) }));
+  }
+
   render() {
+    const { repos, username } = this.state;
     return (
       <div>
         <input
           type="text"
           name="username"
+          value={username}
+          onChange={(event) => {
+            this.setState({ username: event.target.value });
+          }}
         />
         <button
-          onClick={() => {}}
+          type="button"
+          onClick={this.handleClick}
         >
           Get Repos
         </button>
-        {/* Task: Display the results here. Use GithubRepos Component.
-          It should be a list of repos of the user entered */}
+        <GithubRepos repos={repos} />
       </div>
     );
   }
