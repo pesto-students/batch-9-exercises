@@ -1,9 +1,14 @@
+/* eslint-disable import/extensions */
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
+import GroceryList from './components/GroceryList.jsx';
 
-import './App.css';
+import './styles/App.css';
 
 const App = () => (
-  <div>App</div>
+  <div>
+    <GroceryList />
+  </div>
 );
 
 export default App;
