@@ -28,3 +28,4 @@ InputComponent.propTypes = {
 InputComponent.defaultProps = {
   errorMsg: null,
 };
+export default InputComponent;

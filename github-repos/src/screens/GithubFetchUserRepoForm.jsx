@@ -15,11 +15,11 @@ class GithubFetchUserRepoForm extends PureComponent {
     }
     render() {
         const { username } = this.state;
-        <div>
-            <FormGroup onChangeFunc={handleChangeFunction}>
+        return (<div>
+            <FormGroup onChangeFunc={this.handleChangeFunction}>
                 <InputComponent name={username.attributeName} id={username.attributeName}  />
             </FormGroup>
-        </div>
+        </div>);
     }
 }
 
