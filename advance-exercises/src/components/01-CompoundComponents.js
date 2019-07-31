@@ -21,26 +21,54 @@ import PropTypes from 'prop-types';
 
 class RadioGroup extends React.Component {
   static propTypes = {
-    // defaultValue: PropTypes.string,                UN-COMMENT THIS LINE
+    defaultValue: PropTypes.string,
     children: PropTypes.shape().isRequired,
   };
+  constructor (props) {
+    super(props)
+    this.state = {
+      selected: this.props.defaultValue,
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(value) {
+    this.setState({ selected: value });
+  }
+
   render() {
+    const changedChildren = React.Children.map(this.props.children, child => {
+      return React.cloneElement(child, { onToggle: this.handleClick, name: this.props.name, isSelected: this.state.selected, });
+    })
+    console.log(this.state.selected);
     return (
-      <div>{this.props.children}</div>
+      <div>{changedChildren}</div>
     );
   }
 }
 
 class RadioOption extends React.Component {
   static propTypes = {
-    // value: PropTypes.string,                       UN-COMMENT THIS LINE
+    value: PropTypes.string,
     children: PropTypes.shape().isRequired,
-  };
+  };  
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSelected: false,
+    }
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.props.onToggle(this.props.value);
+  }
 
   render() {
     return (
-      <div>
-        <RadioIcon isSelected={false} /> {this.props.children}
+      <div onClick={this.toggle}>
+        <RadioIcon isSelected={this.props.isSelected === this.props.value}/> {this.props.children}
       </div>
     );
   }
@@ -70,12 +98,19 @@ class RadioIcon extends React.Component {
 }
 
 class CompoundComponents extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      defaultValue: 'fm',
+    }
+  }
+  
   render() {
     return (
       <div>
         <h1>♬ It is about time that we all turned off the radio ♫</h1>
 
-        <RadioGroup defaultValue="fm">
+        <RadioGroup name='radio' defaultValue={this.state.defaultValue}>
           <RadioOption value="am">AM</RadioOption>
           <RadioOption value="fm">FM</RadioOption>
           <RadioOption value="tape">Tape</RadioOption>
