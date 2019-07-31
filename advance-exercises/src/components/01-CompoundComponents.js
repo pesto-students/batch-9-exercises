@@ -20,33 +20,58 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class RadioGroup extends React.Component {
+
   static propTypes = {
-    // defaultValue: PropTypes.string,                UN-COMMENT THIS LINE
+    defaultValue: PropTypes.string,
     children: PropTypes.shape().isRequired,
   };
+
   render() {
+    const { children, defaultValue } = this.props;
     return (
-      <div>{this.props.children}</div>
+      <div>{React.Children.map(children, child => {
+        return React.cloneElement(child, { toggle: this.handleClick, name:this.props.name, selected: defaultValue });
+        }
+      )}
+      </div>
     );
   }
 }
 
 class RadioOption extends React.Component {
   static propTypes = {
-    // value: PropTypes.string,                       UN-COMMENT THIS LINE
+    value: PropTypes.string,                       
     children: PropTypes.shape().isRequired,
   };
 
+  markClick() {
+    console.log('RadioOption Clicked!');
+  }
+
   render() {
+    const { defaultValue, value, children} = this.props;
     return (
       <div>
-        <RadioIcon isSelected={false} /> {this.props.children}
+        <RadioIcon isSelected={value === defaultValue} onCLick={this.markClick}/> {this.props.children}
       </div>
     );
   }
 }
 
 class RadioIcon extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSelected: false
+    }
+    this.markClick = this.markClick.bind(this);
+  }
+
+  markClick() {
+    console.log('RadioIcon Clicked!');
+
+  };
+
   static propTypes = {
     isSelected: PropTypes.bool.isRequired,
   };
@@ -54,6 +79,7 @@ class RadioIcon extends React.Component {
   render() {
     return (
       <div
+        onClick = {this.markClick}
         style={{
           borderColor: '#ccc',
           borderWidth: 3,
