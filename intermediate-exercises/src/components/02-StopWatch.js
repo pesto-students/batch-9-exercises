@@ -1,28 +1,55 @@
 import React, { Component } from 'react';
 
-/*
-* Exercise 2:
-*
-*  Create a `StopWatch` component that has a Start/Stop button and a Clear
-*  button.
-*
-*  Pressing Start will start a timer and the lapsed time in
-*  milliseconds should be displayed above the buttons.
-*
-*  Once started the Start button should change to Stop. Clicking Stop
-*  will stop the timer but lapsed time will be preserved.
-*
-*  Clicking Start again will resume the timer from where it left off.
-*
-*  Clicking Clear will stop the timer if it's running and reset the lapsed time to 0.
-*/
-
 class StopWatch extends Component {
+  constructor(props) {
+    super(props);
+    this.START = 'start';
+    this.STOP = 'stop';
+    this.state = {
+      time: 0,
+      intervalInstance: null,
+      buttonState: this.STOP,
+    };
+    this.changeTime = this.changeTime.bind(this);
+    this.clearTime = this.clearTime.bind(this);
+  }
+
+  changeTime() {
+    if (this.state.buttonState === this.START) {
+      clearInterval(this.state.intervalInstance);
+      this.setState({ intervalInstance: null, buttonState: this.STOP });
+    } else {
+      const intervalInstance = setInterval(() => {
+        const { time: newTime } = this.state;
+        this.setState({ time: newTime + 1000 });
+      }, 1000);
+      this.setState({ intervalInstance: intervalInstance, buttonState: this.START });
+    }
+  }
+
+  clearTime() {
+    clearInterval(this.state.intervalInstance);
+    this.setState({ time: 0, buttonState: this.STOP, intervalInstance: null });
+  }
+
   render() {
+    const { buttonState, time } = this.state;
     return (
-      <div>Stop Watch</div>
+      <div>
+        <h2>Stop Watch</h2>
+        <p>{time}</p>
+        <div>
+          <Button className={buttonState === this.START ? 'stop-btn' : 'start-btn'}
+            onClick={this.changeTime} name="start" text={buttonState === this.START ? this.STOP : this.START} />
+          <Button className="clear-btn" name="clear" onClick={this.clearTime} text="clear" />
+        </div>
+      </div >
     );
   }
+}
+
+function Button({ className, onClick, text }) {
+  return <button className={className} onClick={onClick}>{text}</button>;
 }
 
 export default StopWatch;

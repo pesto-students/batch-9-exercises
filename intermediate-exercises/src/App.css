@@ -24,3 +24,21 @@ ul {
   list-style: none;
   color: black;
 }
+
+.start-btn, .stop-btn, .clear-btn {
+  background-color: green;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 20px;
+  margin: 20px;
+}
+
+.stop-btn{
+  background-color: red;
+}
+
+.clear-btn{
+  background-color: black;
+  color: white;
+}
