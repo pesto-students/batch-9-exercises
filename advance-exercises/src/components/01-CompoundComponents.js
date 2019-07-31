@@ -20,27 +20,49 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class RadioGroup extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      checkValue: ''
+    };
+
+    this.handleRadioOption = this.handleRadioOption.bind(this);
+  }
   static propTypes = {
-    // defaultValue: PropTypes.string,                UN-COMMENT THIS LINE
-    children: PropTypes.shape().isRequired,
+    defaultValue: PropTypes.string,
+    children: PropTypes.shape().isRequired
   };
+
+  handleRadioOption(event, value) {
+    this.setState({ checkValue: value });
+  }
   render() {
-    return (
-      <div>{this.props.children}</div>
+    const radioOptions = React.Children.map(this.props.children, radioOption =>
+      React.cloneElement(radioOption, {
+        onClick: this.handleRadioOption,
+        checked: this.state.checkedValues === radioOption.props.value
+      })
     );
+
+    return <div>{radioOptions}</div>;
   }
 }
 
 class RadioOption extends React.Component {
   static propTypes = {
-    // value: PropTypes.string,                       UN-COMMENT THIS LINE
-    children: PropTypes.shape().isRequired,
+    value: PropTypes.string,
+    children: PropTypes.shape().isRequired
   };
 
   render() {
     return (
       <div>
-        <RadioIcon isSelected={false} /> {this.props.children}
+        <RadioIcon
+          value={this.props.value}
+          isSelected={this.props.checked}
+          onClick={this.props.onClick(this.props.value)}
+        />{' '}
+        {this.props.children}
       </div>
     );
   }
@@ -48,7 +70,7 @@ class RadioOption extends React.Component {
 
 class RadioIcon extends React.Component {
   static propTypes = {
-    isSelected: PropTypes.bool.isRequired,
+    isSelected: PropTypes.bool.isRequired
   };
 
   render() {
@@ -62,8 +84,9 @@ class RadioIcon extends React.Component {
           width: 16,
           display: 'inline-block',
           cursor: 'pointer',
-          background: this.props.isSelected ? 'rgba(0, 0, 0, 0.05)' : '',
+          background: this.props.isSelected ? 'rgba(0, 0, 0, 0.05)' : ''
         }}
+        onClick={this.props.onClick}
       />
     );
   }
@@ -75,11 +98,11 @@ class CompoundComponents extends React.Component {
       <div>
         <h1>♬ It is about time that we all turned off the radio ♫</h1>
 
-        <RadioGroup defaultValue="fm">
-          <RadioOption value="am">AM</RadioOption>
-          <RadioOption value="fm">FM</RadioOption>
-          <RadioOption value="tape">Tape</RadioOption>
-          <RadioOption value="aux">Aux</RadioOption>
+        <RadioGroup defaultValue='fm'>
+          <RadioOption value='am'>AM</RadioOption>
+          <RadioOption value='fm'>FM</RadioOption>
+          <RadioOption value='tape'>Tape</RadioOption>
+          <RadioOption value='aux'>Aux</RadioOption>
         </RadioGroup>
       </div>
     );
