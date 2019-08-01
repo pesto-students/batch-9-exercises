@@ -32,3 +32,8 @@ body {
   flex: 1;
   justify-content: center;
 }
+
+.link {
+  text-decoration: none;
+  color: white;
+}
