@@ -24,6 +24,10 @@ body {
   justify-content: center;
 }
 
+.nav li a{
+  text-decoration: none;
+}
+
 .active {
   background-color: #ff8e00;
   height: 100%;
