@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Switch, Route, Redirect, Link } from 'react-router-dom';
+import { Switch, Route, Redirect, Link } from 'react-router-dom';
 
 import './styles/App.css';
 import ColorList from './components/ColorList';
