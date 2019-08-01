@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../styles/App.css';
-import { paths } from '../routes';
+import { routes } from '../routes';
 
 export default class Navbar extends Component {
   render() {
+    const navigationLinks = routes.map((route) => {
+      if (!route.name) {
+        return null;
+      }
+      return (<NavLink to={route.link} activeClassName="active" > <li>{route.name}</li> </NavLink>);
+    });
     return (
       <ul className="nav">
-        <NavLink to={paths.homePath} activeClassName="active" > <li>Home</li> </NavLink>
-        <NavLink to={paths.aboutPath} activeClassName="active" ><li>About Us</li></NavLink>
-        <NavLink to={paths.contactPath} activeClassName="active" ><li>Contact</li></NavLink>
+        {navigationLinks}
       </ul>
     );
   }

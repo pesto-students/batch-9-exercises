@@ -11,21 +11,23 @@ const paths = {
 };
 const routes = [
   {
-    component: Contact,
-    link: paths.contactPath,
+    component: Home,
+    link: paths.homePath,
+    name: 'Home',
   },
   {
     component: About,
     link: paths.aboutPath,
+    name: 'About',
   },
   {
-    component: Home,
-    link: paths.homePath,
+    component: Contact,
+    link: paths.contactPath,
+    name: 'Contact',
   },
   {
     component: FourOhFour,
     link: paths.fourOhFour,
-
   },
 ];
 
