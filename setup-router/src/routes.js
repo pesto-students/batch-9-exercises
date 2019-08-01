@@ -1,11 +1,13 @@
 import About from './components/About';
 import Contact from './components/Contact';
 import Home from './components/Home';
+import FourOhFour from './components/404';
 
 const paths = {
   contactPath: '/contact',
   homePath: '/home',
   aboutPath: '/about',
+  fourOhFour: '/404',
 };
 const routes = [
   {
@@ -19,6 +21,11 @@ const routes = [
   {
     component: Home,
     link: paths.homePath,
+  },
+  {
+    component: FourOhFour,
+    link: paths.fourOhFour,
+
   },
 ];
 
