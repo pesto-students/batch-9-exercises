@@ -1,19 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import '../styles/ColorList.css';
 
 const ColorList = (props) => {
-  const colorLinks = props.colors.map(color => (
-    <li key={color.hex}>
-      {color.name}
-    </li>
-  ));
+  const colorLinks = props.colors.map(color => {
+    const to = {
+      pathname: `colors/${color.name}`,
+      state: { hex: color.hex, name: color.name }
+    }
+    return (
+      <li key={color.hex}>
+        <Link to={to}>{color.name}</Link>
+      </li>
+    );
+  });
   return (
     <div className="App">
       <header className="App-header">
         <h1 className="App-title">Welcome to the Colorful Router.</h1>
-        <h1>Add a color</h1>
+        <h1><Link to={{}}>Add a color</Link></h1>
       </header>
       <div className="App-intro">
         <p>Please select a color.</p>
