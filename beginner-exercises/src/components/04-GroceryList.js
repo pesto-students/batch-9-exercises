@@ -1,68 +1,59 @@
 import React from 'react';
-
-/*
-  In this exercises, you'll will make a reactive grocery list.
-
-  Task 1: Fill the `return` of `GroceryList` render method. It should return
-        a list of `GroceryListItem`. You need to display the groceries names
-        using `this.props` in `GroceryListItem`. We already prepared the variable
-        `groceriesComponents` inside `render` method containing a list of these items for you.
-
-
-  Task 2: Create an input box and a button. User should be able to add more grocery items and click
-          the `Add` button to add it to the list displaying the item.
-
-  Task 3: Create a button to clear the whole list.
-
-  Task 4: Clicking on a grocery item should change its color to red. Clicking again should change
-          it back to black. Red means the item has been purchased.
-
-*/
+import ButtonComponent from './utils/ButtonComponent';
+import GroceryAddComponent from './utils/GroceryAddComponent';
+import GroceryListItem from './utils/GroceryListItem';
 
 class GroceryList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      groceries: [{ name: 'Apples' }, { name: 'KitKat' }, { name: 'Red Bull' }],
+      groceries: [
+        { name: 'Apples', id: 1, selected: false },
+        { name: 'KitKat', id: 2, selected: false },
+        { name: 'Red Bull', id: 3, selected: false }],
     };
+    this.addGrocery = this.addGrocery.bind(this);
+    this.clearGroceryList = this.clearGroceryList.bind(this);
+    this.toggleSelect = this.toggleSelect.bind(this);
+  }
+
+  addGrocery(grocery) {
+    const { groceries } = this.state;
+    const nextGroceryId = groceries.length + 1;
+    groceries.push({ name: grocery, id: nextGroceryId, selected: false });
+    this.setState({ groceries });
+  }
+
+  clearGroceryList() {
+    this.setState({ groceries: [] });
+  }
+
+  toggleSelect(groceryId) {
+    const { groceries } = this.state;
+    const indexOfGroceryId = groceries.findIndex(grocery => grocery.id === groceryId);
+    groceries[indexOfGroceryId].selected = !groceries[indexOfGroceryId].selected;
+    this.setState({ groceries });
   }
 
   render() {
     const { groceries } = this.state;
-    /*
-      Properties are a way to pass parameters to your React components.
-      We mentioned this in the third exercise. Properties are to React
-      components what attributes are to HTML elements.
-
-      Below you can see how to pass properties to child components.
-      We have defined a `grocery` property for each `GroceryListItem`.
-    */
-    const groceriesComponents = groceries.map((
-      item // eslint-disable-line no-unused-vars
-    ) => <GroceryListItem grocery={item.name} key={item.name} />);
+    const groceriesComponents = groceries.map(item => (
+      <GroceryListItem
+        groceryName={item.name}
+        groceryId={item.id}
+        isSelected={item.selected}
+        key={item.id}
+        toggleSelect={this.toggleSelect}
+      />
+    ));
     // Hint: Don't forget about putting items into `ul`
     return (
       <div>
         <ul>{groceriesComponents}</ul>
+        <GroceryAddComponent addGroceryFunction={this.addGrocery} />
+        <ButtonComponent name="Clear List" clickFunc={this.clearGroceryList} />
       </div>
     );
   }
 }
-
-// Render grocery name from component's properties.
-// If you have a problem, check `this.props` in the console.
-/* eslint-disable react/no-multi-comp, no-useless-constructor */
-class GroceryListItem extends React.PureComponent {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const { grocery } = this.props;
-    return <li>{grocery}</li>;
-  }
-}
-
-// Do prop validation here using the package `prop-types`
-
 export default GroceryList;
