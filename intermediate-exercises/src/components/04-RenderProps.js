@@ -64,22 +64,41 @@ class App extends React.Component {
   }
 
   render() {
+    const { error, coords } = this.state;
     return (
       <div>
         <h1>Geolocation</h1>
-        {this.state.error ? (
-          <div>Error: {this.state.error.message}</div>
-        ) : (
-          <dl>
-            <dt>Latitude</dt>
-            <dd>{this.state.coords.latitude || <p>create a loader and show here...</p>}</dd>
-            <dt>Longitude</dt>
-            <dd>{this.state.coords.longitude || <p>create a loader and show here...</p>}</dd>
-          </dl>
-        )}
+        <GeoPosition error={error} coOrdinates={coords} />
       </div>
     );
   }
 }
 
 export default App;
+
+class GeoPosition extends React.PureComponent {
+  render() {
+    const { error, coOrdinates } = this.props;
+    return (
+      <div>
+        {error ? (
+          <div>Error: {error.message}</div>
+      ) : (
+        <dl>
+          <dt>Latitude</dt>
+          <dd>{coOrdinates.latitude || <LineLoader />}</dd>
+          <dt>Longitude</dt>
+          <dd>{coOrdinates.longitude || <LineLoader />}</dd>
+        </dl>
+      )}
+      </div>
+
+    );
+  }
+}
+
+const LineLoader = () => (
+  <div >
+    <b>Loading....</b>
+  </div>
+);
