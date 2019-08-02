@@ -125,20 +125,28 @@ class GeoAddress extends React.Component {
     super(props);
     this.state = { address: 'fetching address....' };
   }
-  async componentDidUpdate(prevProps) {
-    console.log('called cdm');
-    console.log(this.props.latitude, this.props.longitude);
+
+  componentDidMount() {
+    this.getAddress();
+  }
+
+  componentDidUpdate(prevProps) {
     if (this.props.latitude !== prevProps.latitude) {
-      if (this.props.latitude !== null && this.props.longitude !== null) {
-        const address = await getAddressFromCoords(
-          this.props.latitude,
-          this.props.longitude
-        );
-        this.setState({ address: address });
-      }
+      this.getAddress();
     }
   }
 
+  async getAddress() {
+    if (this.props.latitude !== null && this.props.longitude !== null) {
+      const address = await getAddressFromCoords(
+        this.props.latitude,
+        this.props.longitude
+      );
+      this.setState({
+        address: ''
+      });
+    }
+  }
   render() {
     return (
       <div>
