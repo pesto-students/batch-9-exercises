@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Pokemon />  renders correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Pokemon
+    pokemon={
+        Object {
+            "pokemon": Object {
+              "id": 0,
+              "name": "bulbasaur",
+              "url": "https://pokeapi.co/api/v2/pokemon/1/",
+            },
+          }
+    }
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <button
+          className="pokemons__sprite"
+          style={
+                    Object {
+                              "backgroundImage": "url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/undefined.png)",
+                            }
+          }
+          type="button"
+/>,
+        <p
+          className="pokemons__name"
+/>,
+      ],
+      "className": "pokemons__item",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "className": "pokemons__sprite",
+          "style": Object {
+            "backgroundImage": "url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/undefined.png)",
+          },
+          "type": "button",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "button",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": undefined,
+          "className": "pokemons__name",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "p",
+      },
+    ],
+    "type": "li",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <button
+            className="pokemons__sprite"
+            style={
+                        Object {
+                                    "backgroundImage": "url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/undefined.png)",
+                                  }
+            }
+            type="button"
+/>,
+          <p
+            className="pokemons__name"
+/>,
+        ],
+        "className": "pokemons__item",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "className": "pokemons__sprite",
+            "style": Object {
+              "backgroundImage": "url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/undefined.png)",
+            },
+            "type": "button",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": undefined,
+            "className": "pokemons__name",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "p",
+        },
+      ],
+      "type": "li",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
+`;
