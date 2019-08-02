@@ -19,4 +19,10 @@ describe('<Pokemon/>', () => {
     );
     expect(toJson(tree)).toMatchSnapshot();
   });
+
+  test('should display pokemon name inside a <p>', () => {
+    const pokemon = shallow(<Pokemon pokemon={{ id: 0, name: 'pikachu' }} />);
+    const pTag = pokemon.find('p');
+    expect(pTag.text()).toBe('pikachu');
+  });
 });
