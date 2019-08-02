@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Page /> matches the snapshot when isFetched is false 1`] = `
+<div
+  className="pokemons__wrapper"
+>
+  <Search
+    onChange={[Function]}
+  />
+  <ul
+    className="pokemons"
+  />
+</div>
+`;
+
+exports[`<Page /> matches the snapshot when isFetched is true 1`] = `
+<div
+  className="pokemons__wrapper"
+>
+  <Search
+    onChange={[Function]}
+  />
+  <ul
+    className="pokemons"
+  >
+    <p>
+      Loading...
+    </p>
+  </ul>
+</div>
+`;
