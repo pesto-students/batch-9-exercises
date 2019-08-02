@@ -23,4 +23,7 @@ describe('diffArray', () => {
     expect(diffArray([1, 'calf', 3, 'piglet'], [7, 'filly']))
       .toEqual([1, 'calf', 3, 'piglet', 7, 'filly']);
   });
+  test('should throw TypeError', () => {
+    expect(() => diffArray('Abcd', 'efgh')).toThrow(TypeError);
+  });
 });

@@ -1,13 +1,11 @@
 
-function diffArray(...args) {
-  const firstArray = args[0];
-  const secondArray = args[1];
-  const differenceArray = [];
-  for (const element in firstArray) {
-    if (secondArray.indexOf(element) === -1) {
-      differenceArray.push(element);
-    }
+function diffArray(firstArray, secondArray) {
+  if (!Array.isArray(firstArray) || !Array.isArray(secondArray)) {
+    throw new TypeError(`Expected: array and array, Received: ${typeof firstArray} and ${typeof secondArray}`);
   }
+  const firstMinusSecond = firstArray.filter(element => !secondArray.includes(element));
+  const secondMinusFirst = secondArray.filter(element => !firstArray.includes(element));
+  const differenceArray = firstMinusSecond.concat(secondMinusFirst);
   return differenceArray;
 }
 
