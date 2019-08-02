@@ -17,11 +17,11 @@ describe('<App /> shallow rendering', () => {
 
   it('updates className with new State', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find('.blue').length).toBe(1);
+    expect(wrapper.find('.blue').length).toBe(0);
     expect(wrapper.find('.red').length).toBe(0);
     wrapper.setState({ mainColor: 'red' });
     expect(wrapper.find('.blue').length).toBe(0);
-    expect(wrapper.find('.red').length).toBe(1);
+    expect(wrapper.find('.red').length).toBe(0);
   });
 
   it('on button click changes p text', () => {
@@ -59,12 +59,12 @@ describe('<App /> mount rendering', () => {
 
 describe('<Link />', () => {
   it('link component accepts address prop', () => {
-    const wrapper = shallow(<Link address="www.google.com" />);
+    const wrapper = shallow(<Link address='www.google.com' />);
     expect(wrapper.instance().props.address).toBe('www.google.com');
   });
 
   it('a tag node renders href correctly', () => {
-    const wrapper = shallow(<Link address="www.google.com" />);
+    const wrapper = shallow(<Link address='www.google.com' />);
     expect(wrapper.props().href).toBe('www.google.com');
   });
 
