@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 
 import './styles/App.css';
@@ -12,7 +13,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        Welcome to React
+        <h1>Welcome to React</h1>
+        <h2>{this.state.input}</h2>
+        <input type="text" value={this.state.input} onChange={e => this.setState({ input: e.currentTarget.value })} />
+        <p className={this.state.mainColor}>abc</p>
       </div>
     );
   }
