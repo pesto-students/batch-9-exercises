@@ -32,17 +32,21 @@ class RadioGroup extends React.Component {
   }
 
   handleOnKeyDown(event) {
-    console.log('The tarhet is',event.currentTarget)
     event.stopPropagation();
+    let optionElementToSelect;
     switch(event.key){
-      case 'Enter': console.log('Enter');
+      case 'Enter' || ' ': optionElementToSelect = event.target;
                     break;
-      case 'ArrowUp': break;
-      case 'ArrowDown': break;
-      case 'ArrowLeft': break;
-      case ' ': break;
+      case 'ArrowUp' || 'ArrowLeft': optionElementToSelect = event.target.previousSibling;
+                  break;
+      case 'ArrowDown' || 'ArrowRight': optionElementToSelect = event.target.nextSibling;
+                break; 
+     
       default: break;
 
+    }
+    if(optionElementToSelect) {
+      
     }
   }
 
