@@ -26,9 +26,26 @@ class RadioGroup extends React.Component {
     defaultValue: PropTypes.string,
     children: PropTypes.shape().isRequired,
   };
+
   changeSelectedOption(value){
     this.setState({selectedValue:value})
   }
+
+  handleOnKeyDown(event) {
+    console.log('The tarhet is',event.currentTarget)
+    event.stopPropagation();
+    switch(event.key){
+      case 'Enter': console.log('Enter');
+                    break;
+      case 'ArrowUp': break;
+      case 'ArrowDown': break;
+      case 'ArrowLeft': break;
+      case ' ': break;
+      default: break;
+
+    }
+  }
+
   render() {
     const { name } = this.props;
     const { selectedValue } = this.state;
@@ -37,7 +54,7 @@ class RadioGroup extends React.Component {
       return React.cloneElement(child,{name, selectFunction:this.changeSelectedOption, isSelected: value === selectedValue})
     })
     return (
-      <div tabIndex='0'>{renderedChildren}</div>
+      <div onKeyDown={this.handleOnKeyDown}>{renderedChildren}</div>
     );
   }
 }
@@ -49,21 +66,23 @@ class RadioOption extends React.Component {
     children: PropTypes.shape().isRequired,
     isSelected:PropTypes.bool.isRequired,
   };
+
   static RadioIcon2 = () => {
 return (
   <RadioOptionContext.Consumer  >
-    {({name, value, isSelected}) => {
-      return (<RadioIcon isSelected={isSelected} name={name} value={value} />)
+    {({isSelected, name}) => {
+      return (<RadioIcon isSelected={isSelected} name={name} />)
       }} 
   </RadioOptionContext.Consumer>
 
  )
   }
+  
   render() {
     const { name, value, isSelected, selectFunction } = this.props;
     return (
-      <div onClick={()=>{selectFunction(value)}}>
-       <RadioOptionContext.Provider name={name} value={value} isSelected={isSelected}>
+      <div onClick={()=>{selectFunction(value)}} tabIndex='0'>
+       <RadioOptionContext.Provider value={{isSelected, name}} >
           {this.props.children}
        </RadioOptionContext.Provider>
       </div>
@@ -74,11 +93,13 @@ return (
 class RadioIcon extends React.Component {
   static propTypes = {
     isSelected: PropTypes.bool.isRequired,
+    name: PropTypes.string.isRequired,
   };
 
   render() {
     return (
       <div
+        name={this.props.name}
         style={{
           borderColor: '#ccc',
           borderWidth: 3,
