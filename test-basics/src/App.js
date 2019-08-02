@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        Welcome to React
+        <h1 className={`.${this.state.mainColor}`}>Welcome to React</h1>
       </div>
     );
   }

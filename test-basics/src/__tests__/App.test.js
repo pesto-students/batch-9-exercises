@@ -1,11 +1,8 @@
 import React from 'react';
-import Adapter from 'enzyme-adapter-react-16';
-import { shallow, mount, configure } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
 import App, { Link } from '../App';
-
-configure({ adapter: Adapter });
 
 describe('<App /> shallow rendering', () => {
   it('h1 contains correct text', () => {
