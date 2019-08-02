@@ -1,5 +1,8 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 import '../styles/NewColor.css';
 
@@ -61,4 +64,4 @@ NewColor.propTypes = {
   history: PropTypes.shape().isRequired,
 };
 
-export default NewColor;
+export default withRouter(NewColor);

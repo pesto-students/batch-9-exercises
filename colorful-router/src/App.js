@@ -1,10 +1,13 @@
+/* eslint-disable  */
 import React, { Component } from 'react';
-// import { Switch, Route, Redirect, Link } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
+
+import history from './history';
 
 import './styles/App.css';
 import ColorList from './components/ColorList';
-// import Color from './components/Color';
-// import NewColor from './components/NewColor';
+import Color from './components/Color';
+import NewColor from './components/NewColor';
 
 class App extends Component {
   constructor(props) {
@@ -36,9 +39,14 @@ class App extends Component {
     const colorListComponent = () => (
       <ColorList colors={this.state.colors} />
     );
-
     return (
-      colorListComponent()
+      <Router history={history}>
+        <Switch>
+          <Route path={['/', '/colors']} exact component={() => colorListComponent()} />
+          <Route path="/colors/new" exact component={() => <NewColor addColor={this.handleAdd} />} />
+          <Route path="/colors/:color" exact component={Color} />
+        </Switch>
+      </Router>
     );
   }
 }

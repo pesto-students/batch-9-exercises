@@ -1,19 +1,23 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 import '../styles/ColorList.css';
 
 const ColorList = (props) => {
   const colorLinks = props.colors.map(color => (
     <li key={color.hex}>
-      {color.name}
+      <NavLink to={{ pathname: `/colors/${color.name}`, state: { color } }}>
+        {color.name}
+      </NavLink>
     </li>
   ));
   return (
     <div className="App">
       <header className="App-header">
         <h1 className="App-title">Welcome to the Colorful Router.</h1>
-        <h1>Add a color</h1>
+        <h1><NavLink to="/colors/new">Add a color</NavLink></h1>
       </header>
       <div className="App-intro">
         <p>Please select a color.</p>
