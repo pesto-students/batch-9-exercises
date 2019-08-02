@@ -9,12 +9,10 @@ describe('<App /> shallow rendering', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.find('h1').text()).toBe('Welcome to React');
   });
-
   it('matches the snapshot', () => {
     const tree = shallow(<App />);
     expect(toJson(tree)).toMatchSnapshot();
   });
-
   it('updates className with new State', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.find('.blue').length).toBe(1);
@@ -23,7 +21,6 @@ describe('<App /> shallow rendering', () => {
     expect(wrapper.find('.blue').length).toBe(0);
     expect(wrapper.find('.red').length).toBe(1);
   });
-
   it('on button click changes p text', () => {
     const wrapper = shallow(<App />);
     const button = wrapper.find('button');
@@ -31,7 +28,6 @@ describe('<App /> shallow rendering', () => {
     button.simulate('click');
     expect(wrapper.find('.button-state').text()).toBe('Yes!');
   });
-
   it('on input change, title changes text', () => {
     const wrapper = shallow(<App />);
     const input = wrapper.find('input');
@@ -39,7 +35,6 @@ describe('<App /> shallow rendering', () => {
     input.simulate('change', { currentTarget: { value: 'Pesto' } });
     expect(wrapper.find('h2').text()).toBe('Pesto');
   });
-
   it('handleStrings function returns correctly', () => {
     const wrapper = shallow(<App />);
     const trueReturn = wrapper.instance().handleStrings('Hello World');
@@ -62,12 +57,10 @@ describe('<Link />', () => {
     const wrapper = shallow(<Link address="www.google.com" />);
     expect(wrapper.instance().props.address).toBe('www.google.com');
   });
-
   it('a tag node renders href correctly', () => {
     const wrapper = shallow(<Link address="www.google.com" />);
     expect(wrapper.props().href).toBe('www.google.com');
   });
-
   it('returns null with true hide prop', () => {
     const wrapper = shallow(<Link hide={false} />);
     expect(wrapper.find('a').length).toBe(1);
