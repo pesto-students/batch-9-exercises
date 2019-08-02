@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import { paths } from '../routes';
 import '../styles/NewColor.css';
 
 class NewColor extends Component {
@@ -21,7 +21,7 @@ class NewColor extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.addColor({ ...this.state });
-    this.props.history.push('/colors');
+    this.props.history.push(paths.color);
   }
 
   render() {

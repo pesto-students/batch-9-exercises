@@ -1,20 +1,8 @@
 
 const paths = {
-  color: '/color',
-  newColor: '/color/new',
-  colorPage: '/color/:color',
+  color: '/colors',
+  newColor: '/colors/new',
+  colorPage: '/colors/:colorName',
 };
-// const routes = [{
-//   path: paths.color,
-//   component: Color,
-// },
-// {
-//   path: paths.newColor,
-//   component: NewColor,
-// },
-// {
-//   path: paths.colorPage,
-//   component: ColorList,
-// },
-// ];
+
 export { paths };
