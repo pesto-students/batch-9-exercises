@@ -15,4 +15,7 @@ describe('convertToRoman', () => {
     expect(convertToRoman(2014)).toEqual('MMXIV');
     expect(convertToRoman(3999)).toEqual('MMMCMXCIX');
   });
+  test('hould throw TypeError in arg not integer', () => {
+    expect(() => convertToRoman(Infinity)).toThrow(TypeError);
+  })
 });

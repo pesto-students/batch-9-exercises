@@ -7,4 +7,12 @@ describe('rot13', () => {
     expect(rot13('SERR YBIR?')).toEqual('FREE LOVE?');
     expect(rot13('GUR DHVPX OEBJA QBT WHZCRQ BIRE GUR YNML SBK.')).toEqual('THE QUICK BROWN DOG JUMPED OVER THE LAZY FOX.');
   });
+  test('throws TypeError if input not of type string', () => {
+    expect(() => { rot13(null); }).toThrow(TypeError);
+    expect(() => {
+      rot13({
+        value: 'SERR CVMMN!',
+      });
+    }).toThrow(TypeError);
+  });
 });

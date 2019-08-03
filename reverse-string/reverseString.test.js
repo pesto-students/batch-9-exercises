@@ -6,4 +6,7 @@ describe('reverseString', () => {
     expect(reverseString('')).toEqual('');
     expect(reverseString('Greetings from Earth')).toEqual('htraE morf sgniteerG');
   });
+  test('throw TypeError if input not a string', () => {
+    expect(() => { reverseString(123); }).toThrow(TypeError);
+  });
 });

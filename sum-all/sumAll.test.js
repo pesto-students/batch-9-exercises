@@ -10,4 +10,8 @@ describe('sumAll', () => {
     expect(sumAll([5, 10])).toBe(45);
     expect(sumAll([10, 5])).toBe(45);
   });
+  test('throw error if any argument not of type number', () => {
+    expect(() => { sumAll(['ab', undefined]); }).toThrow(TypeError);
+    expect(() => { sumAll([null, 5]); }).toThrow(TypeError);
+  });
 });
