@@ -17,7 +17,7 @@ describe('<Pokemon />', () => {
     const pokemonImageUrl = `url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${props.id}.png)`;
     const imageUrlOfPokemon = pokemon.find('button').props().style.backgroundImage;
     expect(imageUrlOfPokemon).not.toBe(undefined);
-    expect(imageUrlOfPokemon).toEqual(pokemonImageUrl)
+    expect(imageUrlOfPokemon).toEqual(pokemonImageUrl);
   });
 
   test('displays correct pokemon name', () => {

@@ -9,7 +9,17 @@ exports[`<Page /> matches the snapshot when isFetched is false 1`] = `
   />
   <ul
     className="pokemons"
-  />
+  >
+    <Pokemon
+      key="0"
+      pokemon={
+        Object {
+          "id": 1,
+          "name": "balbasaur",
+        }
+      }
+    />
+  </ul>
 </div>
 `;
 
