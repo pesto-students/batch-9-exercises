@@ -46,7 +46,10 @@ class App extends Component {
 
 export class Link extends Component {
   render() {
-    return null;
+    const { hide, address } = this.props;
+    return (
+      hide ? '' : <a href={address}>Go to google. </a>
+    );
   }
 }
 
