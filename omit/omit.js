@@ -1,13 +1,13 @@
 
 function omit(propertiesToOmit, object) {
-  const requiredKeysInObject = Object.keys(object).filter(key => !propertiesToOmit.includes(key));
-  const requiredObject = requiredKeysInObject.reduce((currentObj, key) => {
-    return {
-      [key]: object[key],
-      ...currentObj,
-    };
-  }, {});
-  return requiredObject;
+  const copyOfObject = {};
+  for (const key in object) {
+    if (key) {
+      copyOfObject[key] = object[key];
+    }
+  }
+  propertiesToOmit.forEach(key => delete copyOfObject[key]);
+  return copyOfObject;
 }
 
 export {
