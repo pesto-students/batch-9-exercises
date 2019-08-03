@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-// import { Switch, Route, Redirect, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 import './styles/App.css';
 import ColorList from './components/ColorList';
-// import Color from './components/Color';
-// import NewColor from './components/NewColor';
+import Color from './components/Color';
+import NewColor from './components/NewColor';
+import { paths } from './routes';
 
 class App extends Component {
   constructor(props) {
@@ -34,11 +35,49 @@ class App extends Component {
 
   render() {
     const colorListComponent = () => (
-      <ColorList colors={this.state.colors} />
+      <Route
+        exact
+        path={paths.color}
+        render={() => {
+  return (<ColorList colors={this.state.colors} />);
+      }}
+      />
     );
-
+    const selectedColorPage = () => (
+      <Route
+        exact
+        path={paths.colorPage}
+        render={(routerProps) => {
+        const { match: { params } } = routerProps;
+        const colorPage = this.state.colors.find(color => color.name === params.colorName);
+        if (colorPage) {
+          return (
+            <Color color={colorPage} />
+          );
+        }
+        if (params.colorName === 'new') {
+          return (
+            <NewColor addColor={this.handleAdd} {...routerProps} />
+          );
+        }
+          return (
+            <div />
+          );
+      }}
+      />
+    );
     return (
-      colorListComponent()
+      <div>
+        <Router>
+          <div>
+            {colorListComponent()}
+            {selectedColorPage()}
+            <Redirect to={paths.color} />
+          </div>
+
+        </Router>
+      </div>
+
     );
   }
 }

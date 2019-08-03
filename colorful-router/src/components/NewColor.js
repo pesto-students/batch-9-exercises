@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import { paths } from '../routes';
 import '../styles/NewColor.css';
 
 class NewColor extends Component {
@@ -9,9 +9,29 @@ class NewColor extends Component {
     this.state = {
       name: '',
       hex: '#ffffff',
+      onBeforeLeavingMessage: 'Are you sure you want to leave this page?',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onUnload = this.onUnload.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('beforeunload', this.onUnload);
+  }
+
+
+  componentWillUnmount() {
+    window.removeEventListener('beforeunload', this.onUnload);
+  }
+
+  onUnload(event) {
+    event.preventDefault();
+    const { onBeforeLeavingMessage, name, hex } = this.state;
+    if (name || hex !== '#ffffff') {
+      event.returnValue = onBeforeLeavingMessage;
+    }
+    // return event;
   }
 
   handleChange(e) {
@@ -21,8 +41,9 @@ class NewColor extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.addColor({ ...this.state });
-    this.props.history.push('/colors');
+    this.props.history.push(paths.color);
   }
+
 
   render() {
     return (

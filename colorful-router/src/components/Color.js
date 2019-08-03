@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+import { paths } from '../routes';
 import '../styles/Color.css';
 
 const Color = (props) => {
@@ -10,7 +10,7 @@ const Color = (props) => {
     <div className="Color" style={{ backgroundColor: color.hex }}>
       <p>this is {color.name}.</p>
       <p>Isnt it beautiful?</p>
-      <p><Link to="/">Go back</Link></p>
+      <p><Link to={paths.color}>Go back</Link></p>
     </div>
   );
 };
