@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Search /> matches the snapshot 1`] = `
+<input
+  placeholder="Enter pokemon name..."
+  type="text"
+/>
+`;
