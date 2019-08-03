@@ -3,7 +3,7 @@
     "segmentName": "segment-1",
     "exercises": {
         "balanced-braces": {
-            "completed": false
+            "completed": true
         },
         "duplicate-letters": {
             "completed": true
