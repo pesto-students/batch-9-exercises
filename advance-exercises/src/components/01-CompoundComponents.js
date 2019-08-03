@@ -24,7 +24,7 @@ class RadioGroup extends React.Component {
   changeSelectedOption = this.changeSelectedOption.bind(this)
   static propTypes = {
     defaultValue: PropTypes.string,
-    children: PropTypes.shape().isRequired,
+    children: PropTypes.array.isRequired,
   };
 
   changeSelectedOption(value){
@@ -34,19 +34,28 @@ class RadioGroup extends React.Component {
   handleOnKeyDown(event) {
     event.stopPropagation();
     let optionElementToSelect;
-    switch(event.key){
-      case 'Enter' || ' ': optionElementToSelect = event.target;
-                    break;
+    console.log(`The key pressed is `,event.key)
+    switch (event.key) {
+      case ' ': optionElementToSelect = event.target;
+        break;
+      case 'Enter': optionElementToSelect = event.target;
+        break;
       case 'ArrowUp' || 'ArrowLeft': optionElementToSelect = event.target.previousSibling;
-                  break;
+        if (optionElementToSelect === null) {
+          optionElementToSelect = event.currentTarget.lastChild;
+        }
+        break;
       case 'ArrowDown' || 'ArrowRight': optionElementToSelect = event.target.nextSibling;
-                break; 
-     
-      default: break;
+        if (optionElementToSelect === null) {
+          optionElementToSelect = event.currentTarget.firstChild;
+        }
+        break;
 
+      default: break;
     }
-    if(optionElementToSelect) {
-      
+    if (optionElementToSelect) {
+      optionElementToSelect.focus();
+      optionElementToSelect.click();
     }
   }
 
@@ -67,8 +76,8 @@ const RadioOptionContext = React.createContext();
 class RadioOption extends React.Component {
   static propTypes = {
     value: PropTypes.string.isRequired,                       
-    children: PropTypes.shape().isRequired,
-    isSelected:PropTypes.bool.isRequired,
+    children: PropTypes.array.isRequired,
+    isSelected:PropTypes.bool,
   };
 
   static RadioIcon2 = () => {
@@ -128,7 +137,7 @@ class CompoundComponents extends React.Component {
         <RadioGroup defaultValue="fm" name="radio" >
           <RadioOption value="am">AM<RadioOption.RadioIcon2/></RadioOption>
           <RadioOption value="fm"><RadioOption.RadioIcon2/>FM</RadioOption>
-          <RadioOption value="tape"><RadioOption.RadioIcon2/>Tape</RadioOption>
+          <RadioOption value="tape">Tape <RadioOption.RadioIcon2/></RadioOption>
           <RadioOption value="aux"><RadioOption.RadioIcon2/>Aux</RadioOption>
         </RadioGroup>
       </div>
