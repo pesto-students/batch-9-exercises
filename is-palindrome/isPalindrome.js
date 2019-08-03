@@ -1,11 +1,17 @@
+const cleanedAndLowerCasedString = (string) => {
+  const charactersToBeAvoided = /[\W_]/g;
+  const cleanedString = string.replace(charactersToBeAvoided, '');
+  return cleanedString.toLowerCase();
+};
 
-function isPalindrome(arg) {
-  const input = arg.split('');
-  const reverse = input.reverse().join('');
-  if (arg === reverse) {
-    return true;
+function isPalindrome(string) {
+  let input = string;
+  if (typeof string === 'number') {
+    input = String(string);
   }
-  return false;
+  input = cleanedAndLowerCasedString(input);
+  const reverse = input.split('').reverse().join('');
+  return input === reverse;
 }
 
 export {
