@@ -21,13 +21,13 @@
       "completed": false
     },
     "flexbox": {
-      "completed": false
+      "completed": true
     },
     "floats": {
-      "completed": false
+      "completed": true
     },
     "grids": {
-      "completed": false
+      "completed": true
     }
   }
 }
