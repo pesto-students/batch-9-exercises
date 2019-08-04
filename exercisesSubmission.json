@@ -39,7 +39,7 @@
             "completed": true
         },
         "whatsapp": {
-            "completed": false
+            "completed": true
         }
     }
 }
