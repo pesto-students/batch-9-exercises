@@ -39,10 +39,10 @@
             "completed": true
         },
         "navigation-menu-start": {
-            "completed": false
+            "completed": true
         },
         "strikeout": {
-            "completed": false
+            "completed": true
         },
         "tooltip": {
             "completed": false
