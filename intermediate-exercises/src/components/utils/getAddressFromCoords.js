@@ -15,15 +15,16 @@ function wait(timeout, work) {
 const retryTimeout = 5000;
 
 function getAddressFromCoords(latitude, longitude) {
+  console.log('function called');
   const url = `${GoogleMapsAPI}/geocode/json?latlng=${latitude},${longitude}`;
 
   return fetch(url)
     .then(res => res.json())
-    .then((json) => {
-      return json.status === 'OVER_QUERY_LIMIT' ?
-        // Wait for the query limit to reset.
-        wait(retryTimeout, () => getAddressFromCoords(latitude, longitude)) :
-        json.results[0].formatted_address;
+    .then(json => {
+      return json.status === 'OVER_QUERY_LIMIT'
+        ? // Wait for the query limit to reset.
+          wait(retryTimeout, () => getAddressFromCoords(latitude, longitude))
+        : json.results[0].formatted_address;
     });
 }
 
@@ -38,9 +39,11 @@ function throttledGetAddressFromCoords(latitude, longitude) {
     lastCallTime = currentTime;
     promise = getAddressFromCoords(latitude, longitude);
   } else if (!alreadyWarned) {
-    window.alert('It looks like you\'re calling getAddressFromCoords many times ' +
+    window.alert(
+      "It looks like you're calling getAddressFromCoords many times " +
         'quickly in a loop. Take a closer look at the componentDidUpdate ' +
-        'function in <GeoAddress>...');
+        'function in <GeoAddress>...'
+    );
   }
 
   return promise;

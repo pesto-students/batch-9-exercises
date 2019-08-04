@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-// import axios from 'axios';
+import axios from 'axios';
 
 /**
  * Axios is a promise based HTTP client for the browser and node.js.
@@ -22,18 +22,23 @@ import React, { Component } from 'react';
 /* eslint-disable react/no-unused-state */
 const GithubRepos = ({ repos }) => {
   return (
-    <ul>
-      {/* Task: The list of repos here */}
-    </ul>
+    <ol>
+      {repos.map(repo => (
+        <li key={repo.url}>
+          {' '}
+          <a href={repo.url} style={{ color: 'blue' }}>
+            {repo.full_name}
+          </a>
+        </li>
+      ))}
+    </ol>
   );
-}
+};
 
 // Task: Open the console in the browser. There will be a warning
 // about incorrect prop type for user.
 // Define the correct prop type for the prop `repos`
-GithubRepos.propTypes = {
-
-};
+GithubRepos.propTypes = {};
 
 /* eslint-disable react/no-multi-comp */
 class UsernameForm extends Component {
@@ -41,23 +46,40 @@ class UsernameForm extends Component {
     super(props);
     this.state = {
       username: '',
-      repos: [],
+      repos: []
     };
+
+    this.fetchGithubRepos = this.fetchGithubRepos.bind(this);
+    this.inputChangeHandler = this.inputChangeHandler.bind(this);
   }
+
+  fetchGithubRepos() {
+    axios
+      .get('https://api.github.com/users/' + this.state.username + '/repos')
+      .then(res => {
+        this.setState({ repos: res.data || [] });
+        console.log(res);
+      })
+      .catch(err => console.log(err));
+  }
+
+  inputChangeHandler(event) {
+    this.setState({ username: event.target.value });
+  }
+
   render() {
     return (
       <div>
         <input
-          type="text"
-          name="username"
+          type='text'
+          name='username'
+          onChange={this.inputChangeHandler}
+          value={this.state.username}
         />
-        <button
-          onClick={() => {}}
-        >
-          Get Repos
-        </button>
+        <button onClick={this.fetchGithubRepos}>Get Repos</button>
         {/* Task: Display the results here. Use GithubRepos Component.
           It should be a list of repos of the user entered */}
+        <GithubRepos repos={this.state.repos} />
       </div>
     );
   }

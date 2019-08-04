@@ -29,7 +29,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
-// import getAddressFromCoords from './utils/getAddressFromCoords';
+import getAddressFromCoords from './utils/getAddressFromCoords';
 
 class App extends React.Component {
   constructor() {
@@ -37,46 +37,121 @@ class App extends React.Component {
     this.state = {
       coords: {
         latitude: null,
-        longitude: null,
+        longitude: null
       },
-      error: null,
+      error: null
     };
+    this.updateCoordinates = this.updateCoordinates.bind(this);
   }
+
+  updateCoordinates(position) {
+    this.setState({
+      coords: {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+      }
+    });
+  }
+
+  updateError(error) {
+    this.setState({ error });
+  }
+
+  render() {
+    return (
+      <div>
+        <GeoPosition
+          updateCoordinates={this.updateCoordinates}
+          updateError={this.updateError}
+          appState={this.state}
+        />
+        <GeoAddress
+          latitude={this.state.coords.latitude}
+          longitude={this.state.coords.longitude}
+        />
+      </div>
+    );
+  }
+}
+
+class GeoPosition extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  // }
 
   componentDidMount() {
     this.geoId = navigator.geolocation.watchPosition(
-      (position) => {
-        this.setState({
-          coords: {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          },
-        });
+      position => {
+        this.props.updateCoordinates(position);
       },
-      (error) => {
-        this.setState({ error });
-      },
+      error => {
+        this.props.updateError(error);
+      }
     );
   }
 
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this.geoId);
   }
-
   render() {
     return (
       <div>
         <h1>Geolocation</h1>
-        {this.state.error ? (
-          <div>Error: {this.state.error.message}</div>
+        {this.props.appState.error ? (
+          <div>Error: {this.props.appState.error.message}</div>
         ) : (
           <dl>
             <dt>Latitude</dt>
-            <dd>{this.state.coords.latitude || <p>create a loader and show here...</p>}</dd>
+            <dd>
+              {this.props.appState.coords.latitude || (
+                <p>create a loader and show here...</p>
+              )}
+            </dd>
             <dt>Longitude</dt>
-            <dd>{this.state.coords.longitude || <p>create a loader and show here...</p>}</dd>
+            <dd>
+              {this.props.appState.coords.longitude || (
+                <p>create a loader and show here...</p>
+              )}
+            </dd>
           </dl>
         )}
+      </div>
+    );
+  }
+}
+
+class GeoAddress extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { address: 'fetching address....' };
+  }
+
+  componentDidMount() {
+    this.getAddress();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.latitude !== prevProps.latitude) {
+      this.getAddress();
+    }
+  }
+
+  async getAddress() {
+    if (this.props.latitude !== null && this.props.longitude !== null) {
+      const address = await getAddressFromCoords(
+        this.props.latitude,
+        this.props.longitude
+      );
+      this.setState({
+        address: ''
+      });
+    }
+  }
+  render() {
+    return (
+      <div>
+        <h1> GeoAddress Composition</h1>
+        <p> {this.state.address} </p>
       </div>
     );
   }
