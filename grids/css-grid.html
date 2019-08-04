@@ -3,36 +3,25 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <title>CSS grids example</title>
   <style>
     .wrapper {
       display: grid;
-      grid-gap: 10px;
-      grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto;
-      margin: 0px auto;
-      padding: 0px;
-      width: 66%;
+      width: 60%;
+      margin: auto;
+      grid-template-columns: repeat(12, 1fr);
+      grid-gap: 20px;
     }
 
     .col {
-      background-color: pink;
-      grid-column: span 1;
-      /* width: 60px; */
-      grid-row: 1;
-    }
-
-    .col-1 {
-      /* grid-column: 1; */
-    }
-
-    .row-2 {
-      grid-row: 2;
-      grid-row: span 5;
+      background: pink;
     }
 
     .span6 {
       grid-column: span 6;
-      white-space: initial;
     }
 
     .span3 {
@@ -42,27 +31,37 @@
     .span2 {
       grid-column: span 2;
     }
+
+    .content {
+      display: table-caption;
+    }
   </style>
 </head>
 
 <body>
   <div class="wrapper">
-    <div class="col col-1">1</div>
-    <div class="col ">2</div>
-    <div class="col ">3</div>
+    <div class="col">1</div>
+    <div class="col">2</div>
+    <div class="col">3</div>
     <div class="col">4</div>
-    <div class="col ">5</div>
-    <div class="col ">6</div>
-    <div class="col ">7</div>
-    <div class="col ">8</div>
-    <div class="col ">9</div>
-    <div class="col ">10</div>
-    <div class="col ">11</div>
-    <div class="col ">12</div>
-    <div class="col row-2">13some content</div>
-    <div class="col span6 row-2">14this is more content</div>
-    <div class="col span3 row-2">15this is less</div>
-    <div class="col span2 row-2">16</div>
+    <div class="col">5</div>
+    <div class="col">6</div>
+    <div class="col">7</div>
+    <div class="col">8</div>
+    <div class="col">9</div>
+    <div class="col">10</div>
+    <div class="col">11</div>
+    <div class="col">12</div>
+    <div class="col">
+      <div class="content">13some content</div>
+    </div>
+    <div class="col span6">
+      <div class="content">14this is more content</div>
+    </div>
+    <div class="col span3">
+      <div class="content">15this is less</div>
+    </div>
+    <div class="col span2">16</div>
   </div>
 </body>
 
