@@ -23,27 +23,46 @@ class GroceryList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      groceries: [{ name: 'Apples' }, { name: 'KitKat' }, { name: 'Red Bull' }],
+      groceries: [{ name: 'Apples', id: 1 }, { name: 'KitKat', id: 2 }, { name: 'Red Bull', id: 3 }],
+      newGrocery: ''
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleClearClick = this.handleClearClick.bind(this);
+  }
+
+  handleChange(event) {
+    const newGrocery = event.target.value;
+    this.setState({ newGrocery: newGrocery });
+  }
+
+  handleClick() {
+    const newGrocery = this.state.newGrocery;
+    const groceries = this.state.groceries;
+    if (newGrocery === '') {
+      return;
+    }
+    const newGroceryObject = { name: newGrocery, id: Math.random() }
+    this.setState({ groceries: [...groceries, newGroceryObject], newGrocery: '' });
+  }
+
+  handleClearClick() {
+    this.setState({ groceries: [], newGrocery: '' });
   }
 
   render() {
     const { groceries } = this.state;
-    /*
-      Properties are a way to pass parameters to your React components.
-      We mentioned this in the third exercise. Properties are to React
-      components what attributes are to HTML elements.
-
-      Below you can see how to pass properties to child components.
-      We have defined a `grocery` property for each `GroceryListItem`.
-    */
     const groceriesComponents = groceries.map(item => ( // eslint-disable-line no-unused-vars
-      <GroceryListItem grocery={item} />
+      <GroceryListItem grocery={item} key={item.id} />
     ));
-    // Hint: Don't forget about putting items into `ul`
     return (
       <div>
-        Put your code here
+        <ul>
+          {groceriesComponents}
+        </ul>
+        <input type="text" value={this.state.newGrocery} onChange={event => this.handleChange(event)} />
+        <button onClick={this.handleClick} >Add</button>
+        <button onClick={this.handleClearClick} >Clear</button>
       </div>
     );
   }
@@ -58,9 +77,10 @@ class GroceryListItem extends React.Component {
   }
 
   render() {
+    const { grocery } = this.props;
     return (
       <li>
-        Put your code here.
+        {grocery.name}
       </li>
     );
   }
