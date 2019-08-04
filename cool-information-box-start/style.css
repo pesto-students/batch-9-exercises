@@ -2,4 +2,15 @@ html {
   font-family: sans-serif;
 }
 
-/* Your CSS below here */
+p {
+  padding: 40px;
+  width: 300px;
+  text-align: center;
+  background-color: rgb(219, 48, 48);
+  box-shadow: inset white 2px 1px 9px, inset black -2px -1px 8px, 5px 5px 10px #3d3d3d;
+  border-radius: 20px;
+  border: 1px solid  rgb(255, 35, 35);
+  font-size: xx-large;
+  color: rgb(255, 35, 35);
+  text-shadow: 4px 3px 3px #3d3d3d;
+}
