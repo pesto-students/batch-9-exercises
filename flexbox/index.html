@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>flexbox</title>
+    <style>
+        .box{
+            display: flex;
+            flex-direction: column;
+            left: 0;
+        }
+        .header{
+            background-color: #91007F;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color:white;
+        }
+        .container{
+            display: flex;
+            flex-direction: row;
+            
+        }
+        .box1{
+            flex:1;
+            background-color: #01FFFF;
+            padding: 20px 10px;
+            margin: 10px;
+        }
+
+        .box2{
+            flex:1;
+            background-color: #01FFFF;
+            padding: 20px 10px;
+            margin: 10px;
+        }
+        .box3{
+            flex:2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: space-around;
+            background-color: #01FFFF;
+            padding: 30px 10px;
+            margin: 10px;
+        }
+        .button-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .button-container button{
+            height: 35px;
+            margin: 10px;
+            flex:1;
+            font-size: 16px;
+        }
+
+    </style>
+  </head>
+  <body>
+      <div class="box"/>
+      <div class="header"> <h1>Complete flexbox example </h1></div>
+      <div class="container">
+            <div class="box1">
+                <h2> First Article</h2>
+                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem magnam delectus reiciendis ratione ad, a asperiores? Fugiat ullam vel sint, incidunt voluptas sed tenetur deserunt dicta impedit eius! Ipsa, debitis?</p>
+            </div>
+            <div class="box2">
+                    <h2> Second Article</h2>
+                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem magnam delectus reiciendis ratione ad, a asperiores? Fugiat ullam vel sint, incidunt voluptas sed tenetur deserunt dicta impedit eius! Ipsa, debitis?</p>
+            </div>
+            
+            <div class="box3">
+                <div class="button-container">
+                    <button>Smile</button>
+                    <button>Laugh</button>
+                    <button>Wink</button>
+                    <button>Shrug</button>
+                    <button>Blush</button>
+                </div>
+                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem magnam delectus reiciendis ratione ad, a asperiores? Fugiat ullam vel sint, incidunt voluptas sed tenetur deserunt dicta impedit eius! Ipsa, debitis?</p>
+                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem magnam delectus reiciendis ratione ad, a asperiores? Fugiat ullam vel sint, incidunt voluptas sed tenetur deserunt dicta impedit eius! Ipsa, debitis?</p>
+            
+            </div>
+            
+      </div>
+  </body>
+</html>

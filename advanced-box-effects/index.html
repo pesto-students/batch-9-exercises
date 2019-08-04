@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Text with image</title>
+    <style>
+      h3 {
+        color: black;
+
+        font-size: 85px;
+        font-family: Impact, Charcoal, sans-serif;
+      }
+      #design {
+        color: black;
+
+        font-size: 85px;
+        font-family: Impact, Charcoal, sans-serif;
+        background: url('./colorful-heart.png');
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .centered {
+        margin: auto;
+        padding-top: 50px;
+        padding-left: 23px;
+      }
+      .horizontal {
+        display: flex;
+        flex-direction: row;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horizontal">
+      <div
+        style="height: 330px ; width: 380px ; background-image: url('./colorful-heart.png'); background-repeat: no-repeat;"
+      >
+        <h3 class="centered">WOW</h3>
+      </div>
+      <h3 id="design">WOW</h3>
+    </div>
+  </body>
+</html>
