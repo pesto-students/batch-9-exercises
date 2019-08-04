@@ -4,13 +4,40 @@ It should open the whatsapp app on mobile and the message should appear in the a
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
-  
+
+  <form id="whatsapp-form">
+    <div>
+      <label for="message">Enter a message</label>
+    </div>
+    <div>
+      <textarea name="message"></textarea>
+    </div>
+    <input type="submit" value="Share via Whatsapp">
+  </form>
+  <script>
+    window.onload = function () {
+      const whatsappURL = 'https://api.whatsapp.com/send?text=';
+      const whatsappForm = document.getElementById("whatsapp-form");
+      whatsappForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const message = whatsappForm["message"].value;
+        if (!message) {
+          alert("Please enter a message");
+          return;
+        }
+        window.location.replace(`${whatsappURL}${message}`);
+      });
+    }
+  </script>
 </body>
+
 </html>
