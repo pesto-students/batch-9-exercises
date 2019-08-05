@@ -3,6 +3,8 @@ import React, { Component, Fragment } from 'react';
 import Post from './components/Post';
 import './App.css';
 import { fetchPagePosts } from './components/utils/getPageData';
+import {getCurrentPage, setCurrentPage} from './components/utils/pageHelper'
+
 class App extends Component {
   state = {
     currentPage: 1,
@@ -15,23 +17,45 @@ class App extends Component {
 
   componentDidMount() {
     const { currentPage } = this.state;
-    this.getPageData(currentPage);
+    const lastPage = getCurrentPage();
+    if(lastPage) {
+      this.setState({ currentPage: lastPage });
+      this.getPageData(lastPage);
+    } else {
+      this.getPageData(currentPage);
+    }
   }
   
   getPageData(pageNumber) {
     fetchPagePosts(pageNumber).then((response) => {
-     this.setState({posts:response.data});
+     this.setState({posts:response.data,});
     }).catch((e) => {
       console.error('Error while fetching page', e);
     })
   }
 
   handlePrevClick() {
-    this.setState({})
+    const { currentPage } = this.state;
+    const newPage = currentPage - 1;
+    this.setState(()=> {
+      const newState =  ({currentPage: newPage});
+      setCurrentPage(newPage);
+      return newState;
+    })
+
+    this.getPageData(newPage)
   }
 
   handleNextClick() {
+    const { currentPage } = this.state;
+    const newPage = currentPage + 1;
+    this.setState(()=> {
+      const newState =  ({currentPage: newPage});
+      setCurrentPage(newPage);
+      return newState;
+    })
 
+    this.getPageData(newPage)
   }
 
   render() {
