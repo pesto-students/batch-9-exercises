@@ -80,4 +80,17 @@ describe('truthCheck', () => {
       single: 'double',
     }], 'single')).toBe(false);
   });
+  test('predicate shuold be a string', () => {
+    expect(() => truthCheck([{
+      name: 'Pete',
+      onBoat: true,
+    }, {
+      name: 'Repeat',
+      onBoat: true,
+      alias: 'Repete',
+    }, {
+      name: 'FastFoward',
+      onBoat: true,
+    }], { predicate: 'onBoat' })).toThrow(TypeError);
+  });
 });

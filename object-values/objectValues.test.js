@@ -17,4 +17,9 @@ describe('objectValues', () => {
     const result = objectValues(obj);
     expect(result).toEqual(['hi', 'there', null]);
   });
+  it('should only accept an object', () => {
+    /* eslint no-new-wrappers */
+    const number = new Number(45);
+    expect(() => objectValues(number)).toThrow(TypeError);
+  });
 });

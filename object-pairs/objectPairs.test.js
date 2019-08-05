@@ -18,4 +18,9 @@ describe('objectPairs', () => {
     const result = objectPairs(obj);
     expect(result).toEqual([['x', 2], ['y', 5], ['z', 10]]);
   });
+  it('should only accept an object', () => {
+    /* eslint no-new-wrappers */
+    const number = new Number(45);
+    expect(() => objectPairs(number)).toThrow(TypeError);
+  });
 });

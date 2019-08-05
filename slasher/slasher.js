@@ -1,6 +1,7 @@
 
-function slasher(...args) {
-  return args;
+function slasher(array, position) {
+  const slashedArray = array.splice(position);
+  return slashedArray;
 }
 
 export {
