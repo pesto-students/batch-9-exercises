@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+//
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import App from './App';
@@ -11,9 +11,9 @@ import reducers from './redux/reducers';
 const logger = store => {
   return next => {
     return action => {
-      console.log('[Middleware] Dispatching', action);
+      console.log('[Middleware ] Dispatching', action);
       const result = next(action);
-      console.log('[Middleware] next state', store.getState());
+      console.log('[Middleware ] next state', store.getState());
       return result;
     };
   };
