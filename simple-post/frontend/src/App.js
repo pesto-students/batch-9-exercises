@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import Post from './components/Post';
 import './App.css';
 import { fetchPagePosts } from './components/utils/getPageData';
-import {getCurrentPage, setCurrentPage} from './components/utils/pageHelper'
+import {getCurrentPage, setCurrentPage} from './components/utils/pageHelper';
 
 class App extends Component {
   state = {
