@@ -9,22 +9,16 @@ class UsernameForm extends React.Component {
       repos: []
     };
 
-    this.fetchGithubRepos = this.fetchGithubRepos.bind(this);
     this.inputChangeHandler = this.inputChangeHandler.bind(this);
-  }
-
-  fetchGithubRepos() {
-    axios
-      .get('https://api.github.com/users/' + this.state.username + '/repos')
-      .then(res => {
-        this.setState({ repos: res.data || [] });
-        console.log(res);
-      })
-      .catch(err => console.log(err));
+    this.onButtonClick = this.onButtonClick.bind(this);
   }
 
   inputChangeHandler(event) {
     this.setState({ username: event.target.value });
+  }
+
+  onButtonClick() {
+    this.props.onSubmitClick(this.state.username);
   }
 
   render() {
@@ -36,8 +30,7 @@ class UsernameForm extends React.Component {
           onChange={this.inputChangeHandler}
           value={this.state.username}
         />
-        <button onClick={this.fetchGithubRepos}>Get Repos</button>
-        {/* <GithubRepos repos={this.state.repos} /> */}
+        <button onClick={this.onButtonClick}>Get Repos</button>
       </div>
     );
   }
