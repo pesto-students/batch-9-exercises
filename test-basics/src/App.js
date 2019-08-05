@@ -9,7 +9,7 @@ class App extends Component {
     input: '',
     mainColor: 'blue',
     paragraphText: 'No!',
-    h2Text: ''
+    h2Text: '',
   }
 
   handleClick() {
@@ -21,15 +21,19 @@ class App extends Component {
     const { value } = event.currentTarget;
     this.setState({ h2Text: value });
   }
+
+  handleStrings = (mayBeString) => {
+    return Boolean(typeof mayBeString === 'string' && mayBeString.length);
+  }
   render() {
     return (
       <div className="App">
         <h1>Welcome to React</h1>
         <h2>{this.state.h2Text}</h2>
         <div className={this.state.mainColor}></div>
-        <input onChange={(e) => this.handleChange(e)}></input>
+        <input onChange={(e) => this.handleChange(e)} />
         <p className="button-state">{this.state.paragraphText}</p>
-        <Link hide={false} address="www.google.com"></Link>
+        <Link hide={false} address="www.google.com" />
         <button onClick={this.handleClick.bind(this)}>Click Me!</button>
       </div>
     );
@@ -37,18 +41,12 @@ class App extends Component {
 }
 
 export class Link extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
-    if(this.props.display === false){
+    const { address, hide } = this.props;
+    if (hide) {
       return null;
     }
-
-    
-    return (
-      <a style={{ display: 'block' }} href={this.props.address}></a>
-    );
+    return <a href={address}>{address}</a>;
   }
 }
 
