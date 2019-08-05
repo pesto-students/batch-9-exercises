@@ -28,9 +28,10 @@
   <script type="text/javascript">
   function addToSessionStorage(event){
     event.preventDefault();
+    const prefixKey = 'world'
     const keyName = document.getElementById('key').value;
     const keyValue = document.getElementById('value').value;
-    sessionStorage.setItem(keyName, keyValue);
+    sessionStorage.setItem(`${prefixKey}`, {key:keyName, value:keyValue});
   }
   </script>
 </body>
