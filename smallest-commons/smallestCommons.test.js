@@ -10,4 +10,7 @@ describe('smallestCommons', () => {
     expect(smallestCommons([1, 13])).toBe(360360);
     expect(smallestCommons([23, 18])).toBe(6056820);
   });
+  test('should accept only an array', () => {
+    expect(() => smallestCommons({}, {})).toThrow(TypeError);
+  });
 });
