@@ -7,9 +7,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: [],
-      page: 1
+      posts: []
     };
+    localStorage.setItem('pageNumber', 1);
     this.getPosts = this.getPosts.bind(this);
     this.handleNextClick = this.handleNextClick.bind(this);
     this.handlePrevClick = this.handlePrevClick.bind(this);
@@ -17,6 +17,7 @@ class App extends Component {
   }
 
   getPosts(pageNumber) {
+    console.log('getPosts pn is' + pageNumber);
     const url = 'http://localhost:3001/posts/' + pageNumber;
     fetch(url, {
       method: 'GET',
@@ -25,15 +26,21 @@ class App extends Component {
       }
     })
       .then(res => res.json())
-      .then(data => this.setState({ posts: data.data, page: pageNumber }));
+      .then(data =>
+        this.setState({ posts: data.data }, () => {
+          localStorage.setItem('pageNumber', pageNumber);
+        })
+      );
   }
 
   handlePrevClick() {
-    this.getPosts(this.state.page - 1);
+    const pageNumber = localStorage.getItem('pageNumber') || 1;
+    this.getPosts(pageNumber - 1);
   }
 
   handleNextClick() {
-    this.getPosts(this.state.page + 1);
+    const pageNumber = localStorage.getItem('pageNumber') || 1;
+    this.getPosts(+pageNumber + 1);
   }
 
   render() {
@@ -42,10 +49,16 @@ class App extends Component {
         <h2>Posts</h2>
         <hr />
         <br />
-        <button onClick={this.handlePrevClick} disabled={this.state.page <= 1}>
+        <button
+          onClick={this.handlePrevClick}
+          disabled={(localStorage.getItem('pageNumber') || 1) <= 1}
+        >
           Previous
         </button>
-        <button onClick={this.handleNextClick} disabled={this.state.page > 9}>
+        <button
+          onClick={this.handleNextClick}
+          disabled={(localStorage.getItem('pageNumber') || 1) > 9}
+        >
           Next
         </button>
         <div>
