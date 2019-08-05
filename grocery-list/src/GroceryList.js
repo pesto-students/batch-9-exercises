@@ -1,11 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from './redux/actions';
 import GroceryListItem from './GroceryListItem';
-//
+
 class GroceryList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      groceries: [{ name: 'Apples' }, { name: 'KitKat' }, { name: 'Red Bull' }],
       inputValue: ''
     };
 
@@ -19,21 +20,18 @@ class GroceryList extends React.Component {
   }
 
   onAddButtonClick() {
+    const name = this.state.inputValue;
+    this.props.addToList(name);
     this.setState({
-      groceries: [...this.state.groceries, { name: this.state.inputValue }],
       inputValue: ''
     });
   }
 
   clearList() {
-    this.setState({
-      groceries: []
-    });
+    this.props.clearList();
   }
   render() {
-    const { groceries } = this.state;
-
-    const groceriesComponents = groceries.map((
+    const groceriesComponents = this.props.groceries.map((
       item // eslint-disable-line no-unused-vars
     ) => <GroceryListItem grocery={item} />);
     return (
@@ -58,4 +56,18 @@ class GroceryList extends React.Component {
   }
 }
 
-export default GroceryList;
+const mapStateToProps = state => ({
+  groceries: state.list
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addToList: name => dispatch(actions.addItem(name)),
+    clearList: () => dispatch(actions.clearList())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GroceryList);
