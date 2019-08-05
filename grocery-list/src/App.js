@@ -1,9 +1,13 @@
 import React from 'react';
 
 import './App.css';
-
+import GroceryList from './GroceryList';
+//
 const App = () => (
-  <div>App</div>
+  <div>
+    {' '}
+    <GroceryList />
+  </div>
 );
 
 export default App;
