@@ -23,7 +23,7 @@ function getAddressFromCoords(latitude, longitude) {
       return json.status === 'OVER_QUERY_LIMIT' ?
         // Wait for the query limit to reset.
         wait(retryTimeout, () => getAddressFromCoords(latitude, longitude)) :
-        json.results[0].formatted_address;
+        json;
     });
 }
 
