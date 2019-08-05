@@ -14,5 +14,14 @@ get the value of the href, hreflang, rel, target, and type attributes of the spe
   </p>
   <button onclick="getAttributes()">Click here to get attributes value</button>
 </body>
-
+<script type="text/javascript">
+  function getAttributes(){
+    const anchorTagElement = document.getElementById('w3r');
+    const attributesToGet = ['href', 'hreflang', 'rel', 'target', 'type'];
+    attributesToGet.forEach(attribute => {
+        const currentAttributeValue = anchorTagElement.getAttribute(attribute);
+        console.log(`The value for ${attribute} is: ${currentAttributeValue}`);
+    })
+  }
+</script>
 </html>
