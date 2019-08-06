@@ -16,3 +16,17 @@ window.setInterval(() => {
   }
 }, 200);
 
+const ul = document.querySelector('ul');
+
+Object.keys(sessionStorage).forEach((key) => {
+  const li = document.createElement('li');
+  li.appendChild(document.createTextNode(`${key}: ${sessionStorage.getItem(key)}`));
+  const button = document.createElement('button');
+  button.setAttribute('class', key);
+  li.setAttribute('class', key);
+  button.innerHTML = 'delete';
+  li.appendChild(button);
+  ul.appendChild(li);
+});
+
+
