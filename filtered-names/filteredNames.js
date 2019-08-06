@@ -1,26 +1,23 @@
 const fs = require('fs');
 const path = require('path');
 
-async function filteredNames(directory, extension) {
-  const filteredNames = [];
-  await fs.readdirSync(directory, (err, files) => {
-    if (err) {
-      return console.log('Unable to scan directory: ' + err);
+function filteredNames(directory, extension) {
+  console.log(extension);
+  const filteredFiles = [];
+
+  //   });
+  const files = fs.readdirSync(directory);
+  // console.log(files);
+  files.forEach(file => {
+    // console.log(path.extname(file));
+    if (path.extname(file) === '.' + extension) {
+      filteredFiles.push(file);
+      // console.log(file);
     }
-    //listing all files using forEach
-    files.forEach(file => {
-      const splitNames = file.split('.');
-      console.log('SN = ' + splitNames);
-      const extn = splitNames[splitNames.length - 1];
-      if (extn === extension) {
-        filteredNames.push(file);
-      }
-    });
   });
-  console.log('filtered names ' + filteredNames);
-  return filteredNames;
+  return filteredFiles;
 }
 
-filteredNames(path.join(__dirname, 'Directory'), 'json');
+// console.log(filteredNames(path.join(__dirname, 'Directory'), 'json'));
 
-// export { filteredNames };
+export { filteredNames };
