@@ -3,7 +3,7 @@
     "segmentName": "segment-1",
     "exercises": {
         "path-satisfies": {
-            "completed": false
+            "completed": true
         },
         "reject": {
             "completed": true
