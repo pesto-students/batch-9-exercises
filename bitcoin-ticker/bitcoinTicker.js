@@ -1,13 +1,14 @@
-const http = require('http');
+const http = require('https');
 
 function bitcoinTicker() {
   return new Promise((resolve) => {
-    http.get('http://api.coinmarketcap.com/v2/ticker/', (response) => {
+    http.get('https://api.coinmarketcap.com/v2/ticker/', (response) => {
+      let data = '';
       response.on('data', (chunk) => {
-        console.log('chunk', chunk);
+        data = `${data}${chunk}`;
       });
       response.on('end', () => {
-        console.log('ended');
+        resolve(JSON.parse(data));
       });
     });
   });
