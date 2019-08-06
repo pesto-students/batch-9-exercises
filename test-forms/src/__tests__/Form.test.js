@@ -7,8 +7,11 @@ import api from '../api';
 
 const updateInput = (wrapper, instance, newValue) => {
   const input = wrapper.find(instance);
+  const nameOfInputStartIndex = instance.indexOf('"') + 1;
+  const nameOfInputLastIndex = instance.lastIndexOf('"');
+  const nameOfInput = instance.substring(nameOfInputStartIndex, nameOfInputLastIndex);
   input.simulate('change', {
-    currentTarget: { value: newValue },
+    currentTarget: { value: newValue, name: nameOfInput },
   });
   return wrapper.find(instance);
 };
