@@ -1,7 +1,12 @@
+const http = require('http');
 
-function httpServer(...args) {
-  return args;
-}
+const handler = function (req, res) {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Pesto Bootcamp!\n');
+};
+
+const httpServer = http.createServer();
+httpServer.addListener('request', handler);
 
 export {
   httpServer,
