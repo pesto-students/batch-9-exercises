@@ -1,15 +1,13 @@
 
 function getIndexToIns(inputArray, numberToInsert) {
-  inputArray.sort();
-  let indexToReturn;
-  for (let i = 0; i < inputArray.length; i += 1) {
-    if (numberToInsert < inputArray[i]) {
-      indexToReturn = inputArray.indexOf(inputArray[i]) - 1;
-    } else if (numberToInsert === inputArray[i]) {
-      indexToReturn = inputArray.indexOf(inputArray[i]) - 2;
+  const sortedArray = inputArray.sort((a, b) => a - b);
+  console.log(sortedArray);
+  for (let i = 0; i < sortedArray.length; i += 1) {
+    if (numberToInsert <= sortedArray[i]) {
+      return i;
     }
   }
-  return indexToReturn;
+  return inputArray.length;
 }
 
 export {
