@@ -1,6 +1,6 @@
 
-function isEven(...args) {
-  return args;
+function isEven(number) {
+  return Math.floor(number / 2) * 2 === number;
 }
 
 export {
