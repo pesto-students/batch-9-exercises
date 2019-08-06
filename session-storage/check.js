@@ -22,6 +22,9 @@ Object.keys(sessionStorage).forEach((key) => {
   const li = document.createElement('li');
   li.appendChild(document.createTextNode(`${key}: ${sessionStorage.getItem(key)}`));
   const button = document.createElement('button');
+  button.addEventListener('click', () => {
+    ul.removeChild(button.parentNode);
+  });
   button.setAttribute('class', key);
   li.setAttribute('class', key);
   button.innerHTML = 'delete';
