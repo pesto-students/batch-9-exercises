@@ -9,7 +9,7 @@
             "completed": false
         },
         "local-storage": {
-            "completed": false
+            "completed": true
         },
         "session-storage": {
             "completed": true
