@@ -3,7 +3,7 @@
     "segmentName": "segment-2",
     "exercises": {
         "cookies": {
-            "completed": false
+            "completed": true
         },
         "index-db": {
             "completed": false

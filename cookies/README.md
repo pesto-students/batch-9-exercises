@@ -7,3 +7,5 @@
 2. Check the cookies.
 
 3. Write a script, which if ran in the console logout the user from github.
+
+Answer: cannot delete secure cookies.
