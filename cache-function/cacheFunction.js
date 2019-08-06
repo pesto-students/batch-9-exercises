@@ -1,6 +1,13 @@
 
 function cacheFunction(cb) {
-  return arg => cb(arg);
+  const cache = {};
+  return (args) => {
+    if (Object.prototype.hasOwnProperty.call(cache, args)) {
+      return cache[args];
+    }
+    cache[args] = cb(args);
+    return cache[args];
+  };
 }
 
 export {
