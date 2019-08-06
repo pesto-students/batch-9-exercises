@@ -5,10 +5,21 @@ class App extends Component {
   state = {
     lifeCycle: '',
   }
+
+  componentDidMount() {
+    this.setState(() => ({ lifeCycle: 'componentDidMount' }));
+  }
+
+  componentWillReceiveProps() {
+    this.setState(() => ({ lifeCycle: 'componentWillReceiveProps' }));
+  }
+
   render() {
+    const { lifeCycle } = this.state;
     return (
       <div className="App">
         Welcome to react
+        <p className="lifeCycle">{lifeCycle}</p>
       </div>
     );
   }

@@ -15,7 +15,7 @@
             "completed": true
         },
         "test-lifecycle": {
-            "completed": false
+            "completed": true
         },
         "test-redux": {
             "completed": false
