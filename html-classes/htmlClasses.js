@@ -1,6 +1,9 @@
+const fs = require('fs');
+const path = require('path');
 
-function htmlClasses(...args) {
-  return args;
+const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8');
+function htmlClasses() {
+  return html;
 }
 
 export {
