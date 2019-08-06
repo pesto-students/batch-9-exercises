@@ -1,18 +1,23 @@
 
-function rot13(encodedString) {
-  let decodedString = '';
-  for (let i = 0; i < encodedString.length; i += 1) {
-    if (encodedString[i].match(/[A-Z]/i)) {
-      const charCode = encodedString[i].charCodeAt(0);
-      if (charCode <= 90 && charCode >= 65) {
-        decodedString += 'A';
+function rot13(str) {
+  const codeA = 'A'.charCodeAt(0);
+  const codeN = 'N'.charCodeAt(0);
+  const codeZ = 'Z'.charCodeAt(0);
+  const newArr = [];
+
+  for (let i = 0; i < str.length; i += 1) {
+    const code = str.charCodeAt(i);
+    if (code >= codeA && code <= codeZ) {
+      if (code >= codeN) {
+        newArr.push(String.fromCharCode(code - 13));
+      } else {
+        newArr.push(String.fromCharCode(code + 13));
       }
     } else {
-      decodedString += encodedString[i];
+      newArr.push(str[i]);
     }
   }
-  return decodedString;
-  // Incomplete
+  return newArr.join('');
 }
 
 export {
