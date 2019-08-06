@@ -1,6 +1,7 @@
+const url = require('url');
 
-function convertToFileUrl(...args) {
-  return args;
+function convertToFileUrl(file) {
+  return url.pathToFileURL(file).href.replace('^', '%5E');
 }
 
 export {
