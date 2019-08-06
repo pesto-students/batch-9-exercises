@@ -6,9 +6,9 @@ const PostPage = ({
 }) => {
   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
   return (
-    <div className={showHideClassName} key={post.id}>
+    <div className={showHideClassName}>
       <div className="modal-main" >
-        {loading ? (<h4> Loading... </h4>) :
+        {loading  || !post? (<h4> Loading... </h4>) :
         (<div>
           <h4>{post.id}</h4>
           <div>Title: {post.title}</div>

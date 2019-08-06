@@ -14,4 +14,15 @@ const fetchPagePosts = (pageNumber) => {
   return fetchedPostsPromise;
 };
 
-export { fetchPagePosts };
+const fetchSelectedPost = (postId) => {
+  const fetchedPostPromise = fetch(`${BASE_URL}/post/${postId}`, {
+    credentials: 'same-origin',
+    headers: {
+      ...commonHeaders,
+    },
+  }).then(response => response.json());
+
+  return fetchedPostPromise;
+};
+
+export { fetchPagePosts, fetchSelectedPost };

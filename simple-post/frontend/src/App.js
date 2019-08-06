@@ -1,19 +1,26 @@
 import React, { Component, Fragment } from 'react';
+import { fetchPagePosts, fetchSelectedPost } from './components/utils/getPageData';
+import {getCurrentPage, setCurrentPage} from './components/utils/pageHelper';
 
 import Post from './components/Post';
+import PostPage from './components/PostPage'
 import './App.css';
-import { fetchPagePosts } from './components/utils/getPageData';
-import {getCurrentPage, setCurrentPage} from './components/utils/pageHelper';
+
 
 class App extends Component {
   state = {
     currentPage: 1,
     posts: [],
+    fetchingPost:false,
+    currentPost:null,
+    openCurrentPost:false
   };
 
   getPageData = this.getPageData.bind(this);
   handlePrevClick = this.handlePrevClick.bind(this);
   handleNextClick = this.handleNextClick.bind(this);
+  readClickedPost = this.readClickedPost.bind(this);
+  closeCurrentPost = this.closeCurrentPost.bind(this);
 
   componentDidMount() {
     const { currentPage } = this.state;
@@ -58,6 +65,16 @@ class App extends Component {
     this.getPageData(newPage)
   }
 
+  readClickedPost(postId) {
+    this.setState(() => ({fetchingPost:true, openCurrentPost: true}));
+    fetchSelectedPost(postId).then((response) => {
+      this.setState({currentPost:response.data, fetchingPost:false})
+    })
+  }
+  closeCurrentPost() {
+    this.setState({ openCurrentPost: false });
+  }
+
   render() {
     return (
       <div>
@@ -73,12 +90,13 @@ class App extends Component {
         <div>
           {this.state.posts.map((post) => {
             return (
-              <Fragment key={post.id}>
-                <Post post={post} />
+              <Fragment key={post.id}  >
+                <Post post={post} readCurrentPost={this.readClickedPost} />
                 <hr />
               </Fragment>
             );
           })}
+        <PostPage show={this.state.openCurrentPost} handleClose={this.closeCurrentPost} post={this.state.currentPost} loading={this.state.fetchingPost} />
         </div>
       </div>
     );
