@@ -1,7 +1,9 @@
 import { homeDir } from './homeDir';
 
+const os = require('os');
+
 describe('Template Test', () => {
   test('Template Test', () => {
-    // Write your own test case
+    expect(homeDir()).toBe(os.homedir());
   });
 });
