@@ -18,7 +18,7 @@
             "completed": true
         },
         "test-redux": {
-            "completed": false
+            "completed": true
         }
     }
 }
