@@ -15,7 +15,7 @@
             "completed": true
         },
         "date-format-tz": {
-            "completed": false
+            "completed": true
         },
         "home-dir": {
             "completed": true
@@ -24,7 +24,7 @@
             "completed": false
         },
         "strip-path": {
-            "completed": false
+            "completed": true
         }
     }
 }
