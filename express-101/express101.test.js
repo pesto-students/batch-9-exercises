@@ -1,6 +1,6 @@
 
 describe('default test', () => {
-  test('always true', () =>{ 
+  test('always true', () => {
     expect(true).toBe(true);
   });
 });
