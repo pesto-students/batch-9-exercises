@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 app.use((req, res, next) => {
   res.set('middleware-header', req.path.slice(1));
+  console.log(Date.now());
   next();
 });
 
@@ -27,4 +28,5 @@ app.get('/packages', (req, res) => {
 
   res.json({ packages });
 });
+
 app.listen(3000);
