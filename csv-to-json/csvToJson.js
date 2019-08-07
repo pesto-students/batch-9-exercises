@@ -1,6 +1,10 @@
+/* eslint-disable */
+const fs = require('fs');
 
-function csvToJson(...args) {
-  return args;
+function csvToJson(filePath) {
+  return new Promise((resolve) => {
+    const fileStream = fs.readFileSync
+  })
 }
 
 export {
