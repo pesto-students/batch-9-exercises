@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 router.use('/', (req, res, next) => {
+  console.log(`Request Made to server on ${new Date()}`);
   const requiredType = req.url.substring(1);
   res.append('middleware-header', requiredType);
   next();
