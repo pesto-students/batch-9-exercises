@@ -1,0 +1,15 @@
+{
+  "name": "express-middlewares",
+  "version": "1.0.0",
+  "description": "Adding middlewares in express",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "piyushagwl007",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

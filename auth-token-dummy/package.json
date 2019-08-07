@@ -1,0 +1,17 @@
+{
+  "name": "auth-token-dummy",
+  "version": "1.0.0",
+  "description": "Auth token dummy problem",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "piyushagwl007",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
