@@ -12,6 +12,7 @@
     "node": ">=10.15"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "chalk": "*",
     "dotenv": "*",
     "graphql-request": "*",
@@ -38,6 +39,8 @@
     }
   },
   "lint-staged": {
-    "!(*.test).js": ["eslint"]
+    "!(*.test).js": [
+      "eslint"
+    ]
   }
 }
