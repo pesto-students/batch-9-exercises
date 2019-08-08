@@ -2,7 +2,6 @@ import net from 'net';
 import Stream from 'stream';
 import { isStream } from './isStream';
 
-
 describe('isStream', () => {
   test('isStream()', () => {
     expect(isStream(new Stream.Stream())).toBe(true);
