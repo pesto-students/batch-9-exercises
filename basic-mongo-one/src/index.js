@@ -99,7 +99,7 @@ const comparisonOperator = async (db) => {
 const trimUnrated = async (db) => {
   const moviesDetailsCollection = db.collection(collectionMap.movieDetails);
   const query = {
-    rated: { $exists: true, $nin:['UNRATED'] },
+    rated: { $exists: true, $nin: ['UNRATED'] },
   };
   const requiredMovieCount = await moviesDetailsCollection.count(query);
   return requiredMovieCount;
@@ -108,13 +108,23 @@ const trimUnrated = async (db) => {
 /* Q9 (*)
   Return number of movies in which "tomato" field exists but "tomato.rating" does not
 */
-const unratedByTomato = async () => {};
+const unratedByTomato = async (db) => {
+  const moviesDetailsCollection = db.collection(collectionMap.movieDetails);
+  const query = {
+    tomato: { $exists: true },
+    'tomato.rating': { $exists: false },
+  };
+  const requiredMovieCount = await moviesDetailsCollection.count(query);
+  return requiredMovieCount;
+};
 
 /* Q10 (*)
   Return number of movies with higher imdb rating >= 9.0 OR
   metacritic >= 90
 */
-const goodMovies = async () => {};
+const goodMovies = async () => {
+  
+};
 
 /* Q11 (*)
   Return number of movies where tomato field exists AND
