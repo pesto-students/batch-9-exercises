@@ -1,7 +1,8 @@
 import { homeDir } from './homeDir';
 
-describe('Template Test', () => {
-  test('Template Test', () => {
-    // Write your own test case
+describe('homeDir tests', () => {
+  test('Print members of home directory', () => {
+    const members = homeDir();
+    expect(members).toBeTruthy();
   });
 });
