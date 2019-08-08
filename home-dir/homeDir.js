@@ -1,8 +1,5 @@
-
-function homeDir(...args) {
-  return args;
+const os = require('os');
+function homeDir() {
+  return os.homedir();
 }
-
-export {
-  homeDir,
-};
+export { homeDir };

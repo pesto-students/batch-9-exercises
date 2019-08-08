@@ -1,8 +1,8 @@
+const path = require('path');
 
-function convertToFileUrl(...args) {
-  return args;
+function convertToFileUrl(pathOfFile) {
+  const pathName = path.resolve(pathOfFile);
+  return encodeURI(`file://${pathName}`).replace(/[?#]/g, encodeURIComponent);
 }
 
-export {
-  convertToFileUrl,
-};
+export { convertToFileUrl };
