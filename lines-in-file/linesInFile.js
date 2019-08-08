@@ -1,8 +1,8 @@
+const fs = require('fs');
 
-function linesInFile(...args) {
-  return args;
+function linesInFile(path) {
+  const filedData = fs.readFileSync(path);
+  return String(filedData).split('\n').length - 2;
 }
 
-export {
-  linesInFile,
-};
+export { linesInFile };
