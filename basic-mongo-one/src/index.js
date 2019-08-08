@@ -12,7 +12,7 @@ const getMoviesCount = async (db) => {
   to accessing title property from the object
 */
 const movieRating = async (db) => {
-  
+  const movies = await db.collection('movieDetails');
 };
 
 /* Q3 (*)
@@ -22,7 +22,15 @@ const movieRating = async (db) => {
   Damon Lindelof
   Gene Roddenberry
 */
-const writersIntersection = async () => {};
+const writersIntersection = async (db) => {
+  const movies = await db.collection('movieDetails');
+  const movieList = await movies.find({
+    "writers": {
+      "$all": ["Roberto Orci", "Alex Kurtzman", "Damon Lindelof", "Gene Roddenberry"]
+    }
+  });
+  return movieList.count();
+};
 
 /* Q4 (*)
   Return the number of movies written by any of the writers in Q3
@@ -92,5 +100,7 @@ const addField = async () => {};
 const incrementalUpdate = async () => {};
 
 module.exports = {
-  getMoviesCount, 
+  getMoviesCount,
+  movieRating,
+  writersIntersection,
 };
