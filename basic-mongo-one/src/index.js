@@ -35,7 +35,15 @@ const writersIntersection = async (db) => {
 /* Q4 (*)
   Return the number of movies written by any of the writers in Q3
 */
-const writersUnion = async () => {};
+const writersUnion = async (db) => {
+  const movies = await db.collection('movieDetails');
+  const movieList = await movies.find({
+    "writers": {
+      "$in": ["Roberto Orci", "Alex Kurtzman", "Damon Lindelof", "Gene Roddenberry"]
+    }
+  });
+  return movieList.count();
+};
 
 /* Q5 (*)
   Return the number of movies in which actor is "Jackie Chan"
@@ -103,4 +111,5 @@ module.exports = {
   getMoviesCount,
   movieRating,
   writersIntersection,
+  writersUnion,
 };
