@@ -1,8 +1,7 @@
+const stream = require('stream');
 
-function isStream(...args) {
-  return args;
+function isStream(object) {
+  return object instanceof stream;
 }
 
-export {
-  isStream,
-};
+export { isStream };
