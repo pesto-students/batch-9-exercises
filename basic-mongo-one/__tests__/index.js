@@ -1,5 +1,5 @@
-import { getDb, getDbClient } from '../src/database';
-import {
+const { getDb, getDbClient } = require('../src/database');
+const {
   getMoviesCount,
   movieRating,
   writersIntersection,
@@ -14,8 +14,8 @@ import {
   arrayAll,
   fieldArraySize,
   addField,
-  incrementalUpdate,
-} from '../src';
+  incrementalUpdate
+} = require('../src');
 
 describe('Mongo Queries', () => {
   let db;
@@ -40,7 +40,9 @@ describe('Mongo Queries', () => {
     // 2
     describe('movieRating', () => {
       test('should return title of the movie with rating 9.2 and year 1974', async () => {
-        expect(await movieRating(db)).toEqual({ title: 'The Godfather: Part II' });
+        expect(await movieRating(db)).toEqual({
+          title: 'The Godfather: Part II'
+        });
       });
     });
 
@@ -104,7 +106,7 @@ describe('Mongo Queries', () => {
     describe('regexSearch', () => {
       test('should return title of the movie whose plot contains the words: Master Yoda', async () => {
         expect(await regexSearch(db)).toEqual({
-          title: 'Star Wars: Episode V - The Empire Strikes Back',
+          title: 'Star Wars: Episode V - The Empire Strikes Back'
         });
       });
     });
@@ -131,7 +133,9 @@ describe('Mongo Queries', () => {
     describe('addField', () => {
       test('should add the field "myRating" to the movie "Iron Man 3" in movieDetails collection', async () => {
         await addField(db);
-        const updatedMovie = await db.collection('movieDetails').findOne({ title: 'Iron Man 3' });
+        const updatedMovie = await db
+          .collection('movieDetails')
+          .findOne({ title: 'Iron Man 3' });
         expect(updatedMovie.myRating).toBe(88);
       });
     });
@@ -139,10 +143,14 @@ describe('Mongo Queries', () => {
     // 15
     describe('incrementalUpdate', () => {
       test('should add the field "metacritic" to the movie "Gone Girl" in movieDetails collection', async () => {
-        const originalMovie = await db.collection('movieDetails').findOne({ title: 'Gone Girl' });
+        const originalMovie = await db
+          .collection('movieDetails')
+          .findOne({ title: 'Gone Girl' });
         const originalMovieRating = originalMovie.metacritic;
         await incrementalUpdate(db);
-        const updatedMovie = await db.collection('movieDetails').findOne({ title: 'Gone Girl' });
+        const updatedMovie = await db
+          .collection('movieDetails')
+          .findOne({ title: 'Gone Girl' });
         const updatedMovieRating = updatedMovie.metacritic;
 
         expect(updatedMovieRating - originalMovieRating).toBe(5);

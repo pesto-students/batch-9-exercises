@@ -1,14 +1,24 @@
 /* Q1 (*)
   Return the number of movies in the "movies" collection without using array.length
 */
-const getMoviesCount = async () => {};
+const getMoviesCount = async db => {
+  const collection = db.collection('movies');
+  const count = await collection.count();
+  return count;
+};
 
 /* Q2 (*)
   Return the first movie with imdb rating = 9.2 and year = 1974.
   Also, use mongodb projections to only get title from mongodb as opposed
   to accessing title property from the object
 */
-const movieRating = async () => {};
+const movieRating = async db => {
+  const collection = db.collection('movieDetails');
+  const movie = await collection.findOne({
+    $and: [{ year: 1974 }, { type: 'movie' }, { imdb: { rating: 9.2 } }]
+  });
+  return movie.title;
+};
 
 /* Q3 (*)
   Return the number of movies written by all these people (exactly these people in this order):
@@ -17,12 +27,39 @@ const movieRating = async () => {};
   Damon Lindelof
   Gene Roddenberry
 */
-const writersIntersection = async () => {};
+const writersIntersection = async db => {
+  const collection = db.collection('movieDetails');
+  const count = await collection
+    .find({
+      writers: [
+        'Roberto Orci',
+        'Alex Kurtzman',
+        'Damon Lindelof',
+        'Gene Roddenberry'
+      ]
+    })
+    .count();
+
+  return count;
+};
 
 /* Q4 (*)
   Return the number of movies written by any of the writers in Q3
 */
-const writersUnion = async () => {};
+const writersUnion = async db => {
+  const collection = db.collection('movieDetails');
+  const count = await collection
+    .find({
+      $or: [
+        { writers: 'Roberto Orci' },
+        { writers: 'Alex Kurtzman' },
+        { writers: 'Damon Lindelof' },
+        { writers: 'Gene Roddenberry' }
+      ]
+    })
+    .count();
+  return count;
+};
 
 /* Q5 (*)
   Return the number of movies in which actor is "Jackie Chan"
@@ -87,5 +124,5 @@ const addField = async () => {};
 const incrementalUpdate = async () => {};
 
 module.exports = {
-  getMoviesCount, 
+  getMoviesCount
 };
