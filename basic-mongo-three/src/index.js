@@ -4,16 +4,20 @@
   won no awards. Query the video.movieDetails collection to find the answer.
 */
 const noAwards = async (db) => {
-  const collection = db.collection('movieDetails');
-  const flopMovie = await collection.findOne({ year: 2013 }, { rated: 'PG-13' }, { $awards: {wins: 0 }});
-  return flopMovie;
+  return await db.collection('movieDetails').findOne({
+    year: 2013, 
+    rated: 'PG-13', 
+    'awards.wins': 0,
+  }, {fields: {title: 1, _id: 0}});
 };
 
 /* Q2 (*)
   Return the number of movies in movieDetails collection list just the
   following two genres: "Comedy" and "Crime" with "Comedy" listed first.
 */
- const arrayOrder = async () => {};
+ const arrayOrder = async () => {
+   const collection = db.collection('movieDetails');
+ };
 
 /* Q3 (*)
   Update the value of the "plot" field for the movie "The Martian".
