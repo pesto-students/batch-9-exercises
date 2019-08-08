@@ -38,8 +38,8 @@ const writersIntersection = async (db) => {
   const query = {
     writers: ['Roberto Orci', 'Alex Kurtzman', 'Damon Lindelof', 'Gene Roddenberry'],
   };
-  const requiredMovie = await moviesDetailsCollection.count(query);
-  return requiredMovie;
+  const requiredMovieCount = await moviesDetailsCollection.count(query);
+  return requiredMovieCount;
 };
 
 /* Q4 (*)
@@ -50,14 +50,21 @@ const writersUnion = async (db) => {
   const query = {
     writers: { $in: ['Roberto Orci', 'Alex Kurtzman', 'Damon Lindelof', 'Gene Roddenberry'] },
   };
-  const requiredMovie = await moviesDetailsCollection.count(query);
-  return requiredMovie;
+  const requiredMovieCount = await moviesDetailsCollection.count(query);
+  return requiredMovieCount;
 };
 
 /* Q5 (*)
   Return the number of movies in which actor is "Jackie Chan"
 */
-const actor = async () => {};
+const actor = async (db) => {
+  const moviesDetailsCollection = db.collection(collectionMap.movieDetails);
+  const query = {
+    actors: 'Jackie Chan',
+  };
+  const requiredMovieCount = await moviesDetailsCollection.count(query);
+  return requiredMovieCount;
+};
 
 /* Q6 (*)
   Return the number of movies in which actor "Jackie Chan" is second
