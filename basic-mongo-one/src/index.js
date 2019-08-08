@@ -122,8 +122,17 @@ const unratedByTomato = async (db) => {
   Return number of movies with higher imdb rating >= 9.0 OR
   metacritic >= 90
 */
-const goodMovies = async () => {
-  
+const goodMovies = async (db) => {
+  const moviesDetailsCollection = db.collection(collectionMap.movieDetails);
+  const query = {
+    $or: [
+      { 'imdb.rating': { $gte: 9.0 } },
+      { metacritic: { $gte: 90 } },
+    ],
+
+  };
+  const requiredMovieCount = await moviesDetailsCollection.count(query);
+  return requiredMovieCount;
 };
 
 /* Q11 (*)
@@ -164,5 +173,5 @@ module.exports = {
   comparisonOperator,
   trimUnrated,
   unratedByTomato,
-
+  goodMovies,
 };
