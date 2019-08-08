@@ -5,6 +5,9 @@ describe('Alphabetic Shift Test Cases', () => {
     expect(alphabeticShift('Pseudopseudohypoparathyroidism'))
       .toEqual('Qtfvepqtfvepizqpqbsbuizspjejtn');
 
+    expect(alphabeticShift('z'))
+      .toEqual('a');
+
     expect(alphabeticShift('Floccinaucinihilipilification'))
       .toEqual('Gmpddjobvdjojijmjqjmjgjdbujpo');
 
