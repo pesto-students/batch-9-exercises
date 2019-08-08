@@ -18,7 +18,7 @@ const getMoviesCount = async (db) => {
 const movieRating = async (db) => {
   const moviesDetailsCollection = db.collection(collectionMap.movieDetails);
   const query = {
-    rating: 9.2,
+    'imdb.rating': 9.2,
     year: 1974,
   };
   const projection = { title: 1 };
@@ -83,13 +83,27 @@ const positionalActor = async (db) => {
   Return the first movie with imdb rating greater than or equal to 9.0
   and less than or equal to 9.2
 */
-const comparisonOperator = async () => {};
+const comparisonOperator = async (db) => {
+  const moviesDetailsCollection = db.collection(collectionMap.movieDetails);
+  const query = {
+    'imdb.rating': { $gte: 9.0, $lte: 9.2 },
+  };
+  const requiredMovieCount = await moviesDetailsCollection.count(query);
+  return requiredMovieCount;
+};
 
 /* Q8 (*)
   Return the number of movies which have an actual rating opposed to
   being "UNRATED" or having no "rated" field at all
 */
-const trimUnrated = async () => {};
+const trimUnrated = async (db) => {
+  const moviesDetailsCollection = db.collection(collectionMap.movieDetails);
+  const query = {
+    rated: { $exists: true, $nin:['UNRATED'] },
+  };
+  const requiredMovieCount = await moviesDetailsCollection.count(query);
+  return requiredMovieCount;
+};
 
 /* Q9 (*)
   Return number of movies in which "tomato" field exists but "tomato.rating" does not
