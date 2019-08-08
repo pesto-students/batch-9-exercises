@@ -1,6 +1,4 @@
-/* Q1 (*)
-  Return the number of movies in the "movies" collection without using array.length
-*/
+
 const collectionMap = {
   movies: 'movies',
   movieDetails: 'movieDetails',
@@ -17,7 +15,16 @@ const getMoviesCount = async (db) => {
   Also, use mongodb projections to only get title from mongodb as opposed
   to accessing title property from the object
 */
-const movieRating = async () => {};
+const movieRating = async (db) => {
+  const moviesDetailsCollection = db.collection(collectionMap.movieDetails);
+  const query = {
+    rating: 9.2,
+    year: 1974,
+  };
+  const projection = { title: 1 };
+  const requiredMovie = await moviesDetailsCollection.findOne(query, { projection });
+  return requiredMovie;
+};
 
 /* Q3 (*)
   Return the number of movies written by all these people (exactly these people in this order):
@@ -26,7 +33,14 @@ const movieRating = async () => {};
   Damon Lindelof
   Gene Roddenberry
 */
-const writersIntersection = async () => {};
+const writersIntersection = async (db) => {
+  const moviesDetailsCollection = db.collection(collectionMap.movieDetails);
+  const query = {
+    writers: ['Roberto Orci', 'Alex Kurtzman', 'Damon Lindelof', 'Gene Roddenberry'],
+  };
+  const requiredMovie = await moviesDetailsCollection.count(query);
+  return requiredMovie;
+};
 
 /* Q4 (*)
   Return the number of movies written by any of the writers in Q3
@@ -105,5 +119,5 @@ module.exports = {
   comparisonOperator,
   trimUnrated,
   unratedByTomato,
-  
+
 };
