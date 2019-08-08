@@ -1,14 +1,19 @@
 /* Q1 (*)
   Return the number of movies in the "movies" collection without using array.length
 */
-const getMoviesCount = async () => {};
+const getMoviesCount = async (db) => {
+  const movies = await db.collection('movies');
+  return movies.count();
+};
 
 /* Q2 (*)
   Return the first movie with imdb rating = 9.2 and year = 1974.
   Also, use mongodb projections to only get title from mongodb as opposed
   to accessing title property from the object
 */
-const movieRating = async () => {};
+const movieRating = async (db) => {
+  const movies = await db.collection('movieDetails');
+};
 
 /* Q3 (*)
   Return the number of movies written by all these people (exactly these people in this order):
@@ -17,17 +22,41 @@ const movieRating = async () => {};
   Damon Lindelof
   Gene Roddenberry
 */
-const writersIntersection = async () => {};
+const writersIntersection = async (db) => {
+  const movies = await db.collection('movieDetails');
+  const movieList = await movies.find({
+    "writers": {
+      "$all": ["Roberto Orci", "Alex Kurtzman", "Damon Lindelof", "Gene Roddenberry"]
+    }
+  });
+  return movieList.count();
+};
 
 /* Q4 (*)
   Return the number of movies written by any of the writers in Q3
 */
-const writersUnion = async () => {};
+const writersUnion = async (db) => {
+  const movies = await db.collection('movieDetails');
+  const movieList = await movies.find({
+    "writers": {
+      "$in": ["Roberto Orci", "Alex Kurtzman", "Damon Lindelof", "Gene Roddenberry"]
+    }
+  });
+  return movieList.count();
+};
 
 /* Q5 (*)
   Return the number of movies in which actor is "Jackie Chan"
 */
-const actor = async () => {};
+const actor = async (db) => {
+  const movies = await db.collection('movieDetails');
+  const movieList = await movies.find({
+    "actors": {
+      "$eq": "Jackie Chan",
+    }
+  });
+  return movieList.count();
+};
 
 /* Q6 (*)
   Return the number of movies in which actor "Jackie Chan" is second
@@ -87,5 +116,9 @@ const addField = async () => {};
 const incrementalUpdate = async () => {};
 
 module.exports = {
-  getMoviesCount, 
+  getMoviesCount,
+  movieRating,
+  writersIntersection,
+  writersUnion,
+  actor,
 };

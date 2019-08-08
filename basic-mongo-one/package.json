@@ -5,6 +5,7 @@
   "author": "Arfat Salman",
   "license": "MIT",
   "scripts": {
+    "start": "nodemon src/",
     "test": "jest"
   },
   "dependencies": {
