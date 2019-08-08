@@ -4,7 +4,7 @@ const MONGO_URL = 'mongodb://localhost:27017';
 const DB_NAME = 'pesto-day-19';
 
 let connectionInstance;
-let dbInstance;
+const db = { getDb: {} };
 
 const getDbClient = async () => {
   if (!connectionInstance) {
@@ -20,7 +20,9 @@ const getDb = async () => {
     throw new Error('Db not connected');
   }
 
-  return connectionInstance.db(DB_NAME);
+  db.getDb = connectionInstance.db(DB_NAME);
+  console.log(`Returning db instace ${db}`);
+  return db;
 };
 
 
@@ -28,5 +30,5 @@ module.exports = {
   getDbClient,
   getDb,
   connectionInstance,
-  dbInstance,
+  db,
 };

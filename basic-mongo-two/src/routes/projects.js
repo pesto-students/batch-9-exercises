@@ -1,6 +1,12 @@
 const router = require('express').Router();
+const { db } = require('../database');
+
 
 router.route('/')
-  .get((req, res) => {
-    res.json({ status: true });
+  .get(async (req, res) => {
+    const projectsCollection = db.getDb.collection('projects');
+    const query = {};
+    const projects = await projectsCollection.find(query);
+    res.json(projects);
   });
+module.exports = router;
