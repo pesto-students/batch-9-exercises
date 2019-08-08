@@ -48,7 +48,15 @@ const writersUnion = async (db) => {
 /* Q5 (*)
   Return the number of movies in which actor is "Jackie Chan"
 */
-const actor = async () => {};
+const actor = async (db) => {
+  const movies = await db.collection('movieDetails');
+  const movieList = await movies.find({
+    "actors": {
+      "$eq": "Jackie Chan",
+    }
+  });
+  return movieList.count();
+};
 
 /* Q6 (*)
   Return the number of movies in which actor "Jackie Chan" is second
@@ -112,4 +120,5 @@ module.exports = {
   movieRating,
   writersIntersection,
   writersUnion,
+  actor,
 };
