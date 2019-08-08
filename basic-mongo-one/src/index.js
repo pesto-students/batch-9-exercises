@@ -1,7 +1,4 @@
 /* eslint-disable */
-/* Q1 (*)
-  Return the number of movies in the "movies" collection without using array.length
-*/
 const getMoviesCount = async (db) => {
   const collection = db.collection('movies');
   const number = await collection.count();
@@ -13,7 +10,11 @@ const getMoviesCount = async (db) => {
   Also, use mongodb projections to only get title from mongodb as opposed
   to accessing title property from the object
 */
-const movieRating = async () => {};
+const movieRating = async (db) => {
+  const collection = db.collection('movies');
+  const specifiedMovie = await collection.findOne({year: 1974}, {title: 1});
+  return specifiedMovie;
+};
 
 /* Q3 (*)
   Return the number of movies written by all these people (exactly these people in this order):
@@ -93,4 +94,5 @@ const incrementalUpdate = async () => {};
 
 module.exports = {
   getMoviesCount, 
+  movieRating,
 };
