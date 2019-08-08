@@ -8,7 +8,6 @@ const languageRoutes = require('../router');
 
 const app = express();
 
-
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
