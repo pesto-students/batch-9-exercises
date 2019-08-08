@@ -1,7 +1,18 @@
+// mongod --dbpath ~/data/db --port 27017              
+
 /* Q1 (*)
   Return the number of movies in the "movies" collection without using array.length
 */
-const getMoviesCount = async () => {};
+const collectionMap = {
+  movies: 'movies',
+  movieDetails: 'movieDetails',
+};
+
+const getMoviesCount = async (db) => {
+  const moviesCollection = db.collection(collectionMap.movies);
+  const countResult = await moviesCollection.count({});
+  return countResult;
+};
 
 /* Q2 (*)
   Return the first movie with imdb rating = 9.2 and year = 1974.
