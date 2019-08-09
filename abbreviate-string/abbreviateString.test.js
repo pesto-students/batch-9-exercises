@@ -13,4 +13,8 @@ describe('abbreviateString', () => {
     expect(() => abbreviateString({})).toThrow();
     expect(() => abbreviateString(null)).toThrow();
   });
+
+  it('for empty string return empty string', () => {
+    expect(abbreviateString('')).toEqual('');
+  });
 });

@@ -1,8 +1,8 @@
 
-function mathFns(...args) {
-  return args;
-}
-
+const { sqrt, pow, round } = Math;
+const power = pow;
 export {
-  mathFns,
+  sqrt,
+  power,
+  round,
 };
