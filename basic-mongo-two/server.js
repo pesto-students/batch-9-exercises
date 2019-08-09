@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const database = require('./src/database');
 const projectRoutes = require('./src/routes/projects');
 
@@ -10,6 +11,10 @@ database.getDb((error, result) => {
 
 const app = express();
 const port = 3000;
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.json());
 
 app.use('/projects', projectRoutes);
 
