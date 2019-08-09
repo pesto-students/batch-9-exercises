@@ -57,7 +57,7 @@ function higherStateSums() {
   }
   sumOfHigherStates = Object.keys(statesList)
     .reduce((accumulator, key) => {
-      if (statesList[key]) {
+      if (statesList[key] > 1000000) {
         return accumulator + statesList[key];
       }
       return accumulator;
