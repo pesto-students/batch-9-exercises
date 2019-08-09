@@ -1,13 +1,8 @@
 
-const mathFns = {
-  sqrt: Math.sqrt,
-  power(number, power) {
-    return number ** power;
-  },
-  round: Math.round,
-};
-
-
+const { sqrt, pow, round } = Math;
+const power = pow;
 export {
-  mathFns,
+  sqrt,
+  power,
+  round,
 };
