@@ -1,5 +1,5 @@
-import { getDb, getDbClient } from '../src/database';
-import {
+const { getDb, getDbClient } = require('../src/database');
+const {
   getMoviesCount,
   movieRating,
   writersIntersection,
@@ -15,7 +15,7 @@ import {
   fieldArraySize,
   addField,
   incrementalUpdate,
-} from '../src';
+} = require('../src');
 
 describe('Mongo Queries', () => {
   let db;
@@ -40,7 +40,9 @@ describe('Mongo Queries', () => {
     // 2
     describe('movieRating', () => {
       test('should return title of the movie with rating 9.2 and year 1974', async () => {
-        expect(await movieRating(db)).toEqual({ title: 'The Godfather: Part II' });
+        expect(await movieRating(db)).toEqual({
+          title: 'The Godfather: Part II',
+        });
       });
     });
 
@@ -96,7 +98,7 @@ describe('Mongo Queries', () => {
     // 10
     describe('goodMovies', () => {
       test('should return number of movies with higher imdb rating >= 9.0 OR metacritic >= 90', async () => {
-        expect(await goodMovies(db)).toBe(27);
+        expect(await goodMovies(db)).toBe(26);
       });
     });
 
@@ -132,7 +134,7 @@ describe('Mongo Queries', () => {
       test('should add the field "myRating" to the movie "Iron Man 3" in movieDetails collection', async () => {
         await addField(db);
         const updatedMovie = await db.collection('movieDetails').findOne({ title: 'Iron Man 3' });
-        expect(updatedMovie.myRating).toBe(88);
+        expect(updatedMovie.myRating).toBe(90);
       });
     });
 
