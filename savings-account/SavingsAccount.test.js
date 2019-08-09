@@ -14,7 +14,7 @@ describe('SavingsAccount', () => {
   });
 
   test('should throw error if account number length is not equal to 6', () => {
-    expect(() => new SavingsAccount('123', 'kohli@gmail.com', 'Virat', 'Kohli')).toThrow('Account Number must be a 6-digit number');
+    expect(() => new SavingsAccount('123', 'kohli@gmail.com', 'Virat', 'Kohli')).toThrow('Account number must be a 6-digit number');
   });
 
   test('should throw error if account number length is not equal to 6', () => {
