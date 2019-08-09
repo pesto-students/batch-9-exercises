@@ -3,7 +3,7 @@ const connectionString = 'mongodb://localhost:27017';
 const dbName = 'pesto-day-19';
 const createConnection = function () {
     const connectionPromise = new Promise((resolve, reject) => {
-        mongoClient.connect(connectionString, (error, client) => {
+        mongoClient.connect(connectionString, { useNewUrlParser: true }, (error, client) => {
             if (error) {
                 reject(error);
             }

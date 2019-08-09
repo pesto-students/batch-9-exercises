@@ -11,33 +11,65 @@ connection.createConnection()
         app.use(bodyParser.json());
 
         app.get('/projects', (req, res) => {
-            projects.find().toArray((err, items) => {
-                if (err) {
-                    throw err;
+            projects.find().toArray((error, items) => {
+                if (error) {
+                    return res.json(`Error in fetching projects : ${error}`);
                 }
-                res.json(items);
+                return res.json(items);
             });
         });
 
         app.get('/projects/:id', (req, res) => {
-            projects.findOne({ _id: ObjectId(req.params.id) }, (err, item) => {
-                if (err) {
-                    throw err;
+            projects.findOne({ _id: ObjectId(req.params.id) }, (error, item) => {
+                if (error) {
+                    return res.json(`Error in fetching project : ${error}`);
                 }
-                res.json(item);
+                return res.json(item);
             });
         });
 
         app.post('/projects', (req, res) => {
-            projects.insert();
+            const projectsData = req.body;
+            projects.insertMany(projectsData, (error, items) => {
+                if (error) {
+                    return res.json(`Error in adding project(s) : ${error}`);
+                }
+                if (items.insertedIds > 0) {
+                    return res.json("data inserted successfully");
+                }
+            });
         });
 
         app.put('/projects/:id', (req, res) => {
-
+            const projectData = req.body;
+            const projectId = req.params.id;
+            projects.updateOne({ _id: ObjectId(projectId) }, { $set: projectData }, (error, item) => {
+                if (error) {
+                    return res.json(`Error in updating project : ${error}`);
+                }
+                const { matchedCount, modifiedCount } = item;
+                if (matchedCount === 0) {
+                    return res.json("could not find the project");
+                }
+                if (modifiedCount === 1) {
+                    return res.json("project updated successfully");
+                }
+            });
         });
 
         app.delete('/projects/:id', (req, res) => {
-
+            const projectId = req.params.id;
+            projects.deleteOne({ _id: ObjectId(projectId) }, (error, item) => {
+                if (error) {
+                    return res.json(`Error in deleting project : ${error}`);
+                }
+                const { deletedCount } = item;
+                if (deletedCount === 1) {
+                    return res.json("project deleted successfully");
+                } else {
+                    return res.json("could not delete project");
+                }
+            });
         });
 
         app.listen(3000, () => {

@@ -3,7 +3,7 @@
   "segmentName": "segment-2",
   "exercises": {
     "basic-mongo-two": {
-      "completed": false
+      "completed": true
     },
     "basic-mongo-three": {
       "completed": false
