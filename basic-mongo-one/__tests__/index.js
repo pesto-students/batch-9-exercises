@@ -1,5 +1,5 @@
- const { getDb, getDbClient } = require('../src/database');
- const {
+const { getDb, getDbClient } = require('../src/database');
+const {
   getMoviesCount,
   movieRating,
   writersIntersection,
@@ -132,7 +132,7 @@ describe('Mongo Queries', () => {
       test('should add the field "myRating" to the movie "Iron Man 3" in movieDetails collection', async () => {
         await addField(db);
         const updatedMovie = await db.collection('movieDetails').findOne({ title: 'Iron Man 3' });
-        expect(updatedMovie.myRating).toBe(88);
+        expect(updatedMovie.myRating).toBe(90);
       });
     });
 
@@ -144,7 +144,6 @@ describe('Mongo Queries', () => {
         await incrementalUpdate(db);
         const updatedMovie = await db.collection('movieDetails').findOne({ title: 'Gone Girl' });
         const updatedMovieRating = updatedMovie.metacritic;
-
         expect(updatedMovieRating - originalMovieRating).toBe(5);
       });
     });
