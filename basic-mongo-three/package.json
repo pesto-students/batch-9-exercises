@@ -9,7 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "mongodb": "*"
+    "mongodb": "^3.3.0-beta2"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.0",

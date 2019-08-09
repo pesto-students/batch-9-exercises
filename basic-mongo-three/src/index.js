@@ -1,14 +1,23 @@
+/* eslint-disable */
 /* Q1 (*)
   Return the title of a movie from the year 2013 that is rated PG-13 and
   won no awards. Query the video.movieDetails collection to find the answer.
 */
-export const noAwards = async () => {};
+const noAwards = async (db) => {
+  return await db.collection('movieDetails').findOne({
+    year: 2013, 
+    rated: 'PG-13', 
+    'awards.wins': 0,
+  }, {fields: {title: 1, _id: 0}});
+};
 
 /* Q2 (*)
   Return the number of movies in movieDetails collection list just the
   following two genres: "Comedy" and "Crime" with "Comedy" listed first.
 */
-export const arrayOrder = async () => {};
+ const arrayOrder = async () => {
+   const collection = db.collection('movieDetails');
+ };
 
 /* Q3 (*)
   Update the value of the "plot" field for the movie "The Martian".
@@ -20,7 +29,7 @@ export const arrayOrder = async () => {};
   Use updateOne() in this exercise.
 */
 
-export const martianPlot = async () => {};
+ const martianPlot = async () => {};
 
 /* Q4 (*)
   Create a new collection named "myMovies". Insert 5 movies with the following
@@ -33,19 +42,19 @@ export const martianPlot = async () => {};
   Note: Make sure the above (Godfather) document is one of the 5 movies inserted.
 */
 
-export const insertMovies = async () => {};
+ const insertMovies = async () => {};
 
 /* Q5 (*)
   Delete the movie with title = "The Godfather" from the collection "myMovies".
 */
 
-export const deleteMovie = async () => {};
+ const deleteMovie = async () => {};
 
 /* Q6 (*)
   Delete all movies from the collection "myMovies".
 */
 
-export const deleteAllMovies = async () => {};
+ const deleteAllMovies = async () => {};
 
 
 /* Q7 (*)
@@ -57,4 +66,13 @@ export const deleteAllMovies = async () => {};
   - The tomato.consensus field is null
 */
 
-export const removeConsensus = async () => {};
+ const removeConsensus = async () => {};
+
+ module.exports = {
+  noAwards,
+  arrayOrder,
+  martianPlot,
+  insertMovies,
+  deleteMovie,
+  deleteAllMovies,
+ }
