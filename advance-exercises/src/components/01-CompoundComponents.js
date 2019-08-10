@@ -1,20 +1,3 @@
-/*
-  Q1:
-
-  Implement a radio group form control with the API found in <CompoundComponents> (Line 69).
-
-  - Clicking a <RadioOption> should update the value of <RadioGroup>
-  - The selected <RadioOption> should pass the correct value to its <RadioIcon>
-  - The `defaultValue` should be set on first render.
-
-  - Implement an `onChange` prop that communicates the <RadioGroup>'s state
-    back to the parent so it can use it to render
-  - Implement keyboard controls on the <RadioGroup>
-    - Hint: Use tabIndex='0' on the <RadioOption>s so the keyboard will work
-    - Enter and space bar should select the option
-    - Arrow right, arrow down should select the next option
-    - Arrow left, arrow up should select the previous option
-*/
 
 import React from 'react';
 import PropTypes from 'prop-types';
