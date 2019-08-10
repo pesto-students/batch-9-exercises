@@ -3,17 +3,9 @@ const readline = require('readline');
 const fs = require('fs');
 
 function linesInFile(filePath) {
-  console.log(filePath);
-  const readInterface = readline.createInterface({
-    input: fs.createReadStream(filePath),
-  });
-  let count = 0;
-  readInterface.on('line', (line) => {
-    count += 1;
-  });
-  readInterface.on('close', (line) => {
-  });
-  return count;
+  const fileText = fs.readFileSync(filePath, { encoding: 'utf8' });
+  const lines = fileText.split('\n');
+  return lines.length - 2;
 }
 
 export {
