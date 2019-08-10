@@ -9,7 +9,7 @@
             "completed": false
         },
         "http-server": {
-            "completed": false
+            "completed": true
         },
         "is-stream": {
             "completed": false
