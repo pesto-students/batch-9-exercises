@@ -11,6 +11,7 @@ describe('uniqueRandom', () => {
       current = uniqueRandom10();
 
       if (current === prev || current > 10 || current < 1) {
+        console.log('The count is', count, 'prev :', prev, 'current:' , current)
         expect(true).toBe(false);
       }
 
