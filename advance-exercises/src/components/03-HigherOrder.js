@@ -9,7 +9,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function withMouse(Component) {
-  return Component;
+  return class HOC extends React.Component {
+    state = {
+      x:0,
+      y:0
+    }
+
+    saveChangedMousePosition = this.saveChangedMousePosition.bind(this);
+
+    saveChangedMousePosition(event) {
+      const clientX = event.clientX;
+      const clientY = event.clientY;
+      this.setState(()=> ({x: clientX, y: clientY}));
+    }
+
+    render() {
+      const mouse = {x: this.state.x, y: this.state.y};
+      return( 
+        <div onMouseMove={this.saveChangedMousePosition}>
+          <Component mouse={mouse}></Component>
+        </div>
+      );
+    }
+  };
 }
 
 class App extends React.Component {
