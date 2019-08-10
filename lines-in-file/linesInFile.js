@@ -1,6 +1,11 @@
+/* eslint-disable no-unused-vars */
+const readline = require('readline');
+const fs = require('fs');
 
-function linesInFile(...args) {
-  return args;
+function linesInFile(filePath) {
+  const fileText = fs.readFileSync(filePath, { encoding: 'utf8' });
+  const lines = fileText.split('\n');
+  return lines.length - 2;
 }
 
 export {
