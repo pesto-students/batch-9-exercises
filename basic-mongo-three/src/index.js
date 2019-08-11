@@ -2,7 +2,7 @@
   Return the title of a movie from the year 2013 that is rated PG-13 and
   won no awards. Query the video.movieDetails collection to find the answer.
 */
-const collections = { movieDetails: 'movieDetails', movies: 'movies' };
+const collections = { movieDetails: 'movieDetails', movies: 'movies', myMovies: 'myMovies' };
 const noAwards = async (db) => {
   const movieDetailsCollection = db.collection(collections.movieDetails);
   const Query = {
@@ -63,19 +63,59 @@ const martianPlot = async (db) => {
   Note: Make sure the above (Godfather) document is one of the 5 movies inserted.
 */
 
-const insertMovies = async () => {};
+const insertMovies = async (db) => {
+  const docsToInsert = [
+    {
+      title: 'The Godfather',
+      rating: 100,
+    },
+
+    {
+      title: 'Dark Knight',
+      rating: 10,
+    },
+
+    {
+      title: 'Shawshang',
+      rating: 100,
+    },
+
+    {
+      title: 'Fast & Furious',
+      rating: 19,
+    },
+    {
+      title: 'Godzilla',
+      rating: 100,
+    },
+  ];
+  const collectionCreated = await db.createCollection(collections.myMovies);
+  await collectionCreated.deleteMany({});
+  const result = await collectionCreated.insertMany(docsToInsert);
+  return result;
+};
 
 /* Q5 (*)
   Delete the movie with title = "The Godfather" from the collection "myMovies".
 */
 
-const deleteMovie = async () => {};
+const deleteMovie = async (db) => {
+  const myMoviesCollection = db.collection(collections.myMovies);
+  const Query = {
+    title: 'The Godfather',
+  };
+  const result = await myMoviesCollection.deleteOne(Query);
+  return result;
+};
 
 /* Q6 (*)
   Delete all movies from the collection "myMovies".
 */
 
-const deleteAllMovies = async () => {};
+const deleteAllMovies = async (db) => {
+  const myMoviesCollection = db.collection(collections.myMovies);
+  await myMoviesCollection.deleteMany({});
+};
 
 
 /* Q7 (*)
@@ -87,10 +127,28 @@ const deleteAllMovies = async () => {};
   - The tomato.consensus field is null
 */
 
-const removeConsensus = async () => {};
+const removeConsensus = async (db) => {
+  const movieDetailsCollection = db.collection(collections.movieDetails);
+  const Query = {
+    'imdb."votes"': { $lt: 10000 },
+    'tomato.consensus': { $exits: true, $in: [null] },
+    year: { $gte: 2010, $lte: 2013 },
+  };
+  const updateQuery = {
+    $unset: {
+      'tomato.consensus': '',
+    },
+  };
+  const result = await movieDetailsCollection.updateMany(Query, updateQuery);
+  return result;
+};
 
 module.exports = {
   noAwards,
   arrayOrder,
   martianPlot,
+  insertMovies,
+  deleteMovie,
+  deleteAllMovies,
+  removeConsensus,
 };
