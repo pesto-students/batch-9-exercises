@@ -5,14 +5,14 @@ const DB_NAME = 'video2';
 
 let connectionInstance;
 
-export const getDbClient = async () => {
+const getDbClient = async () => {
   if (!connectionInstance) {
     connectionInstance = await MongoClient.connect(MONGO_URL, { useNewUrlParser: true });
   }
   return connectionInstance;
 };
 
-export const getDb = async () => {
+const getDb = async () => {
   await getDbClient();
 
   if (!connectionInstance) {
@@ -20,4 +20,9 @@ export const getDb = async () => {
   }
 
   return connectionInstance.db(DB_NAME);
+};
+
+module.exports = {
+  getDb,
+  getDbClient,
 };
