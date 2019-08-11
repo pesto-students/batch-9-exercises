@@ -19,7 +19,14 @@ const noAwards = async (db) => {
   Return the number of movies in movieDetails collection list just the
   following two genres: "Comedy" and "Crime" with "Comedy" listed first.
 */
-const arrayOrder = async () => {};
+const arrayOrder = async (db) => {
+  const movieDetailsCollection = db.collection(collections.movieDetails);
+  const Query = {
+    genres: ['Comedy', 'Crime'],
+  };
+  const result = await movieDetailsCollection.count(Query);
+  return result;
+};
 
 /* Q3 (*)
   Update the value of the "plot" field for the movie "The Martian".
@@ -72,4 +79,5 @@ const removeConsensus = async () => {};
 
 module.exports = {
   noAwards,
+  arrayOrder,
 };
