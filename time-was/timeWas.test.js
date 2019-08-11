@@ -2,7 +2,7 @@ import { timeWas } from './timeWas';
 
 describe('timeWas', () => {
   // now -- 2018-01-24T17:51:30+00:00 (ISO 8601)
-  const NOW = 1516816290;
+  const NOW = Date.now();
   const SECONDS = 1000;
   const MINUTES = SECONDS * 60;
   const HOURS = MINUTES * 60;

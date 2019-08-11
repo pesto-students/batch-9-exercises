@@ -1,8 +1,14 @@
+let errorName;
 
-function throwErrors(...args) {
-  return args;
+function throwErrors() {
+  try {
+    throw new ReferenceError('This is a Reference Error');
+  } catch (error) {
+    errorName = error.name;
+  }
 }
 
 export {
   throwErrors,
+  errorName,
 };
