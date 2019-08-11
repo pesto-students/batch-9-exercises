@@ -1,12 +1,12 @@
-import { getDb, getDbClient } from '../src/database';
-import {
+const { getDb, getDbClient } = require('../src/database');
+const {
   noAwards,
   arrayOrder,
   martianPlot,
   insertMovies,
   deleteMovie,
   deleteAllMovies,
-} from '../src';
+} = require('../src');
 
 describe('Mongo Queries', () => {
   let db;
