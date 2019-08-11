@@ -38,7 +38,19 @@ const arrayOrder = async (db) => {
   Use updateOne() in this exercise.
 */
 
-const martianPlot = async () => {};
+const martianPlot = async (db) => {
+  const movieDetailsCollection = db.collection(collections.movieDetails);
+  const Query = {
+    title: 'The Martian',
+  };
+  const updateQuery = {
+    $set: {
+      plot: 'A scientist gets trapped on Mars. To save his life, he devices a plan. He grows potatoes using his excretion as manure. He masterminds a loop where he eats those potatoes to accelerate excretion, using the same to grow more potatoes until he can find an old spaceship nearby to launch himself home.',
+    },
+  };
+  const result = await movieDetailsCollection.updateOne(Query, updateQuery);
+  return result;
+};
 
 /* Q4 (*)
   Create a new collection named "myMovies". Insert 5 movies with the following
@@ -80,4 +92,5 @@ const removeConsensus = async () => {};
 module.exports = {
   noAwards,
   arrayOrder,
+  martianPlot,
 };
