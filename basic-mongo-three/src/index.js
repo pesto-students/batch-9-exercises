@@ -142,7 +142,27 @@ const removeConsensus = async (db) => {
   const result = await movieDetailsCollection.updateMany(Query, updateQuery);
   return result;
 };
+/**
+ * Code used to copy do the upsert.
+   const list = require('./upsertData')
+   const myMovieDetailsCOllection = db.collection('myMovieDetails');
+  const currentCount = await myMovieDetailsCOllection.count({});
+  console.log('BEFORE EXECUTING', currentCount);
+  const myMovieBulk = myMovieDetailsCOllection.initializeUnorderedBulkOp();
+  list.forEach(value => myMovieBulk.insert(value));
+  await myMovieBulk.execute();
+  const lastCount = await myMovieDetailsCOllection.count({});
+  console.log('AFTER EXECTUTI', lastCount)
+ */
 
+/**
+  * // CODE FOR DOIG TEXT BASED SEARCH AND GETTING RESULTS
+  const myMoviesCollection = db.collection('myMovieDetails');
+  await myMoviesCollection.createIndex({ title: 'text', plot: 'text' });
+  const docsFound = await myMoviesCollection.count({ $text: { $search: 'weapon murder love' } });
+  console.log('DOCS FOUND', docsFound);
+  return docsFound;
+  */
 module.exports = {
   noAwards,
   arrayOrder,

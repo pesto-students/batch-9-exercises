@@ -1,0 +1,7 @@
+Question 1.
+ The docs copied from movieDetails are: 2295.
+ After running the bulk Command to copy the list: 2319.
+
+Question 2.
+    Included the code that executed to get the result in the index.js file in the last comment section.
+    Found Docs: 195
