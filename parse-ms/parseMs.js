@@ -1,6 +1,11 @@
 
 function parseMs(milliseconds) {
+  // eslint-disable-next-line no-unused-vars
+  const isNegative = milliseconds < 0;
   let time = milliseconds;
+  if (time < 0) {
+    time = -time;
+  }
   const timeObject = {};
   timeObject.days = Number.parseInt(time / (24 * 60 * 60 * 1000), 10);
   time -= (timeObject.days * (24 * 60 * 60 * 1000));
