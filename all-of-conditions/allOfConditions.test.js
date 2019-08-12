@@ -31,4 +31,8 @@ describe('allOfConditions', () => {
     expect(isTruthy).toBeCalled();
     expect(isDateInstance).not.toBeCalled();
   });
+  it('throws error if non-functions entered a sarguments', () => {
+    const input = [1, 2, 3, null];
+    expect(() => allOfConditions(input)).toThrow(TypeError);
+  });
 });
