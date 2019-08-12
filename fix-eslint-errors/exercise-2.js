@@ -1,44 +1,41 @@
-function noop () {}
+function noop() {}
 
 if (typeof console === 'undefined') {
   window.console = {
     warn: noop,
-    error: noop
-  }
+    error: noop,
+  };
 }
 
-// avoid info messages during test
-console.info = noop
+let asserted;
 
-let asserted
-
-function createCompareFn (spy) {
-  const hasWarned = msg => {
-    var count = spy.calls.count()
-    var args
-    while (count--) {
-      args = spy.calls.argsFor(count)
+function createCompareFn(spy) {
+  const hasWarned = (msg) => {
+    let count = spy.calls.count();
+    let args;
+    function containsMsg(arg) {
+      return arg.toString().indexOf(msg) > -1;
+    }
+    while (count > 0) {
+      args = spy.calls.argsFor(count);
       if (args.some(containsMsg)) {
-        return true
+        return true;
       }
+      count -= 1;
     }
-
-    function containsMsg (arg) {
-      return arg.toString().indexOf(msg) > -1
-    }
-  }
+  };
 
   return {
-    compare: msg => {
-      asserted = asserted.concat(msg)
-      var warned = Array.isArray(msg)
+    compare: (msg) => {
+      asserted = asserted.concat(msg);
+      const warned = Array.isArray(msg)
         ? msg.some(hasWarned)
-        : hasWarned(msg)
+        : hasWarned(msg);
       return {
         pass: warned,
         message: warned
-          ? 'Expected message "' + msg + '" not to have been warned'
-          : 'Expected message "' + msg + '" to have been warned'
+          ? `Expected message " ${msg} " not to have been warned`
+          : `Expected message " ${msg} " to have been warned`;
       }
     }
   }
